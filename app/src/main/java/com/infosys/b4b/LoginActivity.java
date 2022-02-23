@@ -1,8 +1,6 @@
-package com.example.myfirstapp;
+package com.infosys.b4b;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 
