@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(getApplicationContext());
         mAuth = FirebaseAuth.getInstance();
 
-        btnLogin.setOnClickListener(view -> {
+        btnLogin.setOnClickListener(view -> {                                           // Run login function on button click
             loginUser();
         });
 

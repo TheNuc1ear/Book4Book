@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
-        if (user == null){
+
+        if (user == null){                                                                  // Redirect to login page
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
     }

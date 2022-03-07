@@ -43,7 +43,7 @@ public class SignupActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(view ->{
             createUser();
         });
-        btnLoginHere.setOnClickListener(view ->{
+        btnLoginHere.setOnClickListener(view ->{                                                   // Redirect to login page if user clicks that instead
             startActivity(new Intent(SignupActivity.this, LoginActivity.class));
         });
     }
