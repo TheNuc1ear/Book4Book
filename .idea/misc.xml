@@ -3,11 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable/ic_b4b_icon.xml" value="0.21" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable/ic_launcher_background.xml" value="0.21" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.21" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable/splash_image.xml" value="0.121" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_login.xml" value="0.14583333333333334" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_signup.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/activity_signup.xml" value="0.25" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/MyFirstApp/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/MyFirstApp/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2220413208007813" />
+        <entry key="app/src/main/res/layout/activity_signup.xml" value="0.2359375" />
       </map>
     </option>
   </component>
