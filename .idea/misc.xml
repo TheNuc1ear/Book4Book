@@ -8,9 +8,11 @@
         <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable/ic_launcher_background.xml" value="0.21" />
         <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.21" />
         <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable/splash_image.xml" value="0.121" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_login.xml" value="0.14583333333333334" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_login.xml" value="0.18" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_signup.xml" value="0.17552083333333332" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.125" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.125" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/activity_signup.xml" value="0.25" />
