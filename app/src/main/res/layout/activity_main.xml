@@ -15,9 +15,9 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.586" />
 
     <Button
         android:id="@+id/btnLogout"
@@ -30,5 +30,42 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageButton
+        android:id="@+id/dropMenu"
+        android:layout_width="52dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05
+"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_menu_button" />
+
+    <ImageButton
+        android:id="@+id/chatBox"
+        android:layout_width="52dp"
+        android:layout_height="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95
+"
+        app:layout_constraintStart_toEndOf="@+id/dropMenu"
+        app:layout_constraintTop_toTopOf="@+id/dropMenu"
+        app:srcCompat="@drawable/ic_menu_chat" />
+
+    <SearchView
+        android:id="@+id/searchBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_rectangle"
+        android:queryBackground="@android:color/transparent"
+        android:queryHint="Enter Book Title, Authors, ......"
+        android:iconifiedByDefault="false"
+        app:layout_constraintEnd_toEndOf="@+id/chatBox"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/dropMenu"
+        app:layout_constraintTop_toBottomOf="@+id/chatBox" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
