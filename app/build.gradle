@@ -1,4 +1,3 @@
-import android.widget.SimpleAdapter
 
 plugins {
     id 'com.android.application'

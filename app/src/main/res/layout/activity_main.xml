@@ -6,30 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logged in "
-        android:textColor="#023047"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.586" />
-
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
         android:text="Return to home"
         app:backgroundTint="@android:color/holo_orange_dark"
+        app:layout_constraintBottom_toTopOf="@+id/searchBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/dropMenu"
@@ -60,12 +50,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_rectangle"
+        android:iconifiedByDefault="false"
         android:queryBackground="@android:color/transparent"
         android:queryHint="Enter Book Title, Authors, ......"
-        android:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="@+id/chatBox"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/dropMenu"
         app:layout_constraintTop_toBottomOf="@+id/chatBox" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/bookList"
+        android:layout_width="360dp"
+        android:layout_height="500dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
