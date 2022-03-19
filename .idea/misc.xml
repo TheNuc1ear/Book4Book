@@ -3,27 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable-anydpi/ic_menu_button.xml" value="0.299" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable-anydpi/ic_search_bar.xml" value="0.299" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable/ic_activity_bar.xml" value="0.185" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable/ic_b4b_icon.xml" value="0.21" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable/ic_chat_box.xml" value="0.185" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable/ic_launcher_background.xml" value="0.21" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.21" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable/ic_magnifying_glass.xml" value="0.299" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable/rounded_rectangle.xml" value="0.299" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable/splash_image.xml" value="0.121" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_signup.xml" value="0.17552083333333332" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/custom_grid_layout.xml" value="0.16666666666666666" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/fragment_first.xml" value="0.18541666666666667" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.125" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.125" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/drawable-anydpi/ic_book.xml" value="0.1195" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/drawable-anydpi/ic_menu_button.xml" value="0.1195" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/drawable-v24/rounded_rectangle.xml" value="0.1265" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/activity_signup.xml" value="0.25" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/fragment_discover.xml" value="0.25" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/fragment_my_books.xml" value="0.25" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/fragment_start.xml" value="0.25" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/fragment_upload.xml" value="0.25" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/menu/bottom_menu.xml" value="0.264" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.26875" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/MyFirstApp/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/MyFirstApp/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
@@ -39,12 +31,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.33" />
-      </ProjectState>
-    </option>
   </component>
 </project>
