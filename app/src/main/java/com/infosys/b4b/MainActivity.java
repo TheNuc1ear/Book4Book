@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogOut = findViewById(R.id.btnLogout);
         chatBox = findViewById(R.id.chatBox);
         searchBar = findViewById(R.id.searchBar);
-        //bookList = findViewById(R.id.bookList);
+        bookList = findViewById(R.id.bookList);
         FirebaseApp.initializeApp(getApplicationContext());
         mAuth = FirebaseAuth.getInstance();
         bookTitles = new ArrayList<>();
