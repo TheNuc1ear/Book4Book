@@ -51,12 +51,27 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_rectangle"
         android:iconifiedByDefault="false"
-        android:queryBackground="@android:color/transparent"
+        android:Background="@color/light_grey"
         android:queryHint="Enter Book Title, Authors, ......"
         app:layout_constraintEnd_toEndOf="@+id/chatBox"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/dropMenu"
         app:layout_constraintTop_toBottomOf="@+id/chatBox" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="9dp"
+        android:gravity="center|left"
+        android:text="Recommended For You"
+        android:textColor="#023047"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bookList"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchBar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/bookList"
@@ -75,19 +90,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_menu"/>
+        app:menu="@menu/bottom_menu"
+        />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="170dp"
-        android:layout_height="8dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/bottomNavigationView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bookList"
-        app:navGraph="@navigation/my_nav" />
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:id="@+id/fragmentContainerView"-->
+<!--        android:name="androidx.navigation.fragment.NavHostFragment"-->
+<!--        android:layout_width="170dp"-->
+<!--        android:layout_height="8dp"-->
+<!--        app:defaultNavHost="true"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/bottomNavigationView"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/bookList"-->
+<!--        app:navGraph="@navigation/my_nav" />-->
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
