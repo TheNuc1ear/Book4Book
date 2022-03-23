@@ -44,17 +44,17 @@ public class MainActivity extends AppCompatActivity {
         bookImages = new ArrayList<>();
         //Convert database of book with picture and title to list of title/pics
         bookTitles.add("Bro");
-        bookImages.add(R.drawable.ic_book);
+        bookImages.add(R.drawable.midnight_lib);
         bookTitles.add("Sis");
-        bookImages.add(R.drawable.ic_book);
+        bookImages.add(R.drawable.giannis);
         bookTitles.add("Mom");
-        bookImages.add(R.drawable.ic_book);
+        bookImages.add(R.drawable.giannis);
         bookTitles.add("Dad");
-        bookImages.add(R.drawable.ic_book);
+        bookImages.add(R.drawable.midnight_lib);
         bookTitles.add("Gma");
-        bookImages.add(R.drawable.ic_book);
+        bookImages.add(R.drawable.giannis);
         bookTitles.add("Gpa");
-        bookImages.add(R.drawable.ic_book);
+        bookImages.add(R.drawable.midnight_lib);
         //Initialise Adapter
         adapter = new Adapter(this,bookTitles,bookImages);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false);
