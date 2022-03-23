@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/myBooks">
+
+    <fragment
+        android:id="@+id/myBooks"
+        android:name="com.infosys.b4b.MyBooks"
+        android:label="fragment_my_books"
+        tools:layout="@layout/fragment_my_books" />
+    <fragment
+        android:id="@+id/discover"
+        android:name="com.infosys.b4b.Discover"
+        android:label="fragment_discover"
+        tools:layout="@layout/fragment_discover" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.infosys.b4b.Profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/upload"
+        android:name="com.infosys.b4b.Upload"
+        android:label="fragment_upload"
+        tools:layout="@layout/fragment_upload" />
+</navigation>
