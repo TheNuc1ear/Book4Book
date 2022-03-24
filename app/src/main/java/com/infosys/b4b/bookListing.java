@@ -41,24 +41,24 @@ public class bookListing {
         return listId;
     }
 
-    private String getNameOfBook(){
+    public String getNameOfBook(){
         return this.nameOfBook;
     }
-    private void setNameOfBook(String input){
+    public void setNameOfBook(String input){
         this.nameOfBook = input;
     }
 
-    private String getDescriptionOfBook(){
+    public String getDescriptionOfBook(){
         return this.descriptionOfBook;
     }
-    private void setDescriptionOfBook(String input){
+    public void setDescriptionOfBook(String input){
         this.descriptionOfBook = input;
     }
 
-    private int getBookImage(){
+    public int getBookImage(){
         return this.bookImage;
     }
-    private void setBookImage(int input){
+    public void setBookImage(int input){
         this.bookImage = input;
     }
 

@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable-anydpi/ic_search_bar.xml" value="0.299" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/fragment_profile.xml" value="0.3625" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/menu/bottom_menu.xml" value="0.3625" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/drawable-anydpi/ic_book.xml" value="0.1195" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/drawable-anydpi/ic_menu_button.xml" value="0.1195" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/drawable-v24/rounded_rectangle.xml" value="0.1265" />
@@ -18,19 +22,11 @@
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.26875" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/MyFirstApp/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/MyFirstApp/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
-        <entry key="app/src/main/res/drawable-anydpi/ic_upload_book.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/discover.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.38757171630859377" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2220413208007813" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.2359375" />
-        <entry key="app/src/main/res/layout/custom_grid_layout.xml" value="0.259375" />
-        <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.259375" />
-        <entry key="app/src/main/res/layout/fragment_my_books.xml" value="0.259375" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.259375" />
-        <entry key="app/src/main/res/layout/fragment_upload.xml" value="0.259375" />
-        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.3255208333333333" />
       </map>
     </option>
   </component>
