@@ -6,20 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        android:text="Return to home"
-        app:backgroundTint="@color/orange"
-        app:layout_constraintBottom_toTopOf="@+id/searchBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+<!--    <Button-->
+<!--        android:id="@+id/btnLogout"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        android:text="Return to home"-->
+<!--        app:backgroundTint="@color/orange"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/searchBar"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.497"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="1.0" />-->
 
     <FrameLayout
         android:id="@+id/framelayout1"
@@ -47,7 +47,7 @@
             android:layout_gravity="bottom"
             android:gravity="center"
             android:text="Back"
-            android:textColor="#808080" />
+            android:textColor="#404040" />
 
     </FrameLayout>
 
@@ -78,7 +78,7 @@
             android:layout_gravity="bottom"
             android:gravity="center"
             android:text="Chats"
-            android:textColor="#808080" />
+            android:textColor="#404040" />
 
 
     </FrameLayout>
@@ -88,17 +88,18 @@
         android:id="@+id/searchBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:Background="@color/light_grey"
-        android:background="@drawable/rounded_rectangle"
-        android:iconifiedByDefault="false"
-        android:queryHint="Enter Book Title, Authors, ......"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:Background="@color/light_grey"
+        android:background="@drawable/rounded_rectangle"
+        android:queryBackground="@android:color/transparent"
+        android:iconifiedByDefault="false"
+        android:queryHint="Enter Book Title, Authors, ......"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toStartOf="text"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/framelayout1"
-        app:layout_constraintEnd_toStartOf="text"/>
+        app:layout_constraintTop_toBottomOf="@id/framelayout1" />
 
     <TextView
         android:id="@+id/textView2"
@@ -108,8 +109,8 @@
         android:layout_marginBottom="9dp"
         android:gravity="center|left"
         android:text="Recommended For You"
-        android:textColor="#023047"
-        android:textSize="25sp"
+        android:textColor="#04062D"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/bookList"
         app:layout_constraintStart_toStartOf="parent"
@@ -130,7 +131,7 @@
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:backgroundTint="@color/orange"
+        app:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -9,9 +9,10 @@
         />
 
     <item
-        android:id="@+id/discover"
-        android:title="Discover"
-        android:icon="@drawable/discover"/>
+        android:id="@+id/home"
+        android:title="home"
+        android:icon="@drawable/ic_home"
+        />
 
     <item
           android:id="@+id/upload"
