@@ -17,7 +17,7 @@
           android:id="@+id/upload"
           android:title="Upload"
           android:icon="@drawable/upload"
-          android:enabled="true"/>
+          />
 
     <item
         android:id="@+id/profile"
