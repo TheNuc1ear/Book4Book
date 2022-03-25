@@ -4,27 +4,31 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 //Adapter works with the data of the book upload process,
 // 1. Picture of book
 // 2. Title of book
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
+public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements Filterable {
     //These lists will take the input from mainActivity
-    List<String> bookTitles;
-    List<Integer> bookImages;
+    List<bookListing> listings;
+    List<bookListing> exampleListingsFull; //Just another list to store all the original listings to be used to get filter list
     LayoutInflater inflater;
 
 
-    public Adapter(Context ctx, List<String> titles, List<Integer> images){
-        this.bookTitles = titles;
-        this.bookImages = images;
+    public Adapter(Context ctx, List<bookListing> listings){
+        this.listings = listings;
+        exampleListingsFull = new ArrayList<>(listings);
         this.inflater = LayoutInflater.from(ctx);
     }
 
@@ -40,15 +44,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     //Set the Picture and Book Title uploaded by user to the custom_grid_layout
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.title.setText(bookTitles.get(position));
-        holder.gridpicture.setImageResource(bookImages.get(position));
+        holder.title.setText(listings.get(position).getNameOfBook());
+        holder.gridpicture.setImageResource(listings.get(position).getBookImage());
 
     }
 
     @Override
     public int getItemCount() {
-        return bookTitles.size();
+        return listings.size();
     }
+
+
 
     //Class of ViewHolder which is each grid
     //Attribute of ImageView which is meant for the the picture of the book
@@ -63,4 +69,39 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             gridpicture = itemView.findViewById(R.id.imageView4);
         }
     }
+
+
+    @Override
+    public Filter getFilter() {
+        return exampleFilter;
+    }
+    //Filter Class
+    private Filter exampleFilter = new Filter() {
+        //performFiltering auto executed on background thread, so no lag even if complicated filter conditions
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<bookListing> filteredList = new ArrayList<>();
+            if (constraint==null||constraint.length()==0){
+                filteredList.addAll(exampleListingsFull);
+            } else{
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (bookListing item:exampleListingsFull){
+                    if(item.getNameOfBook().toLowerCase().contains(filterPattern)){
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            listings.clear();
+            listings.addAll((List) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
+
 }

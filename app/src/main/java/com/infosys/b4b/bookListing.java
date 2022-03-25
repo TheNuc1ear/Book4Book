@@ -16,29 +16,24 @@ public class bookListing {
     private int bookImage;
 
     //Store the list of ListingId so that no repeat
-    public static ArrayList<String> listofListingId;
+    public static int currentListingId=0;
 
     public bookListing(String nameOfBook, String descriptionOfBook, int bookImage){
         this.nameOfBook = nameOfBook;
         this.descriptionOfBook = descriptionOfBook;
         this.bookImage = bookImage;
-        this.listingId = generateListingId();
+        this.listingId = assignListingId();
     }
     public bookListing(String nameOfBook,int bookImage){
         this.nameOfBook = nameOfBook;
         this.descriptionOfBook = "Empty";
         this.bookImage = bookImage;
-        this.listingId = generateListingId();
+        this.listingId = assignListingId();
     }
 
-    private String generateListingId(){
-        Random rng = new Random();
-        String listId = String.valueOf(rng.nextInt(100000));//Limited to 100k booklistingId
-        while (listofListingId.contains(listId)){
-            listId = String.valueOf(rng.nextInt(100000));
-        }
-        listofListingId.add(listId);
-        return listId;
+    public static String assignListingId(){
+        currentListingId+=1;
+        return String.valueOf(currentListingId);
     }
 
     public String getNameOfBook(){
@@ -60,6 +55,10 @@ public class bookListing {
     }
     public void setBookImage(int input){
         this.bookImage = input;
+    }
+
+    public String getListingId(){
+        return this.listingId;
     }
 
 }
