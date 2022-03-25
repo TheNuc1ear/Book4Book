@@ -90,13 +90,11 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:Background="@color/light_grey"
         android:background="@drawable/rounded_rectangle"
         android:queryBackground="@android:color/transparent"
         android:iconifiedByDefault="false"
         android:queryHint="Enter Book Title, Authors, ......"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="text"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/framelayout1" />
