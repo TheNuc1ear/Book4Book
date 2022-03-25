@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnLogOut = findViewById(R.id.btnLogout);
+        //btnLogOut = findViewById(R.id.btnLogout);
         chatBox = findViewById(R.id.chatBox);
         searchBar = findViewById(R.id.searchBar);
         bookList = findViewById(R.id.bookList);
@@ -61,10 +61,13 @@ public class MainActivity extends AppCompatActivity {
         bookList.setLayoutManager(gridLayoutManager);
         bookList.setAdapter(adapter);
 
+
+        /*
         btnLogOut.setOnClickListener(view ->{
             mAuth.signOut();
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         });
+         */   //For sign out button
 
         chatBox.setOnClickListener(view->{
             //TODO: Change to ChatActivity/activity_chat
