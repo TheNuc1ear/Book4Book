@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Book4Book</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="username">BookLover24</string>
+    <string name="changepassword">Change Password</string>
+    <string name="preferences">Preferences</string>
+    <string name="logout">Logout</string>
 </resources>
