@@ -18,6 +18,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -26,7 +29,10 @@ public class SignupActivity extends AppCompatActivity {
     private Button btnRegister;
     private TextView btnLoginHere;
 
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
+    private DatabaseReference mDatabase;
+    private static final String USER = "user";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,7 @@ public class SignupActivity extends AppCompatActivity {
         btnLoginHere = findViewById(R.id.btnLoginHere);
         FirebaseApp.initializeApp(getApplicationContext());
         mAuth = FirebaseAuth.getInstance();
+        DAOUserData dao = new DAOUserData();
 
         btnRegister.setOnClickListener(view ->{
             createUser();
@@ -64,13 +71,23 @@ public class SignupActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
                         Toast.makeText(SignupActivity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        writeNewUser(email);
+
+                        startActivity(new Intent(SignupActivity.this, MainActivity.class));
                     }else{
                         Toast.makeText(SignupActivity.this, "Registration Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
         }
+    }
+
+    public void writeNewUser(String email) {
+        DAOUserData dao = new DAOUserData();
+        userData user = new userData(email);
+        dao.add(user);
+
     }
 
 }
