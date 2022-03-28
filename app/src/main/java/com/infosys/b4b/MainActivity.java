@@ -105,9 +105,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-};
-
     private void setUpRecyclerView(){
         bookList = findViewById(R.id.bookList);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false);
