@@ -3,26 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/myBooks">
+    app:startDestination="@id/myBooks_fragment">
 
     <fragment
-        android:id="@+id/myBooks"
-        android:name="com.infosys.b4b.MyBooks"
-        android:label="fragment_my_books"
-        tools:layout="@layout/fragment_my_books" />
+        android:id="@+id/home_fragment"
+        android:name="com.infosys.b4b.home_fragment"
+        android:label="fragment_home_fragment"
+        tools:layout="@layout/fragment_home_fragment" />
     <fragment
-        android:id="@+id/discover"
-        android:name="com.infosys.b4b.Discover"
-        android:label="fragment_discover"
-        tools:layout="@layout/fragment_discover" />
+        android:id="@+id/myBooks_fragment"
+        android:name="com.infosys.b4b.myBooks_fragment"
+        android:label="fragment_my_books_fragment"
+        tools:layout="@layout/fragment_my_books_fragment" />
     <fragment
-        android:id="@+id/profile"
-        android:name="com.infosys.b4b.Profile"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/profile_fragment"
+        android:name="com.infosys.b4b.profile_fragment"
+        android:label="fragment_profile_fragment"
+        tools:layout="@layout/fragment_profile_fragment" />
     <fragment
-        android:id="@+id/upload"
-        android:name="com.infosys.b4b.Upload"
-        android:label="fragment_upload"
-        tools:layout="@layout/fragment_upload" />
+        android:id="@+id/upload_fragment"
+        android:name="com.infosys.b4b.upload_fragment"
+        android:label="fragment_upload_fragment"
+        tools:layout="@layout/fragment_upload_fragment" />
+    <fragment
+        android:id="@+id/chat_fragment"
+        android:name="com.infosys.b4b.chat_fragment"
+        android:label="fragment_chat_fragment"
+        tools:layout="@layout/fragment_chat_fragment" />
 </navigation>
