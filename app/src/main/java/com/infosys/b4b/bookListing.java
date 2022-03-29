@@ -5,6 +5,7 @@ package com.infosys.b4b;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 public class bookListing {
     private String nameOfBook;
@@ -17,9 +18,6 @@ public class bookListing {
     private String listingId;
     private int bookImage;
 
-    //Store the list of ListingId so that no repeat
-    public static int currentListingId=0;
-
     public bookListing(String nameOfBook, String descriptionOfBook, String genre){
         this.nameOfBook = nameOfBook;
         this.descriptionOfBook = descriptionOfBook;
@@ -27,9 +25,9 @@ public class bookListing {
         this.listingId = assignListingId();
     }
 
-    public static String assignListingId(){
-        currentListingId+=1;
-        return String.valueOf(currentListingId);
+    public String assignListingId(){
+        final String randomKey = UUID.randomUUID().toString();
+        return randomKey;
     }
 
     public String getNameOfBook(){
