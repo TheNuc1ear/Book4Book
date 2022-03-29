@@ -34,6 +34,9 @@
             android:textColor="#FFFFFF"
             android:textSize="22sp"
             android:layout_marginLeft="90dp">
+
+        </TextView>
+
         <Button
             android:id="@+id/logout"
             android:layout_width="wrap_content"
@@ -42,6 +45,9 @@
             android:background="@android:color/transparent"
             android:textSize="16sp"
             android:layout_marginLeft="55dp">
+
+        </Button>
+
         </LinearLayout>
     <!--Top Profile Section -->
 
@@ -68,7 +74,9 @@
                 android:layout_marginTop="5dp"
                 android:background="@null"
                 android:scaleType="fitXY"
-                android:src="@drawable/defaultusersquare"></ImageButton>
+                android:src="@drawable/defaultusersquare">
+
+            </ImageButton>
 
             <EditText
                 android:layout_width="wrap_content"
@@ -99,7 +107,9 @@
                     android:layout_height="wrap_content"
                     android:text="@string/preferences"
                     android:textColor="@color/black"
-                    android:textSize="22sp"></TextView>
+                    android:textSize="22sp">
+
+                </TextView>
 
                 <ImageButton
                     android:id="@+id/editPreference"
@@ -108,7 +118,9 @@
                     android:layout_marginLeft="180dp"
                     android:background="@null"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/editicon"></ImageButton>
+                    android:src="@drawable/editicon">
+
+                </ImageButton>
             </LinearLayout>
         </LinearLayout>
 

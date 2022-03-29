@@ -1,129 +1,121 @@
-package com.example.a1dproject;
+package com.infosys.b4b;
 
-import androidx.annotation.NonNull;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.Toast;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.core.content.ContextCompat;
-
-import android.Manifest;
-import android.content.pm.PackageManager;
+import android.content.DialogInterface;
 import android.net.Uri;
-import android.os.Build;
+import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
-import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
-
+import java.io.File;
 
 public class User extends AppCompatActivity {
-    public ImageButton profilePicture;
-    public static final int CAMERA_REQUEST = 100;
-    public static final int STORAGE_REQUEST = 101;
-    String[] cameraPermission;
-    String[] storagePermission;
+
+    private ImageButton profilePicture, editPreferences;
+    private Button logout;
+    private String[] items;
+    private ActivityResultLauncher<String> gallery;
+    private ActivityResultLauncher<Uri> camera;
+    private File file;
+    private Uri uri;
+    //FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_userprofile);
-        cameraPermission = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-        storagePermission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        setContentView(R.layout.activity_main);
 
-        profilePicture = findViewById(R.id.profilePicture);
+        ImageButton profilePicture = findViewById(R.id.profilePicture);
+        ImageButton editPreferences = findViewById(R.id.editPreference);
+        Button logout = findViewById(R.id.logout);
+        String[] items = getResources().getStringArray(R.array.DialogCameraGallary); //To get the names of the dialog items in values/arrays
+        String packageName = this.getApplicationContext().getPackageName();
+
         profilePicture.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
-            public void onClick(View v) {
-                int picd = 0;
-                if (picd == 0) {
-                    if (!checkCameraPermission()) {
-                        requestCameraPermission();
-                    } else {
-                        pickFromGallery();
+            public void onClick(View view) {
+                file = new File(Environment.getExternalStorageDirectory(), "temp_images.jpg");
+                uri = FileProvider.getUriForFile(User.this, packageName + ".provider", file);
+                //Create an alert dialog to pick camera/gallery
+                AlertDialog.Builder builder = new AlertDialog.Builder(User.this);
+
+                //To choose the items in the dialog, we need an onclick for each items.
+                builder.setTitle(R.string.alertCameraGallery);
+                builder.setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (items[i].equals("Camera")) {
+                            camera.launch(uri);
+                        }
+                        else {
+                            gallery.launch("image/*");
+                        }
                     }
-                } else if (picd == 1) {
-                    if (!checkStoragePermission()) {
-                        requestStoragePermission();
-                    } else {
-                        pickFromGallery();
-                    }
-                }
+
+                });
+                builder.show();
+
+//                AlertDialog pick =
+//                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                startActivity(intent);
             }
         });
 
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    private void requestStoragePermission() {
-        requestPermissions(storagePermission, STORAGE_REQUEST);
-    }
-
-    private boolean checkStoragePermission() {
-        boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
-        return result;
-    }
-
-    private void pickFromGallery() {
-        CropImage.activity().start(this);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    private void requestCameraPermission() {
-        requestPermissions(cameraPermission, CAMERA_REQUEST);
-    }
-
-    private boolean checkCameraPermission() {
-        boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == (PackageManager.PERMISSION_GRANTED);
-        boolean result1 = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
-        return result && result1;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                Uri resultUri = result.getUri();
-                Picasso.with(this).load(resultUri).into(profilePicture);
+        //Activity for gallery
+        gallery = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
+            @Override
+            public void onActivityResult(Uri result) {
+                profilePicture.setImageURI(result);
             }
-        }
-    }
+        });
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case CAMERA_REQUEST: {
-                if (grantResults.length > 0) {
-                    boolean camera_accepted = grantResults[0] == (PackageManager.PERMISSION_GRANTED);
-                    boolean storage_accepted = grantResults[1] == (PackageManager.PERMISSION_GRANTED);
-                    if (camera_accepted && storage_accepted) {
-                        pickFromGallery();
-                    } else {
-                        Toast.makeText(this, "Please enable camera and storage permission", Toast.LENGTH_SHORT).show();
-                    }
-                }
+        //Activity for camera
+        camera = registerForActivityResult(new ActivityResultContracts.TakePicture(), new ActivityResultCallback<Boolean>() {
+            @Override
+            public void onActivityResult(Boolean result) {
 
-            }
-            break;
-            case STORAGE_REQUEST: {
-                if (grantResults.length > 0) {
-                    boolean storage_accepted = grantResults[0] == (PackageManager.PERMISSION_GRANTED);
-                    if (storage_accepted) {
-                        pickFromGallery();
-                    } else {
-                        Toast.makeText(this, "Please enable storage permission", Toast.LENGTH_SHORT).show();
-                    }
+                if(result){
+                    profilePicture.setImageURI(uri);
+                    boolean deleted = file.delete();
+                    Log.i("File has been deleted", String.valueOf(deleted));
                 }
             }
-            break;
-        }
+
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Create an alert dialog to confirm logging out
+                AlertDialog.Builder builder = new AlertDialog.Builder(User.this);
+
+                builder.setMessage(R.string.alertLogout);
+                builder.setPositiveButton(R.string.confirmYes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        mAuth.signOut();
+//                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                    }
+                });
+                builder.setNegativeButton(R.string.confirmNo, null);
+                builder.show();
+            }
+        });
+
+        editPreferences.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 }

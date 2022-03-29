@@ -5,4 +5,8 @@
     <string name="changepassword">Change Password</string>
     <string name="preferences">Preferences</string>
     <string name="logout">Logout</string>
+    <string name="alertCameraGallery">Choose image from:</string>
+    <string name="alertLogout">Are you sure you want to logout?</string>
+    <string name="confirmYes">Yes</string>
+    <string name="confirmNo">Cancel</string>
 </resources>
