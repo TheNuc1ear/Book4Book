@@ -59,12 +59,12 @@ public class MainActivity extends AppCompatActivity {
         bookImages = new ArrayList<>();
         allBookListing = new ArrayList<>();
         //Convert database of book with picture and title to list of title/pics
-        allBookListing.add(new bookListing("Giannis",R.drawable.giannis));
-        allBookListing.add(new bookListing("Midnight Library",R.drawable.midnight_lib));
-        allBookListing.add(new bookListing("Giannis",R.drawable.giannis));
-        allBookListing.add(new bookListing("Midnight Library",R.drawable.midnight_lib));
-        allBookListing.add(new bookListing("Giannis",R.drawable.giannis));
-        allBookListing.add(new bookListing("Midnight Library",R.drawable.midnight_lib));
+        //allBookListing.add(new bookListing("Giannis",R.drawable.giannis));
+        //allBookListing.add(new bookListing("Midnight Library",R.drawable.midnight_lib));
+        //allBookListing.add(new bookListing("Giannis",R.drawable.giannis));
+        //allBookListing.add(new bookListing("Midnight Library",R.drawable.midnight_lib));
+        //allBookListing.add(new bookListing("Giannis",R.drawable.giannis));
+        //allBookListing.add(new bookListing("Midnight Library",R.drawable.midnight_lib));
         //Initialise RecyclerView
         //setUpRecyclerView();
         //Initialise Bottom Navigation bar
