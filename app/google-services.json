@@ -2,7 +2,8 @@
   "project_info": {
     "project_number": "749219436210",
     "project_id": "book4book-862cd",
-    "storage_bucket": "book4book-862cd.appspot.com"
+    "storage_bucket": "book4book-862cd.appspot.com",
+    "firebase_url": "https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/"
   },
   "client": [
     {
