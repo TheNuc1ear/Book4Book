@@ -3,13 +3,15 @@ package com.infosys.b4b;
 
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class bookListing {
     private String nameOfBook;
     private String descriptionOfBook; //Maybe just change the description to what the lister is interested in?
+    private String genreList;
     //Possibly add what genre
-    //private ArrayList<String> genreList;
+    //private List<String> genreList=new ArrayList<>();
     //For now ignore userId
     //private int userId;
     private String listingId;
@@ -18,6 +20,12 @@ public class bookListing {
     //Store the list of ListingId so that no repeat
     public static int currentListingId=0;
 
+    public bookListing(String nameOfBook, String descriptionOfBook, String genre){
+        this.nameOfBook = nameOfBook;
+        this.descriptionOfBook = descriptionOfBook;
+        this.genreList=genre;
+        this.listingId = assignListingId();
+    }
     public bookListing(String nameOfBook, String descriptionOfBook, int bookImage){
         this.nameOfBook = nameOfBook;
         this.descriptionOfBook = descriptionOfBook;

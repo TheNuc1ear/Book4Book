@@ -90,10 +90,12 @@ public class upload_fragment extends Fragment {
                 String title = booktitle.getText().toString();
                 String description = bookdescribe.getText().toString();
                 String genre = bookgenre.getText().toString();
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("title", ""+title);
-                hashMap.put("description", ""+description);
-                hashMap.put("genre", ""+genre);
+                bookListing listing = new bookListing(title,description,genre);
+                /*HashMap<String, bookListing> hashMap = new HashMap<>();
+                hashMap.put(listing.getListingId(), listing);*/
+                //hashMap.put("title", ""+title);
+                //hashMap.put("description", ""+description);
+                //hashMap.put("genre", ""+genre);
 
 
                 if (title.isEmpty()){
@@ -110,11 +112,13 @@ public class upload_fragment extends Fragment {
                 }
                 else{
                     Toast.makeText(getContext(), "Book added successfully", Toast.LENGTH_SHORT).show();
-                    FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Books").push().setValue(hashMap);
+                    FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Booklisting").push().setValue(listing);
                     DatabaseReference reference = FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
                     DatabaseReference reference2 = reference.child("Books");
                     DatabaseReference reference3 = reference2.push();
                     String postId = reference3.getKey();
+                    //Store the postId as the listingId, then in our listingId create a getter for image
+                    //using the listingId attribute to get the image from storage
                     uploadPicture(postId);
                 }
             }
