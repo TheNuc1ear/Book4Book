@@ -1,4 +1,4 @@
-package com.example.a1dproject;
+package com.infosys.b4b;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.a1dproject", appContext.getPackageName());
+        assertEquals("com.example.myfirstapp", appContext.getPackageName());
     }
 }
