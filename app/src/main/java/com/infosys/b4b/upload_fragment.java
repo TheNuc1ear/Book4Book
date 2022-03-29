@@ -3,20 +3,19 @@ package com.infosys.b4b;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.app.ProgressDialog;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -28,23 +27,19 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.sql.Ref;
-import java.util.HashMap;
-import java.util.UUID;
-
 public class upload_fragment extends Fragment {
+
+    String[] genres = {"Romance", "Mystery", "Fantasy", "Fiction", "Horror", "Biography"};
 
     private static final int RESULT_OK = -1;
     private ImageView profilePic;
     public Uri imageUri;
     private FirebaseStorage storage;
     private StorageReference storageReference;
-
-
-
     TextInputEditText booktitle;
     TextInputEditText bookdescribe;
-    TextInputEditText bookgenre;
+    AutoCompleteTextView bookgenre;
+    ArrayAdapter<String> adapterItems;
 
 
 
@@ -64,8 +59,11 @@ public class upload_fragment extends Fragment {
 
         booktitle = (TextInputEditText) view.findViewById(R.id.booktitle);
         bookdescribe = (TextInputEditText) view.findViewById(R.id.bookdescribe);
-        bookgenre = (TextInputEditText) view.findViewById(R.id.bookgenre);
         submitBtn = view.findViewById(R.id.submitBtn);
+        bookgenre = view.findViewById(R.id.auto_complete_txt);
+
+        adapterItems = new ArrayAdapter<String>(getActivity(), R.layout.list_genres, genres);
+        bookgenre.setAdapter(adapterItems);
 
 
         profilePic.setOnClickListener(new View.OnClickListener() {
@@ -76,10 +74,13 @@ public class upload_fragment extends Fragment {
             }
         });
 
-
-
-
-
+        bookgenre.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String genre = adapterView.getItemAtPosition(i).toString();
+                Toast.makeText(getContext(), "Genre: "+genre, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,10 +113,10 @@ public class upload_fragment extends Fragment {
                 }
                 else{
                     Toast.makeText(getContext(), "Book added successfully", Toast.LENGTH_SHORT).show();
-                    FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Booklisting").push().setValue(listing);
+                    FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Booklisting").child(listing.getListingId()).setValue(listing);
                     DatabaseReference reference = FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
-                    DatabaseReference reference2 = reference.child("Books");
-                    DatabaseReference reference3 = reference2.push();
+                    DatabaseReference reference2 = reference.child("BookListing");
+                    DatabaseReference reference3 = reference2.child(listing.getListingId());
                     String postId = reference3.getKey();
                     //Store the postId as the listingId, then in our listingId create a getter for image
                     //using the listingId attribute to get the image from storage
@@ -153,8 +154,6 @@ public class upload_fragment extends Fragment {
         pd.setTitle("uploading image...");
         pd.show();
 
-
-        final String randomKey = UUID.randomUUID().toString();      //key of an image
         StorageReference mountainsRef = storageReference.child("images/" + s);
 
 

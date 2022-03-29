@@ -9,7 +9,7 @@ import java.util.Random;
 public class bookListing {
     private String nameOfBook;
     private String descriptionOfBook; //Maybe just change the description to what the lister is interested in?
-    private String genreList;
+    private String genre;
     //Possibly add what genre
     //private List<String> genreList=new ArrayList<>();
     //For now ignore userId
@@ -23,19 +23,7 @@ public class bookListing {
     public bookListing(String nameOfBook, String descriptionOfBook, String genre){
         this.nameOfBook = nameOfBook;
         this.descriptionOfBook = descriptionOfBook;
-        this.genreList=genre;
-        this.listingId = assignListingId();
-    }
-    public bookListing(String nameOfBook, String descriptionOfBook, int bookImage){
-        this.nameOfBook = nameOfBook;
-        this.descriptionOfBook = descriptionOfBook;
-        this.bookImage = bookImage;
-        this.listingId = assignListingId();
-    }
-    public bookListing(String nameOfBook,int bookImage){
-        this.nameOfBook = nameOfBook;
-        this.descriptionOfBook = "Empty";
-        this.bookImage = bookImage;
+        this.genre=genre;
         this.listingId = assignListingId();
     }
 
@@ -49,6 +37,13 @@ public class bookListing {
     }
     public void setNameOfBook(String input){
         this.nameOfBook = input;
+    }
+
+    public String getGenreOfBook(){
+        return this.genre;
+    }
+    public void setGenreOfBook(String input){
+        this.genre = input;
     }
 
     public String getDescriptionOfBook(){
