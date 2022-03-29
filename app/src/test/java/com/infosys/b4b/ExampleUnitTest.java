@@ -1,4 +1,4 @@
-package com.infosys.b4b;
+package com.example.a1dproject;
 
 import org.junit.Test;
 
