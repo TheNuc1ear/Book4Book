@@ -35,12 +35,6 @@ public class MainActivity extends AppCompatActivity {
     Button btnLogOut;
     FirebaseAuth mAuth;
     ImageButton chatBox;
-    SearchView searchBar;
-    RecyclerView bookList;
-    List<String> bookTitles;
-    List<Integer> bookImages;
-    List<bookListing> allBookListing;
-    Adapter adapter;
     BottomNavigationView navbar;
 
 
@@ -55,18 +49,7 @@ public class MainActivity extends AppCompatActivity {
         //searchBar = findViewById(R.id.searchBar);
         FirebaseApp.initializeApp(getApplicationContext());
         mAuth = FirebaseAuth.getInstance();
-        bookTitles = new ArrayList<>();
-        bookImages = new ArrayList<>();
-        allBookListing = new ArrayList<>();
-        //Convert database of book with picture and title to list of title/pics
-        //allBookListing.add(new bookListing("Giannis",R.drawable.giannis));
-        //allBookListing.add(new bookListing("Midnight Library",R.drawable.midnight_lib));
-        //allBookListing.add(new bookListing("Giannis",R.drawable.giannis));
-        //allBookListing.add(new bookListing("Midnight Library",R.drawable.midnight_lib));
-        //allBookListing.add(new bookListing("Giannis",R.drawable.giannis));
-        //allBookListing.add(new bookListing("Midnight Library",R.drawable.midnight_lib));
-        //Initialise RecyclerView
-        //setUpRecyclerView();
+
         //Initialise Bottom Navigation bar
         navbar = findViewById(R.id.bottomNavigationView);
         //Tells the Navigation bar what to do when each button on it is pressed
@@ -81,21 +64,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-        /*
-        searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                adapter.getFilter().filter(s); //s is whatever the user type into the searchview
-                return true;
-            }
-        });
 
         /*
         btnLogOut.setOnClickListener(view ->{
@@ -141,14 +109,5 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
     }
-    /*
-    private void setUpRecyclerView(){
-        bookList = findViewById(R.id.bookList);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false);
-        adapter = new Adapter(this,allBookListing);
-        bookList.setLayoutManager(gridLayoutManager);
-        bookList.setAdapter(adapter);
-    }
-     */
 }
 
