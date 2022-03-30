@@ -2,6 +2,9 @@ package com.infosys.b4b;
 
 
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -11,6 +14,7 @@ public class bookListing {
     private String nameOfBook;
     private String descriptionOfBook; //Maybe just change the description to what the lister is interested in?
     private String genre;
+    private String useruid;
     //Possibly add what genre
     //private List<String> genreList=new ArrayList<>();
     //For now ignore userId
@@ -23,11 +27,17 @@ public class bookListing {
         this.descriptionOfBook = descriptionOfBook;
         this.genre=genre;
         this.listingId = assignListingId();
+        this.useruid = firebaseuseruid();
     }
 
     public String assignListingId(){
         final String randomKey = UUID.randomUUID().toString();
         return randomKey;
+    }
+    public String firebaseuseruid(){
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+        String s = currentFirebaseUser.getUid();
+        return s;
     }
 
     public String getNameOfBook(){
@@ -62,4 +72,7 @@ public class bookListing {
         return this.listingId;
     }
 
+    public String getUseruid() {
+        return useruid;
+    }
 }
