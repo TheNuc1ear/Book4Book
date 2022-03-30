@@ -13,7 +13,7 @@ import java.util.UUID;
 public class bookListing {
     private String nameOfBook;
     private String descriptionOfBook; //Maybe just change the description to what the lister is interested in?
-    private ArrayList<String> genre;
+    private ArrayList<String> genre=new ArrayList<>();
     private String useruid;
     //Possibly add what genre
     //private List<String> genreList=new ArrayList<>();
@@ -28,6 +28,22 @@ public class bookListing {
         this.genre=genre;
         this.listingId = assignListingId();
         this.useruid = firebaseuseruid();
+    }
+
+    public bookListing(String nameOfBook, ArrayList<String> genre){
+        this.nameOfBook = nameOfBook;
+        this.descriptionOfBook = "No description";
+        this.genre=genre;
+        this.listingId = assignListingId();
+        this.useruid = firebaseuseruid();
+    }
+    //For testing
+    public bookListing(String nameOfBook, int bookImage){
+        this.nameOfBook = nameOfBook;
+        this.descriptionOfBook = descriptionOfBook;
+        this.listingId = assignListingId();
+        this.useruid = firebaseuseruid();
+        this.bookImage = bookImage;
     }
 
     public String assignListingId(){

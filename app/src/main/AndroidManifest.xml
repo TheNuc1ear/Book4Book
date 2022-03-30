@@ -44,6 +44,7 @@
             android:theme="@style/Theme.MyFirstApp"></activity>
         <activity
             android:name=".MainActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true">
         </activity>
     </application>
