@@ -22,6 +22,10 @@ public class bookListing {
     private String listingId;
     private int bookImage;
 
+
+    //For Javabeans
+    public bookListing(){}
+
     public bookListing(String nameOfBook, String descriptionOfBook, ArrayList<String> genre){
         this.nameOfBook = nameOfBook;
         this.descriptionOfBook = descriptionOfBook;

@@ -93,38 +93,23 @@ public class home_fragment extends Fragment {
         searchBar = view.findViewById(R.id.searchBar);
         allBookListing = new ArrayList<>();
         //Initialise Firebase reference
-//        realTimeDb = FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Booklisting");
-//        realTimeDb.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                bookListing change = snapshot.getValue(bookListing.class);
-//                storageReference = FirebaseStorage.getInstance().getReference().child("images/" + change.getListingId());
-//                try {
-//                    final File localFile = File.createTempFile("hiiiii","jpg");
-//                    storageReference.getFile(localFile);
-//                    Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-//                    change.setBookImage(bitmap);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//                allBookListing.add(change);
-//                adapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+        realTimeDb = FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Booklisting");
+        realTimeDb.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snap:snapshot.getChildren()){
+                    bookListing change = snap.getValue(bookListing.class);
+                    allBookListing.add(change);
+                }
+                adapter.notifyDataSetChanged();
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-        //Convert database of book with picture and title to list of title/pics
-        allBookListing.add(new bookListing("Giannis",R.drawable.giannis));
-        allBookListing.add(new bookListing("Midnight Library",R.drawable.midnight_lib));
-        allBookListing.add(new bookListing("Giannis",R.drawable.giannis));
-        allBookListing.add(new bookListing("Midnight Library",R.drawable.midnight_lib));
-        allBookListing.add(new bookListing("Giannis",R.drawable.giannis));
-        allBookListing.add(new bookListing("Midnight Library",R.drawable.midnight_lib));
+            }
+        });
+
 
         //Initialise RecyclerView
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);

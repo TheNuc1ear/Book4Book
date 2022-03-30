@@ -1,6 +1,7 @@
 package com.infosys.b4b;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -24,6 +32,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
     List<bookListing> listings;
     List<bookListing> exampleListingsFull; //Just another list to store all the original listings to be used to get filter list
     LayoutInflater inflater;
+    private StorageReference storageReference;
+
 
 
     public Adapter(Context ctx, List<bookListing> listings){
@@ -44,9 +54,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
     //Set the Picture and Book Title uploaded by user to the custom_grid_layout
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.title.setText(listings.get(position).getNameOfBook());
-        holder.gridpicture.setImageResource(listings.get(position).getBookImage());
+        //This gives us the exact url of the the respective bookListings
+        Task<Uri> url = FirebaseStorage.getInstance().getReference().child("images/" + listings.get(position).getListingId()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            //If Successfully got the url, pass the url into Glide and load into ImageView
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(holder.gridpicture.getContext()).load(uri).into(holder.gridpicture);
+            }
+        });
 
+        holder.title.setText(listings.get(position).getNameOfBook());
     }
 
     @Override

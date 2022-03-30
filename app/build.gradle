@@ -51,5 +51,12 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:20.1.0'
 
     implementation 'io.github.dreierf:material-intro-screen:0.0.6'
+    //Import latest Glide library
+    implementation 'com.github.bumptech.glide:glide:4.13.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.1'
+    //Glide requirese FirebaseUI
+    implementation 'com.firebaseui:firebase-ui-storage:8.0.1'
+
+
 }
 
