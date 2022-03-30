@@ -28,8 +28,11 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 public class upload_fragment extends Fragment {
-
-    String[] genres = {"Romance", "Mystery", "Fantasy", "Fiction", "Horror", "Biography"};
+    // Most popular book genres
+    String[] genres = {"Action and Adventure", "Classics", "Comic Book /Graphic Novel", "Detective and Mystery"
+            , "Fantasy", "Historical Fiction", "Horror", "Literary Fiction","Romance", "Sci-Fi",
+            "Short Stories","Suspense and Thrillers", "Women's Fiction" , "Biographies/Autobiographies",
+            "History", "Memoir", "Poetry", "Self-Help", "True Crime", "Others"};
 
     private static final int RESULT_OK = -1;
     private ImageView profilePic;
