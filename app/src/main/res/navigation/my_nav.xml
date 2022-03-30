@@ -24,7 +24,12 @@
         android:id="@+id/upload_fragment"
         android:name="com.infosys.b4b.upload_fragment"
         android:label="fragment_upload_fragment"
-        tools:layout="@layout/fragment_upload_fragment" />
+        tools:layout="@layout/fragment_upload_fragment" >
+        <action
+            android:id="@+id/action_upload_fragment_to_home_fragment"
+            app:destination="@id/home_fragment"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/chat_fragment"
         android:name="com.infosys.b4b.chat_fragment"

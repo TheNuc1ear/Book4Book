@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -200,6 +201,8 @@ public class upload_fragment extends Fragment {
                             //Store the postId as the listingId, then in our listingId create a getter for image
                             //using the listingId attribute to get the image from storage
                             uploadPicture(postId);
+                            FragmentTransaction fr = getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,new home_fragment());
+                            fr.commit();
                         }
                     }
                 });

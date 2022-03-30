@@ -3,9 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable-anydpi-v24/ic_homebutoon.xml" value="0.15" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable-anydpi/ic_menu_button.xml" value="0.15" />
         <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable-anydpi/ic_search_bar.xml" value="0.299" />
-        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.15" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_home_test.xml" value="0.35688405797101447" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_main(Saved).xml" value="0.35688405797101447" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_main_test.xml" value="0.35688405797101447" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/activity_onboarding.xml" value="0.3625" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/custom_grid_layout.xml" value="0.21739130434782608" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/fragment_chat_fragment.xml" value="0.22" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/fragment_discover.xml" value="0.3625" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/fragment_home_fragment.xml" value="0.25" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/fragment_my_books.xml" value="0.3625" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/fragment_my_books_fragment.xml" value="0.10612968591691996" />
         <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/fragment_profile.xml" value="0.3625" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/fragment_profile_fragment.xml" value="0.22" />
+        <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/layout/fragment_upload_fragment.xml" value="0.25" />
         <entry key="..\:/50.001 Info Sys/Book4Book/app/src/main/res/menu/bottom_menu.xml" value="0.3625" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/drawable-anydpi/ic_book.xml" value="0.1195" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/drawable-anydpi/ic_menu_button.xml" value="0.1195" />
@@ -22,14 +37,11 @@
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.26875" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/MyFirstApp/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/MyFirstApp/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/swast/AndroidStudioProjects/Book4Book/app/src/main/res/layout/fragment_upload_fragment.xml" value="0.15208333333333332" />
-        <entry key="..\:/Users/swast/AndroidStudioProjects/Book4Book/app/src/main/res/layout/list_genres.xml" value="0.15208333333333332" />
         <entry key="app/src/main/res/drawable-anydpi/ic_menu_button.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/discover.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable/ic_activity_bar.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable/ic_b4b_icon.xml" value="0.3195" />
-        <entry key="app/src/main/res/drawable/ic_baseline_attach_file_24.xml" value="0.1305" />
         <entry key="app/src/main/res/drawable/ic_chat_box.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.3195" />
@@ -39,27 +51,16 @@
         <entry key="app/src/main/res/drawable/rounded_rectangle.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable/splash_image.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable/upload.xml" value="0.3195" />
-        <entry key="app/src/main/res/drawable/upload_image.xml" value="0.1305" />
-        <entry key="app/src/main/res/drawable/upload_image_background.xml" value="0.1305" />
-        <entry key="app/src/main/res/drawable/upload_image_foreground.xml" value="0.1305" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.35020904541015635" />
         <entry key="app/src/main/res/layout/activity_onboarding.xml" value="0.30833333333333335" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.27136993408203125" />
         <entry key="app/src/main/res/layout/activity_userprofile.xml" value="0.30833333333333335" />
         <entry key="app/src/main/res/layout/custom_grid_layout.xml" value="0.31203703703703706" />
         <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.3255208333333333" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3098958333333333" />
-        <entry key="app/src/main/res/layout/fragment_home_fragment.xml" value="0.17844202898550723" />
         <entry key="app/src/main/res/layout/fragment_my_books.xml" value="0.3255208333333333" />
-        <entry key="app/src/main/res/layout/fragment_my_books_fragment.xml" value="0.17844202898550723" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.3255208333333333" />
-        <entry key="app/src/main/res/layout/fragment_profile_fragment.xml" value="0.17844202898550723" />
-        <entry key="app/src/main/res/layout/fragment_upload.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_upload_fragment.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/list_genres.xml" value="0.1" />
-        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.1" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/upload_image.xml" value="0.1305" />
+        <entry key="app/src/main/res/layout/fragment_upload.xml" value="0.3255208333333333" />
       </map>
     </option>
   </component>
