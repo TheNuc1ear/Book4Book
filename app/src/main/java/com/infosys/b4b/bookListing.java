@@ -13,7 +13,7 @@ import java.util.UUID;
 public class bookListing {
     private String nameOfBook;
     private String descriptionOfBook; //Maybe just change the description to what the lister is interested in?
-    private String genre;
+    private ArrayList<String> genre;
     private String useruid;
     //Possibly add what genre
     //private List<String> genreList=new ArrayList<>();
@@ -22,7 +22,7 @@ public class bookListing {
     private String listingId;
     private int bookImage;
 
-    public bookListing(String nameOfBook, String descriptionOfBook, String genre){
+    public bookListing(String nameOfBook, String descriptionOfBook, ArrayList<String> genre){
         this.nameOfBook = nameOfBook;
         this.descriptionOfBook = descriptionOfBook;
         this.genre=genre;
@@ -47,10 +47,10 @@ public class bookListing {
         this.nameOfBook = input;
     }
 
-    public String getGenreOfBook(){
+    public ArrayList<String> getGenreOfBook(){
         return this.genre;
     }
-    public void setGenreOfBook(String input){
+    public void setGenreOfBook(ArrayList<String> input){
         this.genre = input;
     }
 
