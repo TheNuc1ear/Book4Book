@@ -6,7 +6,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.app.ProgressDialog;
@@ -18,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
@@ -43,6 +47,7 @@ public class upload_fragment extends Fragment {
     TextInputEditText bookdescribe;
     AutoCompleteTextView bookgenre;
     ArrayAdapter<String> adapterItems;
+    NavigationBarView navbar;
 
 
 
@@ -64,6 +69,8 @@ public class upload_fragment extends Fragment {
         bookdescribe = (TextInputEditText) view.findViewById(R.id.bookdescribe);
         submitBtn = view.findViewById(R.id.submitBtn);
         bookgenre = view.findViewById(R.id.auto_complete_txt);
+        navbar = view.findViewById(R.id.bottomNavigationView);
+
 
         adapterItems = new ArrayAdapter<String>(getActivity(), R.layout.list_genres, genres);
         bookgenre.setAdapter(adapterItems);
@@ -129,6 +136,32 @@ public class upload_fragment extends Fragment {
         });
         return view;
     }
+    //Created the Listener for the Item select for Navigation bar, override the method with the conditions for when each button is pressed, what happens
+    private NavigationBarView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            int id = item.getItemId();
+            Fragment selectedFragment = null;
+            switch (id){
+                case R.id.home_fragment:
+                    selectedFragment = new myBooks_fragment();
+                    break;
+                case R.id.myBooks_fragment:
+                    selectedFragment = new myBooks_fragment();
+                    break;
+                case R.id.upload_fragment:
+                    selectedFragment = new upload_fragment();
+                    break;
+                case R.id.profile_fragment:
+                    selectedFragment = new profile_fragment();
+                    break;
+            }
+            // Load fragments
+            //getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,selectedFragment).commit();
+
+            return true;
+        }
+    };
 
     private void choosePicture() {
         Intent intent = new Intent();
@@ -184,6 +217,7 @@ public class upload_fragment extends Fragment {
                 });
 
     }
+
 
 
 

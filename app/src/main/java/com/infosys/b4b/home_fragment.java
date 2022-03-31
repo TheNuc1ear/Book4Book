@@ -2,7 +2,10 @@ package com.infosys.b4b;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +16,7 @@ import android.view.ViewGroup;
  * Use the {@link home_fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class home_fragment extends Fragment {
+public class home_fragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -54,11 +57,16 @@ public class home_fragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                              @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home_fragment, container, false);
+    }
+
+    @Override
+    public void onClick(View view){
+        Navigation.findNavController(view).navigate(R.id.action_home_fragment_to_upload_fragment);
     }
 }

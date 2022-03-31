@@ -3,8 +3,12 @@ package com.infosys.b4b;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainerView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,14 +46,89 @@ public class MainActivity extends AppCompatActivity {
     List<bookListing> allBookListing;
     Adapter adapter;
     BottomNavigationView navbar;
+    NavController navcontroller;
+    private Fragment profile;
+    private Fragment upload;
+    private Fragment chat;
+    private Fragment book_listing;
 
+    // Display BookListing
+    protected void displayBookListingFragment(){
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        if (book_listing.isAdded()){
+            ft.show(book_listing);
+        }
+        else{
+            ft.add(R.id.fragmentContainerView,book_listing);
+        }
+        if (profile.isAdded()){ft.hide(profile);}
+        if (upload.isAdded()){ft.hide(upload);}
+        if (chat.isAdded()){ft.hide(chat);}
+        ft.commit();
+    }
+
+
+    // Show upload, hide everything else
+    protected void displayUploadFragment(){
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        if (upload.isAdded()){
+            ft.show(upload);
+        }
+        else{
+            ft.add(R.id.fragmentContainerView,upload);
+        }
+        if (profile.isAdded()){ft.hide(profile);}
+        if (book_listing.isAdded()){ft.hide(book_listing);}
+        if (chat.isAdded()){ft.hide(chat);}
+        ft.commit();
+    }
+    // Show Profile, hide everything else
+    protected void displayProfileFragment(){
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        if (profile.isAdded()){
+            ft.show(profile);
+        }
+        else{
+            ft.add(R.id.fragmentContainerView,profile);
+        }
+        if (upload.isAdded()){ft.hide(upload);}
+        if (book_listing.isAdded()){ft.hide(book_listing);}
+        if (chat.isAdded()){ft.hide(chat);}
+        ft.commit();
+    }
+    // Show Profile, hide everything else
+    protected void displayChatFragment(){
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        if (chat.isAdded()){
+            ft.show(chat);
+        }
+        else{
+            ft.add(R.id.fragmentContainerView,chat);
+        }
+        if (upload.isAdded()){ft.hide(upload);}
+        if (book_listing.isAdded()){ft.hide(book_listing);}
+        if (profile.isAdded()){ft.hide(profile);}
+        ft.commit();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // load it back if it has been saved
         super.onCreate(savedInstanceState);
+        // set view as before
         setContentView(R.layout.activity_main);
+        // If no saved state, create new instance
+        if (savedInstanceState == null) {
+            profile = new profile_fragment();
+            upload = new upload_fragment();
+            chat = new chat_fragment();
+            book_listing = new myBooks_fragment();
+        }
+        // Create all fragments
+//        final Fragment home = new home_fragment();
 
-
+        final FragmentManager fm = getSupportFragmentManager();
+        final Fragment[] active = {book_listing};
         //btnLogOut = findViewById(R.id.btnLogout);
         chatBox = findViewById(R.id.chatBox);
         //searchBar = findViewById(R.id.searchBar);
@@ -69,18 +148,29 @@ public class MainActivity extends AppCompatActivity {
         //setUpRecyclerView();
         //Initialise Bottom Navigation bar
         navbar = findViewById(R.id.bottomNavigationView);
+        navbar = findViewById(R.id.bottomNavigationView);
         //Tells the Navigation bar what to do when each button on it is pressed
         navbar.setOnItemSelectedListener(navListener);
+
+//        NavHostFragment navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView);
+        //Tells the Navigation bar what to do when each button on it is pressed
+        //navbar.setOnItemSelectedListener(navListener);
         //For when MainActivity first loads, start with the home_fragment which contains the listings
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,new home_fragment()).commit();
+        fm.beginTransaction().replace(R.id.fragmentContainerView, new home_fragment()).commit();
         //Set chats button to change to chat_fragment
         chatBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,new chat_fragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new chat_fragment()).commit();
             }
         });
-
+//        int nav_control = navcontroller.find
+        // Show fragments being used
+//        fm.beginTransaction().add(R.id.fragmentContainerView, book_listing, "3").commit();
+//
+//        // Hide fragments not used
+//        fm.beginTransaction().add(R.id.fragmentContainerView, upload, "2").hide(upload).commit();
+//        fm.beginTransaction().add(R.id.fragmentContainerView, profile, "2").hide(upload).commit();
 
 
         /*
@@ -104,32 +194,39 @@ public class MainActivity extends AppCompatActivity {
         });
          */
 
-    }
-    //Created the Listener for the Item select for Navigation bar, override the method with the conditions for when each button is pressed, what happens
-    private NavigationBarView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            int id = item.getItemId();
-            Fragment selectedFragment = null;
-            switch (id){
-                case R.id.home:
-                    selectedFragment = new home_fragment();
-                    break;
-                case R.id.myBooks:
-                    selectedFragment = new myBooks_fragment();
-                    break;
-                case R.id.upload:
-                    selectedFragment = new upload_fragment();
-                    break;
-                case R.id.profile:
-                    selectedFragment = new profile_fragment();
-                    break;
-            }
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,selectedFragment).commit();
 
-            return true;
-        }
-    };
+        /*
+        We want to load the myBooks fragments into the Fragment container view
+         */
+//        myBooks_fragment books_fragment1 = new myBooks_fragment();
+//        myBooks_fragment books_fragment2 = new myBooks_fragment();
+//        FragmentContainerView.addView(books_fragment1.onCreateView(getLayoutInflater(),));
+    }
+        //Created the Listener for the Item select for Navigation bar, override the method with the conditions for when each button is pressed, what happens
+        BottomNavigationView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.chat_fragment:
+                        displayChatFragment();
+                        return true;
+
+                    case R.id.upload_fragment:
+                        displayUploadFragment();
+                        return true;
+
+                    case R.id.profile_fragment:
+                        displayProfileFragment();
+                        return true;
+                    case R.id.myBooks_fragment:
+                        displayBookListingFragment();
+                        return true;
+                }
+                return false;
+            }
+        };
+
+
 
 
     @Override
@@ -150,5 +247,6 @@ public class MainActivity extends AppCompatActivity {
         bookList.setAdapter(adapter);
     }
      */
+
 }
 

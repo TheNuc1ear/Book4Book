@@ -2,26 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/myBooks"
+        android:id="@+id/myBooks_fragment"
         android:title="My Books"
         android:icon="@drawable/my_book"
 
+
+        />
+    <item
+        android:id="@+id/chat_fragment"
+        android:title="chat"
+        android:icon="@drawable/ic_chat"
         />
 
     <item
-        android:id="@+id/home"
-        android:title="home"
-        android:icon="@drawable/ic_home"
-        />
-
-    <item
-          android:id="@+id/upload"
+          android:id="@+id/upload_fragment"
           android:title="Upload"
           android:icon="@drawable/upload"
           />
 
     <item
-        android:id="@+id/profile"
+        android:id="@+id/profile_fragment"
         android:title="Profile"
         android:icon="@drawable/profile" />
 </menu>

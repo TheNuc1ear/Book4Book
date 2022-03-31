@@ -3,18 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/myBooks_fragment">
+    app:startDestination="@id/home_fragment">
 
     <fragment
         android:id="@+id/home_fragment"
         android:name="com.infosys.b4b.home_fragment"
         android:label="fragment_home_fragment"
-        tools:layout="@layout/fragment_home_fragment" />
+        tools:layout="@layout/fragment_home_fragment" >
+        <action
+            android:id="@+id/action_home_fragment_to_upload_fragment"
+            app:destination="@id/upload_fragment" />
+        <action
+            android:id="@+id/action_home_fragment_to_profile_fragment"
+            app:destination="@id/profile_fragment" />
+        <action
+            android:id="@+id/action_home_fragment_to_chat_fragment"
+            app:destination="@id/chat_fragment" />
+    </fragment>
     <fragment
         android:id="@+id/myBooks_fragment"
         android:name="com.infosys.b4b.myBooks_fragment"
         android:label="fragment_my_books_fragment"
-        tools:layout="@layout/fragment_my_books_fragment" />
+        tools:layout="@layout/fragment_my_books_fragment" >
+        <action
+            android:id="@+id/action_myBooks_fragment_to_profile_fragment"
+            app:destination="@id/profile_fragment" />
+        <action
+            android:id="@+id/action_myBooks_fragment_to_upload_fragment"
+            app:destination="@id/upload_fragment" />
+        <action
+            android:id="@+id/action_myBooks_fragment_to_chat_fragment"
+            app:destination="@id/chat_fragment" />
+    </fragment>
     <fragment
         android:id="@+id/profile_fragment"
         android:name="com.infosys.b4b.profile_fragment"
@@ -24,10 +44,34 @@
         android:id="@+id/upload_fragment"
         android:name="com.infosys.b4b.upload_fragment"
         android:label="fragment_upload_fragment"
-        tools:layout="@layout/fragment_upload_fragment" />
+        tools:layout="@layout/fragment_upload_fragment" >
+        <action
+            android:id="@+id/action_upload_fragment_to_home_fragment"
+            app:destination="@id/home_fragment" />
+        <action
+            android:id="@+id/action_upload_fragment_to_profile_fragment"
+            app:destination="@id/profile_fragment" />
+    </fragment>
     <fragment
         android:id="@+id/chat_fragment"
         android:name="com.infosys.b4b.chat_fragment"
         android:label="fragment_chat_fragment"
-        tools:layout="@layout/fragment_chat_fragment" />
+        tools:layout="@layout/fragment_chat_fragment" >
+        <action
+            android:id="@+id/action_chat_fragment_to_profile_fragment"
+            app:destination="@id/profile_fragment" />
+        <action
+            android:id="@+id/action_chat_fragment_to_myBooks_fragment"
+            app:destination="@id/myBooks_fragment" />
+        <action
+            android:id="@+id/action_chat_fragment_to_upload_fragment"
+            app:destination="@id/upload_fragment" />
+        <action
+            android:id="@+id/action_chat_fragment_to_home_fragment"
+            app:destination="@id/home_fragment" />
+        <action
+            android:id="@+id/action_chat_fragment_self"
+            app:destination="@id/chat_fragment" />
+
+    </fragment>
 </navigation>
