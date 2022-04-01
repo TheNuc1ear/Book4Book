@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.profile_fragment:
                         displayProfileFragment();
                         return true;
-                    case R.id.myBooks_fragment:
+                    case R.id.home_fragment:
                         displayBookListingFragment();
                         return true;
                 }
