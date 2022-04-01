@@ -1,21 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout2"
+    android:layout_gravity="center"
     android:layout_width="400dp"
-    android:layout_height="match_parent"
+    android:layout_height="500dp"
+    android:background="@color/white"
+    android:layout_marginTop="40dp"
     tools:context=".myBooks_fragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="145dp"
+        android:layout_marginRight="145dp"
+        android:layout_weight="1"
+        android:background="@drawable/rectangle"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iconIv"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:gravity="center"
+            android:src="@drawable/add_image" />
+    </LinearLayout>
+
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="my_books"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="180dp"
+        android:paddingLeft="32dp"
+        android:text="About the Book"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+    <!--        <ImageView-->
+    <!--            android:id="@+id/icon"-->
+    <!--            android:layout_width="110dp"-->
+    <!--            android:layout_height="110dp"-->
+    <!--            android:layout_centerHorizontal="true"-->
+    <!--            android:layout_marginTop="40dp"-->
+    <!--            android:src="@drawable/splash_image" />-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_below="@id/iconIv"-->
+    <!--            android:layout_centerHorizontal="true"-->
+    <!--            android:layout_marginTop="10dp"-->
+    <!--            android:fontFamily="sans-serif-condensed"-->
+    <!--            android:text="Upload a book"-->
+    <!--            android:textColor="@color/black"-->
+    <!--            android:textSize="28sp" />-->
+
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/title" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="220dp"
+        android:src="@drawable/title"
+        android:text="Title of book"
+        android:textColor="@color/black" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="260dp"
+        android:src="@drawable/genre" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="260dp"
+        android:src="@drawable/title"
+        android:text="Genre"
+        android:textColor="@color/black" />
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="300dp"
+        android:src="@drawable/description" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="300dp"
+        android:src="@drawable/title"
+        android:text="Description"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/tradeBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/white"
+        android:text="Start trading!"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/orange" />
+
+
+
+
+
+</RelativeLayout>
