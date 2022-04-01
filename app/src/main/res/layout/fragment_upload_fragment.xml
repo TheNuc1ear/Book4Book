@@ -1,39 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="650dp"
     android:background="@color/white"
     tools:context=".upload_fragment">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background= "@color/white">
+    <LinearLayout
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="145dp"
+        android:layout_marginRight="145dp"
+        android:layout_weight="1"
+        android:background="@drawable/rectangle"
+        android:gravity="center">
 
         <ImageView
-            android:id="@+id/icon"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:src="@drawable/splash_image" />
+            android:id="@+id/iconIv"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:gravity="center"
+            android:src="@drawable/add_image" />
+    </LinearLayout>
 
-        <TextView
+    <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/icon"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif-condensed"
-            android:text="Upload a book"
+            android:layout_marginTop="180dp"
+            android:paddingLeft="35dp"
+            android:text="About the Book"
             android:textColor="@color/black"
-            android:textSize="28sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <!--        <ImageView-->
+        <!--            android:id="@+id/icon"-->
+        <!--            android:layout_width="110dp"-->
+        <!--            android:layout_height="110dp"-->
+        <!--            android:layout_centerHorizontal="true"-->
+        <!--            android:layout_marginTop="40dp"-->
+        <!--            android:src="@drawable/splash_image" />-->
+
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_below="@id/iconIv"-->
+        <!--            android:layout_centerHorizontal="true"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:fontFamily="sans-serif-condensed"-->
+        <!--            android:text="Upload a book"-->
+        <!--            android:textColor="@color/black"-->
+        <!--            android:textSize="28sp" />-->
 
 
-    </RelativeLayout>
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
+        android:paddingLeft="35dp"
+        android:text="Title"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/categoryTil"
         android:layout_width="match_parent"
@@ -41,46 +73,32 @@
         app:hintEnabled="false"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="225dp">
+        android:layout_marginTop="245dp"
+        android:background="@drawable/rounded_rectangle"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/booktitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:drawableStart="@drawable/ic_baseline_book_24"
-            android:drawablePadding="10dp"
             android:hint="Enter title of the book"
             android:inputType="textPersonName|textCapWords"
             android:padding="10dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/light_grey"/>
+            android:textColorHint="@color/light_grey"
+            android:background="@drawable/rounded_rectangle"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:hintEnabled="false"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="275dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/bookdescribe"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:drawableStart="@drawable/ic_baseline_book_24"
-            android:drawablePadding="10dp"
-            android:hint="Enter description of the book"
-            android:inputType="textPersonName|textCapWords"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/light_grey"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
+        android:layout_marginTop="300dp"
+        android:paddingLeft="35dp"
+        android:text="Genre"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -88,7 +106,10 @@
         android:textColorHint="@color/light_grey"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="325dp"
+        android:layout_marginTop="330dp"
+        android:background="@drawable/rounded_rectangle"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
         <AutoCompleteTextView
@@ -99,37 +120,58 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="400dp"
+        android:paddingLeft="35dp"
+        android:text="Description"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="false"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="425dp"
+        app:boxStrokeColor="@color/light_grey"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/bookdescribe"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/rounded_rectangle"
+            android:drawablePadding="10dp"
+            android:gravity="top"
+            android:hint="Tell us more about the book!"
+            android:inputType="textPersonName|textCapWords"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/light_grey" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
     <Button
         android:id="@+id/submitBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bookgenre"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="400dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
         android:background="@color/white"
         android:text="Submit"
         android:textColor="@color/white"
         app:backgroundTint="@color/orange" />
 
-    <ImageView
-        android:id="@+id/iconIv"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="450dp"
-        android:layout_marginLeft="150dp"
-        android:src="@drawable/upload_image" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="130dp"
-        android:layout_marginTop="555dp"
-        android:layout_centerHorizontal="true"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:text="Attach an image" />
 
-</FrameLayout>
+
+
+</RelativeLayout>

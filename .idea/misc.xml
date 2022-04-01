@@ -34,6 +34,7 @@
         <entry key="app/src/main/res/drawable/ic_magnifying_glass.xml" value="0.158" />
         <entry key="app/src/main/res/drawable/my_book.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable/profile.xml" value="0.3195" />
+        <entry key="app/src/main/res/drawable/rectangle.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/rounded_rectangle.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable/splash_image.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable/upload.xml" value="0.3195" />
@@ -57,7 +58,7 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.3255208333333333" />
         <entry key="app/src/main/res/layout/fragment_profile_fragment.xml" value="0.29875452898550725" />
         <entry key="app/src/main/res/layout/fragment_upload.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_upload_fragment.xml" value="0.279998779296875" />
+        <entry key="app/src/main/res/layout/fragment_upload_fragment.xml" value="0.3019195556640625" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.2391281127929687" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.267" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/upload_image.xml" value="0.1305" />

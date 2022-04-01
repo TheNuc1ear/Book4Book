@@ -1,15 +1,17 @@
 package com.infosys.b4b;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.app.ProgressDialog;
@@ -21,7 +23,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +31,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 public class upload_fragment extends Fragment {
     // Most popular book genres
@@ -47,7 +53,10 @@ public class upload_fragment extends Fragment {
     TextInputEditText bookdescribe;
     AutoCompleteTextView bookgenre;
     ArrayAdapter<String> adapterItems;
-    NavigationBarView navbar;
+    boolean[] selectedgenre;
+    ArrayList<Integer> genrelist = new ArrayList<>();
+
+
 
 
 
@@ -57,7 +66,8 @@ public class upload_fragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_upload_fragment, container, false);
 
-        String TAG="o";
+        String[] TAG={};
+
 
 
         profilePic = view.findViewById(R.id.iconIv);
@@ -69,11 +79,12 @@ public class upload_fragment extends Fragment {
         bookdescribe = (TextInputEditText) view.findViewById(R.id.bookdescribe);
         submitBtn = view.findViewById(R.id.submitBtn);
         bookgenre = view.findViewById(R.id.auto_complete_txt);
-        navbar = view.findViewById(R.id.bottomNavigationView);
+
+        selectedgenre = new boolean[genres.length];
 
 
-        adapterItems = new ArrayAdapter<String>(getActivity(), R.layout.list_genres, genres);
-        bookgenre.setAdapter(adapterItems);
+        //adapterItems = new ArrayAdapter<String>(getActivity(), R.layout.list_genres, genres);
+        //bookgenre.setAdapter(adapterItems);
 
 
         profilePic.setOnClickListener(new View.OnClickListener() {
@@ -84,84 +95,119 @@ public class upload_fragment extends Fragment {
             }
         });
 
-        bookgenre.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String genre = adapterView.getItemAtPosition(i).toString();
-                Toast.makeText(getContext(), "Genre: "+genre, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        submitBtn.setOnClickListener(new View.OnClickListener() {
+        bookgenre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Button submit_button = (Button) view;
-                //submit_button.setText("Submitted!");
-                long timestamp = System.currentTimeMillis();
-                String title = booktitle.getText().toString();
-                String description = bookdescribe.getText().toString();
-                String genre = bookgenre.getText().toString();
-                bookListing listing = new bookListing(title,description,genre);
+                AlertDialog.Builder builder = new AlertDialog.Builder(
+                    getContext()
+
+                    );
+                    builder.setTitle("Select genre");
+                    builder.setCancelable(false);
+
+
+                    builder.setMultiChoiceItems(genres, selectedgenre, new DialogInterface.OnMultiChoiceClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                            if (b){
+                                genrelist.add(i);
+                                Collections.sort(genrelist);
+                            }else{
+                                genrelist.remove(i);
+                            }
+                        }
+                    });
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            StringBuilder stringBuilder = new StringBuilder();
+                            for(int j=0; j<genrelist.size();j++){
+                                stringBuilder.append((genres[genrelist.get(j)]));
+
+                                if (j!=genrelist.size()-1){
+                                    stringBuilder.append(", ");
+                                }
+                            }
+                            bookgenre.setText(stringBuilder.toString());
+                        }
+                    });
+
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+
+                    builder.setNeutralButton("Clear All", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            for(int j =0; j<selectedgenre.length;j++){
+                                selectedgenre[j]=false;
+
+                                genrelist.clear();
+
+                                bookgenre.setText("");
+
+                            }
+                        }
+                    });
+                    builder.show();
+                }
+        });
+
+
+                submitBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //Button submit_button = (Button) view;
+                        //submit_button.setText("Submitted!");
+                        long timestamp = System.currentTimeMillis();
+                        String title = booktitle.getText().toString();
+                        String description = bookdescribe.getText().toString();
+                        String genre = bookgenre.getText().toString();
+                        String[] arrOfStr = genre.split(",",-2);
+                        ArrayList<String> bookarraylist = new ArrayList<>();
+
+                        for(String s: arrOfStr){
+                            bookarraylist.add(s);
+                        }
+
+
+
+                        bookListing listing = new bookListing(title, description, bookarraylist);
                 /*HashMap<String, bookListing> hashMap = new HashMap<>();
                 hashMap.put(listing.getListingId(), listing);*/
-                //hashMap.put("title", ""+title);
-                //hashMap.put("description", ""+description);
-                //hashMap.put("genre", ""+genre);
+                        //hashMap.put("title", ""+title);
+                        //hashMap.put("description", ""+description);
+                        //hashMap.put("genre", ""+genre);
 
 
-                if (title.isEmpty()){
-                    Toast.makeText(getContext(), "Please enter a title", Toast.LENGTH_SHORT).show();
-                }
-                else if (description.isEmpty()){
-                    Toast.makeText(getContext(), "Please enter a description", Toast.LENGTH_SHORT).show();
-                }
-                else if (genre.isEmpty()){
-                    Toast.makeText(getContext(), "Please enter a genre", Toast.LENGTH_SHORT).show();
-                }
-                else if (imageUri == null){
-                    Toast.makeText(getContext(), "Please pick an image", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(getContext(), "Book added successfully", Toast.LENGTH_SHORT).show();
-                    FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Booklisting").child(listing.getListingId()).setValue(listing);
-                    DatabaseReference reference = FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
-                    DatabaseReference reference2 = reference.child("BookListing");
-                    DatabaseReference reference3 = reference2.child(listing.getListingId());
-                    String postId = reference3.getKey();
-                    //Store the postId as the listingId, then in our listingId create a getter for image
-                    //using the listingId attribute to get the image from storage
-                    uploadPicture(postId);
-                }
-            }
-        });
+                        if (title.isEmpty()) {
+                            Toast.makeText(getContext(), "Please enter a title", Toast.LENGTH_SHORT).show();
+                        } else if (description.isEmpty()) {
+                            Toast.makeText(getContext(), "Please enter a description", Toast.LENGTH_SHORT).show();
+                        } else if (genre.isEmpty()) {
+                            Toast.makeText(getContext(), "Please enter a genre", Toast.LENGTH_SHORT).show();
+                        } else if (imageUri == null) {
+                            Toast.makeText(getContext(), "Please pick an image", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(), "Book added successfully", Toast.LENGTH_SHORT).show();
+                            FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Booklisting").child(listing.getListingId()).setValue(listing);
+                            DatabaseReference reference = FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+                            DatabaseReference reference2 = reference.child("BookListing");
+                            DatabaseReference reference3 = reference2.child(listing.getListingId());
+                            String postId = reference3.getKey();
+                            //Store the postId as the listingId, then in our listingId create a getter for image
+                            //using the listingId attribute to get the image from storage
+                            uploadPicture(postId);
+                            FragmentTransaction fr = getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,new home_fragment());
+                            fr.commit();
+                        }
+                    }
+                });
         return view;
     }
-    //Created the Listener for the Item select for Navigation bar, override the method with the conditions for when each button is pressed, what happens
-    private NavigationBarView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            int id = item.getItemId();
-            Fragment selectedFragment = null;
-            switch (id){
-                case R.id.home_fragment:
-                    selectedFragment = new myBooks_fragment();
-                    break;
-                case R.id.myBooks_fragment:
-                    selectedFragment = new myBooks_fragment();
-                    break;
-                case R.id.upload_fragment:
-                    selectedFragment = new upload_fragment();
-                    break;
-                case R.id.profile_fragment:
-                    selectedFragment = new profile_fragment();
-                    break;
-            }
-            // Load fragments
-            //getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,selectedFragment).commit();
-
-            return true;
-        }
-    };
 
     private void choosePicture() {
         Intent intent = new Intent();
@@ -217,7 +263,6 @@ public class upload_fragment extends Fragment {
                 });
 
     }
-
 
 
 
