@@ -32,7 +32,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
     List<bookListing> listings;
     List<bookListing> exampleListingsFull; //Just another list to store all the original listings to be used to get filter list
     LayoutInflater inflater;
-    private StorageReference storageReference;
 
 
 
@@ -62,7 +61,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
                 Glide.with(holder.gridpicture.getContext()).load(uri).into(holder.gridpicture);
             }
         });
-
+        //holder.gridpicture.setImageResource(R.drawable.giannis);
         holder.title.setText(listings.get(position).getNameOfBook());
     }
 
@@ -97,6 +96,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
         //performFiltering auto executed on background thread, so no lag even if complicated filter conditions
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
+            if (exampleListingsFull.size()==0){
+                exampleListingsFull = new ArrayList<>(listings);
+            }
             List<bookListing> filteredList = new ArrayList<>();
             if (constraint==null||constraint.length()==0){
                 filteredList.addAll(exampleListingsFull);
