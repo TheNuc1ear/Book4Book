@@ -158,12 +158,12 @@ public class MainActivity extends AppCompatActivity {
         //For when MainActivity first loads, start with the home_fragment which contains the listings
         fm.beginTransaction().replace(R.id.fragmentContainerView, new home_fragment()).commit();
         //Set chats button to change to chat_fragment
-        chatBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new chat_fragment()).commit();
-            }
-        });
+//        chatBox.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new chat_fragment()).commit();
+//            }
+//        });
 //        int nav_control = navcontroller.find
         // Show fragments being used
 //        fm.beginTransaction().add(R.id.fragmentContainerView, book_listing, "3").commit();

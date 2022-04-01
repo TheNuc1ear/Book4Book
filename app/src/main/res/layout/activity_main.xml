@@ -28,59 +28,58 @@
         android:layout_height="55dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/framelayout2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/dropMenu"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_gravity="top"
-            android:background="@color/white"
-            android:src="@drawable/ic_back" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/dropMenu"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="35dp"-->
+<!--            android:layout_gravity="top"-->
+<!--            android:background="@color/white"-->
+<!--            android:src="@drawable/ic_back" />-->
 
-        <TextView
-            android:id="@+id/back"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_gravity="bottom"
-            android:gravity="center"
-            android:text="Back"
-            android:textColor="#404040" />
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/framelayout2"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/framelayout1"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/chatBox"
-            android:layout_width="50dp"
-            android:layout_height="35dp"
-            android:layout_gravity="top"
-            android:background="@color/white"
-            app:srcCompat="@drawable/ic_chat" />
-
-        <TextView
-            android:id="@+id/chats"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_gravity="bottom"
-            android:gravity="center"
-            android:text="Chats"
-            android:textColor="#404040" />
-
+<!--        <TextView-->
+<!--            android:id="@+id/back"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="20dp"-->
+<!--            android:layout_gravity="bottom"-->
+<!--            android:gravity="center"-->
+<!--            android:text="Back"-->
+<!--            android:textColor="#404040" />-->
 
     </FrameLayout>
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/framelayout2"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:layout_marginStart="300dp"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:layout_marginEnd="1dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/framelayout1"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--&lt;!&ndash;        <ImageButton&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/chatBox"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="50dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="35dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_gravity="top"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:background="@color/white"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:srcCompat="@drawable/ic_chat" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/chats"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="20dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_gravity="bottom"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:gravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:text="Chats"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:textColor="#404040" />&ndash;&gt;-->
+
+
+<!--    </FrameLayout>-->
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -101,10 +100,11 @@
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6"
         app:navGraph="@navigation/my_nav" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
