@@ -30,6 +30,7 @@ public class bookListing {
         this.nameOfBook = nameOfBook;
         this.descriptionOfBook = descriptionOfBook;
         this.genre=genre;
+        genre.add("All");
         this.listingId = assignListingId();
         this.useruid = firebaseuseruid();
     }
@@ -38,6 +39,7 @@ public class bookListing {
         this.nameOfBook = nameOfBook;
         this.descriptionOfBook = "No description";
         this.genre=genre;
+        genre.add("All");
         this.listingId = assignListingId();
         this.useruid = firebaseuseruid();
     }
@@ -95,4 +97,6 @@ public class bookListing {
     public String getUseruid() {
         return useruid;
     }
+
+    public ArrayList<String> getGenre(){return this.genre;}
 }
