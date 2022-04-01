@@ -50,16 +50,16 @@ public class MainActivity extends AppCompatActivity {
     private Fragment profile;
     private Fragment upload;
     private Fragment chat;
-    private Fragment book_listing;
+    private Fragment home;
 
     // Display BookListing
-    protected void displayBookListingFragment(){
+    protected void displayHomeFragment(){
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        if (book_listing.isAdded()){
-            ft.show(book_listing);
+        if (home.isAdded()){
+            ft.show(home);
         }
         else{
-            ft.add(R.id.fragmentContainerView,book_listing);
+            ft.add(R.id.fragmentContainerView,home);
         }
         if (profile.isAdded()){ft.hide(profile);}
         if (upload.isAdded()){ft.hide(upload);}
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             ft.add(R.id.fragmentContainerView,upload);
         }
         if (profile.isAdded()){ft.hide(profile);}
-        if (book_listing.isAdded()){ft.hide(book_listing);}
+        if (home.isAdded()){ft.hide(home);}
         if (chat.isAdded()){ft.hide(chat);}
         ft.commit();
     }
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             ft.add(R.id.fragmentContainerView,profile);
         }
         if (upload.isAdded()){ft.hide(upload);}
-        if (book_listing.isAdded()){ft.hide(book_listing);}
+        if (home.isAdded()){ft.hide(home);}
         if (chat.isAdded()){ft.hide(chat);}
         ft.commit();
     }
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             ft.add(R.id.fragmentContainerView,chat);
         }
         if (upload.isAdded()){ft.hide(upload);}
-        if (book_listing.isAdded()){ft.hide(book_listing);}
+        if (home.isAdded()){ft.hide(home);}
         if (profile.isAdded()){ft.hide(profile);}
         ft.commit();
     }
@@ -122,13 +122,13 @@ public class MainActivity extends AppCompatActivity {
             profile = new profile_fragment();
             upload = new upload_fragment();
             chat = new chat_fragment();
-            book_listing = new myBooks_fragment();
+            home = new home_fragment();
         }
         // Create all fragments
 //        final Fragment home = new home_fragment();
 
         final FragmentManager fm = getSupportFragmentManager();
-        final Fragment[] active = {book_listing};
+        final Fragment[] active = {home};
         //btnLogOut = findViewById(R.id.btnLogout);
         chatBox = findViewById(R.id.chatBox);
         //searchBar = findViewById(R.id.searchBar);
@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
                         displayProfileFragment();
                         return true;
                     case R.id.home_fragment:
-                        displayBookListingFragment();
+                        displayHomeFragment();
                         return true;
                 }
                 return false;
