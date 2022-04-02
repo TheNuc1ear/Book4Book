@@ -1,8 +1,7 @@
 package com.infosys.b4b;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageButton;
 import android.widget.SearchView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -21,12 +24,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -50,7 +51,13 @@ public class home_fragment extends Fragment {
     private Adapter adapter;
     private DatabaseReference realTimeDb;
     private StorageReference storageReference;
-
+    ArrayAdapter<String> adapterItems;
+    private ImageButton filterButton;
+    String[] genres = {"All","Action and Adventure", "Classics", "Comic Book /Graphic Novel", "Detective and Mystery"
+            , "Fantasy", "Historical Fiction", "Horror", "Literary Fiction","Romance", "Sci-Fi",
+            "Short Stories","Suspense and Thrillers", "Women's Fiction" , "Biographies/Autobiographies",
+            "History", "Memoir", "Poetry", "Self-Help", "True Crime", "Others"};
+    private Integer selectedGenre;
 
     public home_fragment() {
         // Required empty public constructor
@@ -91,10 +98,15 @@ public class home_fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         bookList = view.findViewById(R.id.bookList);
         searchBar = view.findViewById(R.id.searchBar);
+        filterButton = view.findViewById(R.id.filterButton);
+
+//        adapterItems = new ArrayAdapter<String>(getActivity(), R.layout.list_genres, genres);
+//        filterButton.setAdapter(adapterItems);
+
         allBookListing = new ArrayList<>();
         //Initialise Firebase reference
         realTimeDb = FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Booklisting");
-        realTimeDb.addValueEventListener(new ValueEventListener() {
+        realTimeDb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snap:snapshot.getChildren()){
@@ -130,6 +142,29 @@ public class home_fragment extends Fragment {
                 return true;
             }
         });
+
+
+        filterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(
+                        getContext()
+                );
+                builder.setTitle("Select genre");
+                builder.setCancelable(false);
+                builder.setItems(genres, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        selectedGenre=i;
+                        String genre = genres[i];
+                        adapter.getSecondFilter().filter(genre);
+
+                    }
+                });
+                builder.show();
+            }
+        });
+
     }
 
 

@@ -19,10 +19,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 //Adapter works with the data of the book upload process,
 // 1. Picture of book
@@ -30,15 +28,14 @@ import java.util.Locale;
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements Filterable {
     //These lists will take the input from mainActivity
     List<bookListing> listings;
-    List<bookListing> exampleListingsFull; //Just another list to store all the original listings to be used to get filter list
+    List<bookListing> fullListings; //Just another list to store all the original listings to be used to get filter list
     LayoutInflater inflater;
-    private StorageReference storageReference;
 
 
 
     public Adapter(Context ctx, List<bookListing> listings){
         this.listings = listings;
-        exampleListingsFull = new ArrayList<>(listings);
+        fullListings = new ArrayList<>(listings);
         this.inflater = LayoutInflater.from(ctx);
     }
 
@@ -62,7 +59,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
                 Glide.with(holder.gridpicture.getContext()).load(uri).into(holder.gridpicture);
             }
         });
-
+        //holder.gridpicture.setImageResource(R.drawable.giannis);
         holder.title.setText(listings.get(position).getNameOfBook());
     }
 
@@ -90,19 +87,23 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
 
     @Override
     public Filter getFilter() {
-        return exampleFilter;
+        return firstFilter;
     }
     //Filter Class
-    private Filter exampleFilter = new Filter() {
+
+    private Filter firstFilter = new Filter() {
         //performFiltering auto executed on background thread, so no lag even if complicated filter conditions
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
+            if (fullListings.size()==0){
+                fullListings = new ArrayList<>(listings);
+            }
             List<bookListing> filteredList = new ArrayList<>();
             if (constraint==null||constraint.length()==0){
-                filteredList.addAll(exampleListingsFull);
+                filteredList.addAll(fullListings);
             } else{
                 String filterPattern = constraint.toString().toLowerCase().trim();
-                for (bookListing item:exampleListingsFull){
+                for (bookListing item: fullListings){
                     if(item.getNameOfBook().toLowerCase().contains(filterPattern)){
                         filteredList.add(item);
                     }
@@ -115,6 +116,42 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
 
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            listings.clear();
+            listings.addAll((List) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
+
+    //get second filter
+    public Filter getSecondFilter() {
+        return secondFilter;
+    }
+
+
+    private Filter secondFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            if (fullListings.size()==0){
+                fullListings = new ArrayList<>(listings);
+            }
+            List<bookListing> filteredList = new ArrayList<>();
+            if (constraint==null||constraint.length()==0){
+                filteredList.addAll(fullListings);
+            } else{
+                String filterPattern = constraint.toString();
+                for (bookListing item:fullListings){
+                    if(item.getGenre().contains(filterPattern)){
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults filterResults) {
             listings.clear();
             listings.addAll((List) filterResults.values);
             notifyDataSetChanged();
