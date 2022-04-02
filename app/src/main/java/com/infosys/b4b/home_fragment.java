@@ -106,7 +106,7 @@ public class home_fragment extends Fragment {
         allBookListing = new ArrayList<>();
         //Initialise Firebase reference
         realTimeDb = FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Booklisting");
-        realTimeDb.addListenerForSingleValueEvent(new ValueEventListener() {
+        realTimeDb.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snap:snapshot.getChildren()){
