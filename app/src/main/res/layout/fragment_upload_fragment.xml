@@ -148,10 +148,10 @@
             android:drawablePadding="10dp"
             android:gravity="top"
             android:hint="Tell us more about the book!"
-            android:inputType="textPersonName|textCapWords"
             android:padding="10dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/light_grey" />
+            android:textColorHint="@color/light_grey"
+            android:inputType="textMultiLine" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -43,6 +43,7 @@
         <entry key="app/src/main/res/drawable-anydpi/ic_menu_button.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/discover.xml" value="0.3195" />
+        <entry key="app/src/main/res/drawable/exchange.xml" value="0.2475" />
         <entry key="app/src/main/res/drawable/ic_activity_bar.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable/ic_b4b_icon.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable/ic_chat_box.xml" value="0.1" />
@@ -54,16 +55,30 @@
         <entry key="app/src/main/res/drawable/rounded_rectangle.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable/splash_image.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable/upload.xml" value="0.3195" />
+        <entry key="app/src/main/res/drawable/upload_image.xml" value="0.2475" />
+        <entry key="app/src/main/res/drawable/upload_image_background.xml" value="0.2475" />
+        <entry key="app/src/main/res/drawable/upload_image_foreground.xml" value="0.2475" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35020904541015635" />
+        <entry key="app/src/main/res/layout/activity_main_saved.xml" value="0.3974358974358974" />
         <entry key="app/src/main/res/layout/activity_onboarding.xml" value="0.30833333333333335" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.27136993408203125" />
         <entry key="app/src/main/res/layout/activity_userprofile.xml" value="0.30833333333333335" />
         <entry key="app/src/main/res/layout/custom_grid_layout.xml" value="0.31203703703703706" />
+        <entry key="app/src/main/res/layout/fragment_chat_fragment.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.3255208333333333" />
+        <entry key="app/src/main/res/layout/fragment_home_fragment.xml" value="0.38250732421875006" />
         <entry key="app/src/main/res/layout/fragment_my_books.xml" value="0.3255208333333333" />
+        <entry key="app/src/main/res/layout/fragment_my_books_fragment.xml" value="0.3974358974358974" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.3255208333333333" />
+        <entry key="app/src/main/res/layout/fragment_profile_fragment.xml" value="0.3974358974358974" />
         <entry key="app/src/main/res/layout/fragment_upload.xml" value="0.3255208333333333" />
+        <entry key="app/src/main/res/layout/fragment_upload_fragment.xml" value="0.3974358974358974" />
+        <entry key="app/src/main/res/layout/list_genres.xml" value="0.259375" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2475" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2475" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/upload_image.xml" value="0.2475" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/upload_image_round.xml" value="0.2475" />
       </map>
     </option>
   </component>
