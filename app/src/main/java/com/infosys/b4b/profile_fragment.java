@@ -1,10 +1,19 @@
 package com.infosys.b4b;
 
+import static android.app.Activity.RESULT_OK;
+
+import androidx.activity.result.ActivityResult;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
@@ -58,7 +67,8 @@ public class profile_fragment extends Fragment {
     private Button logout;
     private String[] items;
     private ActivityResultLauncher<String> gallery;
-    private ActivityResultLauncher<Uri> camera;
+    private ActivityResultLauncher<Intent> camera;
+    private ActivityResultLauncher<String> requestPermission;
     private File file;
     private Uri uri;
     private StorageReference mStorageRef;
@@ -66,6 +76,7 @@ public class profile_fragment extends Fragment {
     private RecyclerView recyclerView;
     private BookAdapter adapter;
     private List<bookListing> allBookListing;
+    private final int requestCode = 1;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -118,10 +129,10 @@ public class profile_fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ImageButton profilePicture = view.findViewById(R.id.profilePicture);
-        ImageButton editPreferences = view.findViewById(R.id.editPreference);
-        Button logout = view.findViewById(R.id.logout);
-        String[] items = getResources().getStringArray(R.array.DialogCameraGallery); //To get the names of the dialog items in values/arrays
+        profilePicture = view.findViewById(R.id.profilePicture);
+        editPreferences = view.findViewById(R.id.editPreference);
+        logout = view.findViewById(R.id.logout);
+        items = getResources().getStringArray(R.array.DialogCameraGallery); //To get the names of the dialog items in values/arrays
         recyclerView = view.findViewById(R.id.recyclerView);
         String packageName = getActivity().getApplicationContext().getPackageName();
         mStorageRef = FirebaseStorage.getInstance().getReference("profile_pictures");
@@ -142,7 +153,20 @@ public class profile_fragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (items[i].equals("Camera")) {
-                            camera.launch(uri);
+
+                            //Checking for permissions to use camera app
+//                            if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED){
+//                                requestPermission.launch(Manifest.permission.CAMERA);
+//                            }
+                            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            camera.launch(cameraIntent);
+                            //Checking if the device has a camera app
+//                            if(cameraIntent.resolveActivity(getActivity().getPackageManager()) == null){
+//                                Toast.makeText(getActivity(), "No camera app found!", Toast.LENGTH_SHORT).show();
+//                            }
+//                            else{
+//
+//                            }
                         }
                         else {
                             gallery.launch("image/*");
@@ -158,7 +182,7 @@ public class profile_fragment extends Fragment {
             }
         });
 
-        //Activity for gallery
+        //Activity for gallery (This is basically the new startActivityForResult)
         gallery = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
             public void onActivityResult(Uri result) {
@@ -168,18 +192,18 @@ public class profile_fragment extends Fragment {
         });
 
         //Activity for camera
-        camera = registerForActivityResult(new ActivityResultContracts.TakePicture(), new ActivityResultCallback<Boolean>() {
+        camera = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
-            public void onActivityResult(Boolean result) {
-
-                if(result){
-                    profilePicture.setImageURI(uri);
-                    boolean deleted = file.delete();
-                    Log.i("File has been deleted", String.valueOf(deleted));
+            public void onActivityResult(ActivityResult result) {
+                if(result.getResultCode() == RESULT_OK && result.getData() != null){
+                    Bundle bundle = result.getData().getExtras();
+                    Bitmap bitmap = (Bitmap) bundle.get("data");
+                    profilePicture.setImageBitmap(bitmap);
                 }
             }
-
         });
+
+        //requestPermission = registerForActivityResult(new ActivityResultContracts.RequestPermission(), )
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
