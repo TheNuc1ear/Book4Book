@@ -58,6 +58,8 @@ dependencies {
     //Glide requirese FirebaseUI
     implementation 'com.firebaseui:firebase-ui-storage:8.0.1'
 
+    //For BookAdapter 
+    implementation 'com.firebaseui:firebase-ui-database:8.0.1'
 
 }
 

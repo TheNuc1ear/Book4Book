@@ -11,4 +11,8 @@
     <string name="confirmYes">Yes</string>
     <string name="confirmNo">Cancel</string>
     <string name="dashboard">Dashboard</string>
+    <string name="bookName">Book Name</string>
+    <string name="bookDescription">Description</string>
+    <string name="bookGenre">Genre</string>
+    <string name="mylisting">My Listings</string>
 </resources>
