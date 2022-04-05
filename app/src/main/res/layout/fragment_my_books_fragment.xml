@@ -89,18 +89,34 @@
         android:src="@drawable/title"
         android:text="Genre"
         android:textColor="@color/black" />
+
     <ImageView
         android:layout_width="30dp"
         android:layout_height="20dp"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="300dp"
+        android:src="@drawable/userface" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="300dp"
+        android:text="User"
+        android:textColor="@color/black" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="340dp"
         android:src="@drawable/description" />
 
     <TextView
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_marginLeft="70dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="340dp"
         android:src="@drawable/title"
         android:text="Description"
         android:textColor="@color/black" />
