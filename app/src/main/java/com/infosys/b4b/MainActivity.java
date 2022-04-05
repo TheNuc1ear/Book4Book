@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private Fragment upload;
     private Fragment chat;
     private Fragment home;
+    private Fragment my_books;
 
     // Display BookListing
     protected void displayHomeFragment(){
@@ -64,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         if (profile.isAdded()){ft.hide(profile);}
         if (upload.isAdded()){ft.hide(upload);}
         if (chat.isAdded()){ft.hide(chat);}
+        if (my_books.isAdded()){ft.detach(my_books);
+        }
         ft.commit();
     }
 
@@ -80,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         if (profile.isAdded()){ft.hide(profile);}
         if (home.isAdded()){ft.hide(home);}
         if (chat.isAdded()){ft.hide(chat);}
+        //if (my_books.isAdded()){ft.hide(my_books);}
         ft.commit();
     }
     // Show Profile, hide everything else
@@ -94,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         if (upload.isAdded()){ft.hide(upload);}
         if (home.isAdded()){ft.hide(home);}
         if (chat.isAdded()){ft.hide(chat);}
+        //if (my_books.isAdded()){ft.hide(my_books);}
         ft.commit();
     }
     // Show Profile, hide everything else
@@ -108,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         if (upload.isAdded()){ft.hide(upload);}
         if (home.isAdded()){ft.hide(home);}
         if (profile.isAdded()){ft.hide(profile);}
+        //if (my_books.isAdded()){ft.hide(my_books);}
         ft.commit();
     }
 
@@ -201,6 +207,7 @@ public class MainActivity extends AppCompatActivity {
 //        myBooks_fragment books_fragment1 = new myBooks_fragment();
 //        myBooks_fragment books_fragment2 = new myBooks_fragment();
 //        FragmentContainerView.addView(books_fragment1.onCreateView(getLayoutInflater(),));
+
     }
         //Created the Listener for the Item select for Navigation bar, override the method with the conditions for when each button is pressed, what happens
         BottomNavigationView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {

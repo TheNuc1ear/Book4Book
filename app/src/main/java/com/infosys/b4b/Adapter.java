@@ -17,7 +17,6 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,13 +29,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
     List<bookListing> listings;
     List<bookListing> fullListings; //Just another list to store all the original listings to be used to get filter list
     LayoutInflater inflater;
+    private ItemClickListener listener;
 
 
 
-    public Adapter(Context ctx, List<bookListing> listings){
+    public Adapter(Context ctx, List<bookListing> listings, ItemClickListener listener){
         this.listings = listings;
         fullListings = new ArrayList<>(listings);
         this.inflater = LayoutInflater.from(ctx);
+        this.listener= listener;
     }
 
     //parent is the RecyclerView in activity_main.xml
@@ -61,6 +62,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
         });
         //holder.gridpicture.setImageResource(R.drawable.giannis);
         holder.title.setText(listings.get(position).getNameOfBook());
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                listener.onItemClick(listings.get(position).getNameOfBook());
+            }
+        });
     }
 
     @Override
@@ -81,8 +88,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
             super(itemView);
             title = itemView.findViewById(R.id.textView);
             gridpicture = itemView.findViewById(R.id.imageView4);
+
+            }
+
+
         }
-    }
+
 
 
     @Override
@@ -158,4 +169,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
         }
     };
 
+    public static interface ItemClickListener {
+        public void onItemClick(String str);
+    }
 }
