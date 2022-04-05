@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -52,6 +53,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -135,15 +137,14 @@ public class profile_fragment extends Fragment {
         items = getResources().getStringArray(R.array.DialogCameraGallery); //To get the names of the dialog items in values/arrays
         recyclerView = view.findViewById(R.id.recyclerView);
         String packageName = getActivity().getApplicationContext().getPackageName();
-        mStorageRef = FirebaseStorage.getInstance().getReference("profile_pictures");
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("profile_pictures");
-
+        mStorageRef = FirebaseStorage.getInstance().getReference("profile_pictures/");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("userData");
 
         profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                file = new File(Environment.getExternalStorageDirectory(), "temp_images.jpg");
-                uri = FileProvider.getUriForFile(getActivity(), packageName + ".provider", file);
+//                file = new File(Environment.getExternalStorageDirectory(), "temp_images.jpg");
+//                uri = FileProvider.getUriForFile(getActivity(), packageName + ".provider", file);
                 //Create an alert dialog to pick camera/gallery
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -187,7 +188,7 @@ public class profile_fragment extends Fragment {
             @Override
             public void onActivityResult(Uri result) {
                 profilePicture.setImageURI(result);
-                StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(uri));
+                uploadPicture(result);
             }
         });
 
@@ -198,7 +199,9 @@ public class profile_fragment extends Fragment {
                 if(result.getResultCode() == RESULT_OK && result.getData() != null){
                     Bundle bundle = result.getData().getExtras();
                     Bitmap bitmap = (Bitmap) bundle.get("data");
-                    profilePicture.setImageBitmap(bitmap);
+                    Uri bitmapToUri = getImageUri(getContext(),bitmap);
+                    profilePicture.setImageURI(bitmapToUri);
+                    uploadPicture(bitmapToUri);
                 }
             }
         });
@@ -257,7 +260,7 @@ public class profile_fragment extends Fragment {
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 
-    private void uploadPicture(){
+    private void uploadPicture(Uri uri){
         StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(uri));
 
         fileReference.putFile(uri)
@@ -272,13 +275,15 @@ public class profile_fragment extends Fragment {
                     @Override
                     public void onFailure(@NonNull Exception exception) {
                         Toast.makeText(getActivity(), "Failed to upload", Toast.LENGTH_LONG).show();}
-                })
-                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(@NonNull UploadTask.TaskSnapshot tasksnapshot) {
-                        double progressPercent = (100.00 * tasksnapshot.getBytesTransferred() / tasksnapshot.getTotalByteCount());
-                    }
                 });
+    }
+
+    //Changing from bitmap to URI (For uploading image to firebase)
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
 
 }
