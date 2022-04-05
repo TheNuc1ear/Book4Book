@@ -7,15 +7,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 
@@ -27,7 +26,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -35,7 +33,7 @@ import java.util.List;
  * Use the {@link home_fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class home_fragment extends Fragment {
+public class home_fragment extends Fragment implements Adapter.ItemClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -90,7 +88,25 @@ public class home_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_home_fragment, container, false);
+
+        return view;
+    }
+
+    private void initUpRecyclerView(View view){
+        bookList = view.findViewById(R.id.bookList);
+//        Intent myIntent = new Intent(MainActivity.this,MainActivity.class);
+//        startActivity(myIntent);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(),2,GridLayoutManager.VERTICAL,false);
+        adapter = new Adapter(view.getContext(),allBookListing,this::onItemClick);
+        bookList.setLayoutManager(gridLayoutManager);
+        bookList.setAdapter(adapter);
+    }
+    public void onItemClick(String s){
+        Fragment mybook_fagement = myBooks_fragment.newInstance("a","b");
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragmentContainerView,mybook_fagement);
+        transaction.commit();
     }
 
     @Override
@@ -126,7 +142,7 @@ public class home_fragment extends Fragment {
         //Initialise RecyclerView
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
         bookList.setLayoutManager(gridLayoutManager);
-        adapter = new Adapter(getContext(),allBookListing);
+        adapter = new Adapter(getContext(),allBookListing,this);
         bookList.setAdapter(adapter);
 
         //Set up search bar and Filter feature
