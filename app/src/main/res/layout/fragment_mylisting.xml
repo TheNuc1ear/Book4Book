@@ -33,15 +33,27 @@
 
         </TextView>
 
+        <Button
+            android:id="@+id/deletebook"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="85dp"
+            android:background="@drawable/ic_baseline_delete_24"
+            android:text="Delete"
+            android:textSize="4sp">
+
+        </Button>
+
         <TextView
             android:id="@+id/bookDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/bookDescription"
-            android:textSize="20sp"
-            android:layout_toEndOf="@id/bookImage"
+            android:layout_below="@id/bookName"
             android:layout_marginStart="10dp"
-            android:layout_below="@id/bookName">
+            android:layout_toEndOf="@id/bookImage"
+            android:text="@string/bookDescription"
+            android:textSize="20sp">
 
         </TextView>
 
@@ -56,6 +68,8 @@
             android:layout_below="@id/bookDescription">
 
         </TextView>
+
+
 
     </RelativeLayout>
 
