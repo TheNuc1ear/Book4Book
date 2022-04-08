@@ -5,12 +5,11 @@ package com.infosys.b4b;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
-public class bookListing {
+public class bookListing implements Serializable {
     private String nameOfBook;
     private String descriptionOfBook; //Maybe just change the description to what the lister is interested in?
     private ArrayList<String> genre=new ArrayList<>();

@@ -33,7 +33,7 @@ import java.util.List;
  * Use the {@link home_fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class home_fragment extends Fragment implements Adapter.ItemClickListener {
+public class home_fragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -93,21 +93,21 @@ public class home_fragment extends Fragment implements Adapter.ItemClickListener
         return view;
     }
 
-    private void initUpRecyclerView(View view){
-        bookList = view.findViewById(R.id.bookList);
-//        Intent myIntent = new Intent(MainActivity.this,MainActivity.class);
-//        startActivity(myIntent);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(),2,GridLayoutManager.VERTICAL,false);
-        adapter = new Adapter(view.getContext(),allBookListing,this::onItemClick);
-        bookList.setLayoutManager(gridLayoutManager);
-        bookList.setAdapter(adapter);
-    }
-    public void onItemClick(String s){
-        Fragment mybook_fagement = myBooks_fragment.newInstance("a","b");
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragmentContainerView,mybook_fagement);
-        transaction.commit();
-    }
+//    private void initUpRecyclerView(View view){
+//        bookList = view.findViewById(R.id.bookList);
+////        Intent myIntent = new Intent(MainActivity.this,MainActivity.class);
+////        startActivity(myIntent);
+//        GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(),2,GridLayoutManager.VERTICAL,false);
+//        adapter = new Adapter(view.getContext(),allBookListing,this.);
+//        bookList.setLayoutManager(gridLayoutManager);
+//        bookList.setAdapter(adapter);
+//    }
+////    public void onItemClick(String s){
+////        Fragment mybook_fagement = myBooks_fragment.newInstance("a","b");
+////        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+////        transaction.replace(R.id.fragmentContainerView,mybook_fagement);
+////        transaction.commit();
+////    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -142,7 +142,7 @@ public class home_fragment extends Fragment implements Adapter.ItemClickListener
         //Initialise RecyclerView
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
         bookList.setLayoutManager(gridLayoutManager);
-        adapter = new Adapter(getContext(),allBookListing,this);
+        adapter = new Adapter(getContext(),allBookListing,this.getActivity());
         bookList.setAdapter(adapter);
 
         //Set up search bar and Filter feature
@@ -181,7 +181,10 @@ public class home_fragment extends Fragment implements Adapter.ItemClickListener
             }
         });
 
+
+
     }
+
 
 
 }

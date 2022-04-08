@@ -11,6 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -29,15 +33,21 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
     List<bookListing> listings;
     List<bookListing> fullListings; //Just another list to store all the original listings to be used to get filter list
     LayoutInflater inflater;
-    private ItemClickListener listener;
+    FragmentManager fragmentManager;
 
 
 
-    public Adapter(Context ctx, List<bookListing> listings, ItemClickListener listener){
+    public Adapter(Context ctx, List<bookListing> listings){
         this.listings = listings;
         fullListings = new ArrayList<>(listings);
         this.inflater = LayoutInflater.from(ctx);
-        this.listener= listener;
+    }
+
+    public Adapter(Context ctx, List<bookListing> listings, FragmentActivity c){
+        this.listings = listings;
+        fullListings = new ArrayList<>(listings);
+        this.inflater = LayoutInflater.from(ctx);
+        this.fragmentManager = c.getSupportFragmentManager();
     }
 
     //parent is the RecyclerView in activity_main.xml
@@ -65,7 +75,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> implements
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                listener.onItemClick(listings.get(position).getNameOfBook());
+                bookListing listingClicked = listings.get(holder.getBindingAdapterPosition());
+                Fragment mybook_fragment = myBooks_fragment.newInstance(listingClicked);
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.fragmentContainerView,mybook_fragment);
+                transaction.commit();
             }
         });
     }
