@@ -1,11 +1,14 @@
 package com.infosys.b4b;
 
+import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,7 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
@@ -27,9 +33,20 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.bookName.setText(listings.get(position).getNameOfBook());
         holder.bookDescription.setText(listings.get(position).getDescriptionOfBook());
+        holder.deletebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String listingId = listings.get(position).getListingId();
+                deleteBook(listingId);
+                Toast.makeText(view.getContext(), "Book deleted", Toast.LENGTH_SHORT).show();
+                listings.remove(position);
+                notifyDataSetChanged();
+            }
+        });
+        StorageReference listingId = FirebaseStorage.getInstance().getReference().child("images/" + listings.get(position).getListingId());
         //holder.bookGenre.setText(model.getGenreOfBook());
         Task<Uri> url = FirebaseStorage.getInstance().getReference().child("images/" + listings.get(position).getListingId()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             //If successful, load into ImageView
@@ -38,6 +55,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
                 Glide.with(holder.bookImage.getContext()).load(uri).into(holder.bookImage);
             }
         });
+    }
+
+    private void deleteBook(String listingId) {
+        DatabaseReference bookid = FirebaseDatabase.getInstance().getReference("Booklisting").child(listingId);
+        bookid.removeValue();
     }
 
     @NonNull
@@ -51,6 +73,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
         ImageView bookImage;
         TextView bookName, bookDescription, bookGenre;
+        Button deletebutton;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
@@ -59,6 +82,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             bookName = itemView.findViewById(R.id.bookName);
             bookDescription = itemView.findViewById(R.id.bookDescription);
             bookGenre = itemView.findViewById(R.id.bookGenre);
+            deletebutton = itemView.findViewById(R.id.deletebook);
         }
     }
 
