@@ -15,4 +15,5 @@
     <string name="bookDescription">Description</string>
     <string name="bookGenre">Genre</string>
     <string name="mylisting">My Listings</string>
+    <string name="alertDelete">Are you sure you want to delete this listing?</string>
 </resources>
