@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/teal_700"
+            android:background="@color/orange"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@color/white">
 
@@ -74,12 +74,12 @@
             android:hint="Message"/>
 
         <ImageButton
+            android:id="@+id/send_button"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:id="@+id/send_button"
             android:layout_alignParentEnd="true"
-            android:background="@drawable/ic_action_name"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_action_name" />
 
     </RelativeLayout>
 
