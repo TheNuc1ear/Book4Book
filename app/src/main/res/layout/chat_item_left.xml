@@ -19,6 +19,7 @@
         android:background="@drawable/background_left"
         android:padding="8dp"
         android:text="Hello World"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
     <TextView
