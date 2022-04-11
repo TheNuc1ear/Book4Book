@@ -38,8 +38,6 @@ public class home_Fragment extends Fragment {
     private RecyclerView bookList;
     private adapter_Home adapterHome;
     private DatabaseReference realTimeDb;
-    //private StorageReference storageReference;
-    //ArrayAdapter<String> adapterItems;
     private ImageButton filterButton;
     String[] genres = {"All","Action and Adventure", "Classics", "Comic Book /Graphic Novel", "Detective and Mystery"
             , "Fantasy", "Historical Fiction", "Horror", "Literary Fiction","Romance", "Sci-Fi",

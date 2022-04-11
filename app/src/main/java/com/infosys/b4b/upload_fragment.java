@@ -51,7 +51,22 @@ public class upload_fragment extends Fragment {
     ArrayList<Integer> genrelist = new ArrayList<>();
 
 
-
+    public upload_fragment() {
+        // Required empty public constructor
+    }
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @return A new instance of fragment chat_fragment.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static upload_fragment newInstance() {
+        upload_fragment fragment = new upload_fragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
 
     Button submitBtn;

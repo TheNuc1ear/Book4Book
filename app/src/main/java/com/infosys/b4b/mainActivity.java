@@ -85,14 +85,14 @@ public class mainActivity extends AppCompatActivity {
                     selectedFragment= home_Fragment.newInstance();
                     break;
                 case R.id.chat_fragment:
-                    selectedFragment = new chat_Fragment();
+                    selectedFragment = chat_Fragment.newInstance();
                     break;
                 case R.id.upload_fragment:
-                    selectedFragment = new upload_fragment();
+                    selectedFragment = upload_fragment.newInstance();
                     break;
                 case R.id.profile_fragment:
-                    selectedFragment = new profile_Fragment();
-                    profile_Fragment.newInstance("a","b");
+                    selectedFragment = profile_Fragment.newInstance();;
+                    
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,selectedFragment).commit();
