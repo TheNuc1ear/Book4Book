@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.infosys.b4b">
-
-<!--    <uses-permission android:name="android.permission.CAMERA"/>-->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- <uses-permission android:name="android.permission.CAMERA"/> -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/splashScreenTheme">
+        <activity
+            android:name=".MessageActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -26,26 +30,31 @@
         </provider>
 
         <activity
-            android:name=".onBoarding"
-            android:exported="true" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            android:name=".Onboarding"
+            android:exported="true"
+            android:screenOrientation="portrait">
         </activity>
+
         <activity
             android:name=".signupActivity"
             android:exported="false"
-            android:theme="@style/Theme.MyFirstApp" />
+            android:theme="@style/Theme.MyFirstApp"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".loginActivity"
             android:exported="true"
-            android:theme="@style/Theme.MyFirstApp"></activity>
+            android:theme="@style/Theme.MyFirstApp"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".mainActivity"
+            android:name=".MainActivity"
+            android:exported="true"
             android:windowSoftInputMode="adjustPan"
-            android:exported="true">
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
