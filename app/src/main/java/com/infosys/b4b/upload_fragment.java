@@ -126,7 +126,7 @@ public class upload_fragment extends Fragment {
                                 stringBuilder.append((genres[genrelist.get(j)]));
 
                                 if (j!=genrelist.size()-1){
-                                    stringBuilder.append(", ");
+                                    stringBuilder.append(",");
                                 }
                             }
                             bookgenre.setText(stringBuilder.toString());
