@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultCallback;
@@ -36,6 +37,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -71,6 +73,8 @@ public class profile_Fragment extends Fragment {
     private adapter_Profile adapter;
     private List<bookListing> allBookListing;
     private String currentUser = mAuth.getInstance().getCurrentUser().getUid();
+    private TextView profilename;
+
 
     public profile_Fragment() {
         // Required empty public constructor
@@ -108,6 +112,27 @@ public class profile_Fragment extends Fragment {
         profilePicture = view.findViewById(R.id.profilePicture);
         editPreferences = view.findViewById(R.id.editPreference);
         logout = view.findViewById(R.id.logout);
+        String userName;
+        profilename = view.findViewById(R.id.userName);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String id = user.getUid();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("userData");
+
+        mDatabaseRef.child(id).addValueEventListener(new ValueEventListener() {
+                                                                    @Override
+                                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                                        userData user = snapshot.getValue(userData.class);
+                                                                        profilename.setText(user.getUsername());
+
+                                                                    }
+
+                                                                    @Override
+                                                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                                                    }
+                                                                });
+
+
         items = getResources().getStringArray(R.array.DialogCameraGallery); //To get the names of the dialog items in values/arrays
         recyclerView = view.findViewById(R.id.recyclerView);
         mStorageRef = FirebaseStorage.getInstance().getReference("profile_pictures/");

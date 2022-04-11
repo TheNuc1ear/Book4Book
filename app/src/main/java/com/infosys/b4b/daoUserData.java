@@ -11,6 +11,6 @@ public class daoUserData {
         databaseReference = db.getReference(userData.class.getSimpleName());
     }
     public Task<Void> add(userData user){
-        return databaseReference.push().setValue(user);
+        return databaseReference.child(user.getId()).setValue(user);
     }
 }
