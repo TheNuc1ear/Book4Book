@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultCallback;
@@ -31,9 +32,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,6 +51,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,15 +66,15 @@ public class profile_Fragment extends Fragment {
     private ActivityResultLauncher<String> gallery;
     private ActivityResultLauncher<Intent> camera;
     private ActivityResultLauncher<String> requestPermission;
-    private File file;
-    private Uri uri;
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
     private FirebaseAuth mAuth;
     private RecyclerView recyclerView;
     private adapter_Profile adapter;
     private List<bookListing> allBookListing;
-    private final int requestCode = 1;
+    private String currentUser = mAuth.getInstance().getCurrentUser().getUid();
+    private TextView profilename;
+
 
     public profile_Fragment() {
         // Required empty public constructor
@@ -107,17 +112,43 @@ public class profile_Fragment extends Fragment {
         profilePicture = view.findViewById(R.id.profilePicture);
         editPreferences = view.findViewById(R.id.editPreference);
         logout = view.findViewById(R.id.logout);
+        String userName;
+        profilename = view.findViewById(R.id.userName);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String id = user.getUid();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("userData");
+
+        mDatabaseRef.child(id).addValueEventListener(new ValueEventListener() {
+                                                                    @Override
+                                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                                        userData user = snapshot.getValue(userData.class);
+                                                                        profilename.setText(user.getUsername());
+
+                                                                    }
+
+                                                                    @Override
+                                                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                                                    }
+                                                                });
+
+
         items = getResources().getStringArray(R.array.DialogCameraGallery); //To get the names of the dialog items in values/arrays
         recyclerView = view.findViewById(R.id.recyclerView);
-        String packageName = getActivity().getApplicationContext().getPackageName();
         mStorageRef = FirebaseStorage.getInstance().getReference("profile_pictures/");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("userData");
+
+        Task<Uri> url = FirebaseStorage.getInstance().getReference().child("profile_pictures/" + currentUser).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(profilePicture).load(uri).into(profilePicture);
+            }
+        });
 
         profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                file = new File(Environment.getExternalStorageDirectory(), "temp_images.jpg");
-//                uri = FileProvider.getUriForFile(getActivity(), packageName + ".provider", file);
+
                 //Create an alert dialog to pick camera/gallery
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -150,9 +181,6 @@ public class profile_Fragment extends Fragment {
                 });
                 builder.show();
 
-//                AlertDialog pick =
-//                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                startActivity(intent);
             }
         });
 
@@ -178,8 +206,6 @@ public class profile_Fragment extends Fragment {
                 }
             }
         });
-
-        //requestPermission = registerForActivityResult(new ActivityResultContracts.RequestPermission(), )
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,8 +236,8 @@ public class profile_Fragment extends Fragment {
                 for (DataSnapshot snap:snapshot.getChildren()){
                     bookListing change = snap.getValue(bookListing.class);
                     Log.i("UID",change.getUseruid());
-                    Log.i("UID current user", mAuth.getInstance().getCurrentUser().getUid());
-                    if(change.getUseruid().equals(mAuth.getInstance().getCurrentUser().getUid())) {
+                    Log.i("UID current user", currentUser);
+                    if(change.getUseruid().equals(currentUser)) {
                         allBookListing.add(change);
                     }
                 }
@@ -231,14 +257,15 @@ public class profile_Fragment extends Fragment {
         recyclerView.setAdapter(adapter);
     }
 
-    private String getFileExtension(Uri uri){
-        ContentResolver cR = getActivity().getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(cR.getType(uri));
-    }
+//    private String getFileExtension(Uri uri){
+//        ContentResolver cR = getActivity().getContentResolver();
+//        MimeTypeMap mime = MimeTypeMap.getSingleton();
+//        return mime.getExtensionFromMimeType(cR.getType(uri));
+//    }
 
     private void uploadPicture(Uri uri){
-        StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(uri));
+
+        StorageReference fileReference = mStorageRef.child(currentUser);
 
         fileReference.putFile(uri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
