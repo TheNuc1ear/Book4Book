@@ -45,6 +45,7 @@ public class MessageActivity extends AppCompatActivity {
     List<Chat> mChat;
     RecyclerView recyclerView;
     String userId;
+    String usernameTemp;
     ValueEventListener readListener;
 
     @Override
@@ -76,6 +77,7 @@ public class MessageActivity extends AppCompatActivity {
 
         intent = getIntent();
         userId = intent.getStringExtra("userid");
+        usernameTemp = intent.getStringExtra("usernameTemp");
         fUser = FirebaseAuth.getInstance().getCurrentUser();
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +99,7 @@ public class MessageActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userData user = snapshot.getValue(userData.class);
-                username.setText(user.getUsername());
+                username.setText(usernameTemp);
                 profile_img.setImageResource(R.mipmap.ic_launcher);
 //                if (user.getImageURL().equals("default")){
 //                    profile_img.setImageResource(R.mipmap.ic_launcher);

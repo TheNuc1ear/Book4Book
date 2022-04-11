@@ -32,9 +32,12 @@ public class chat_fragment extends Fragment {
     private List<userData> users;
 
     FirebaseUser fUser;
-    DatabaseReference dRef;
+    DatabaseReference dRef, userDataRef;
 
     private List<String> userList;
+    private List<userData> globalusers = new ArrayList<>();
+    private List<userData> tempglobalusers = new ArrayList<>();
+
 
     @Nullable
     @Override
@@ -48,66 +51,111 @@ public class chat_fragment extends Fragment {
 
         fUser = FirebaseAuth.getInstance().getCurrentUser();
         userList = new ArrayList<>();
+        users = new ArrayList<>();
+
+        userDataRef = FirebaseDatabase.getInstance().getReference("userData");
+        userDataRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot s: snapshot.getChildren()){
+                    userData user = s.getValue(userData.class);
+                    globalusers.add(user);
+                }
+            }
+
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         dRef = FirebaseDatabase.getInstance().getReference("Chats");
         dRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userList.clear();
-                for (DataSnapshot s: snapshot.getChildren()){
-                    Chat chat = s.getValue(Chat.class);
-                    if (chat.getSender().equals(fUser.getUid())){
-                        userList.add(chat.getReceiver());
-                    }
-                    if (chat.getReceiver().equals(fUser.getUid())){
-                        userList.add(chat.getSender());
-                    }
-                }
-                readChats();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        return view;
-    }
-
-    private void readChats(){
-        users = new ArrayList<>();
-        dRef = FirebaseDatabase.getInstance().getReference("userData");
-        dRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 users.clear();
-
-                for (DataSnapshot s: snapshot.getChildren()){
-                    userData user = s.getValue(userData.class);
-                    for (String id: userList){
-                        if (user.getId().equals(id)){
-                            if (users.size() != 0){
-                                for (userData user1: users){
-                                    if (!user.getId().equals(user1.getId())){
-                                        users.add(user);
-                                    }
-                                }
-                            } else {
-                                users.add(user);
+                tempglobalusers = globalusers;
+                for (DataSnapshot s : snapshot.getChildren()) {
+                    Chat chat = s.getValue(Chat.class);
+                    if (chat.getSender().equals(fUser.getUid())) {
+                        for (userData gUser : tempglobalusers) {
+                            if (users.contains(gUser)) {
+                                continue;
+                            }
+                            if (gUser.getId().equals(chat.getReceiver())) {
+                                users.add(gUser);
                             }
                         }
                     }
+                    if (chat.getReceiver().equals(fUser.getUid())) {
+                        for (userData gUser : tempglobalusers) {
+                            if (users.contains(gUser)) {
+                                continue;
+                            }
+                            if (gUser.getId().equals(chat.getSender())) {
+                                users.add(gUser);
+                            }
+
+                        }
+
+                    }
+
                 }
                 userAdapter = new UserAdapter(getContext(), users);
                 recyclerView.setAdapter(userAdapter);
             }
 
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+
+
+
+        return view;
     }
+
+//    private void readChats(){
+//        global users = new ArrayList<>();
+//        dRef = FirebaseDatabase.getInstance().getReference("userData");
+//        dRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                users.clear();
+//
+//                for (DataSnapshot s: snapshot.getChildren()){
+//                    userData user = s.getValue(userData.class);
+//                    for (String id: userList){
+//                        if (user.getId().equals(id)){
+//                            if (users.size() != 0){
+//                                for (userData user1: users){
+//                                    if (!user.getId().equals(user1.getId())){
+//                                        users.add(user);
+//                                        break;
+//                                    }
+//                                }
+//                            } else {
+//                                users.add(user);
+//                                break;
+//                            }
+//                        }
+//                    }
+//                }
+//                userAdapter = new UserAdapter(getContext(), users);
+//                recyclerView.setAdapter(userAdapter);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
 
 }
 

@@ -155,6 +155,7 @@ public class upload_fragment extends Fragment {
                 submitBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        sendMessage();
                         String title = booktitle.getText().toString();
                         String description = bookdescribe.getText().toString();
                         String genre = bookgenre.getText().toString();
@@ -242,35 +243,35 @@ public class upload_fragment extends Fragment {
 
     }
 
-//    private void sendMessage(){
-//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+    private void sendMessage(){
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("sender", "TE4JGUCBqFN5KhEmHkpsj8pMlRW2");
+        hashMap.put("receiver", "Mq8JEoND3zLFAF5AkrREKXOq5En2");
+        hashMap.put("message", "helloworld");
+        hashMap.put("read", false);
+
+        ref.child("Chats").push().setValue(hashMap);
+        FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
+        // ADD USER TO CHAT FRAGMENT IF ALREADY HAVE CHAT HISTORY
+//        final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ListOfChats")
+//                .child(fUser.getUid()).child(userId);
 //
-//        HashMap<String, Object> hashMap = new HashMap<>();
-//        hashMap.put("sender", "TE4JGUCBqFN5KhEmHkpsj8pMlRW2");
-//        hashMap.put("receiver", "yvE7R2NIEHRGfBssM64zAhPTDKU2");
-//        hashMap.put("message", "message");
-//        hashMap.put("read", false);
+//        chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (!snapshot.exists()){
+//                    chatRef.child("id").setValue(userId);
+//                }
+//            }
 //
-//        ref.child("Chats").push().setValue(hashMap);
-//        FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
-//        // ADD USER TO CHAT FRAGMENT IF ALREADY HAVE CHAT HISTORY
-////        final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ListOfChats")
-////                .child(fUser.getUid()).child(userId);
-////
-////        chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
-////            @Override
-////            public void onDataChange(@NonNull DataSnapshot snapshot) {
-////                if (!snapshot.exists()){
-////                    chatRef.child("id").setValue(userId);
-////                }
-////            }
-////
-////            @Override
-////            public void onCancelled(@NonNull DatabaseError error) {
-////            }
-////        });
-//
-//    }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
+
+    }
 
 
 
