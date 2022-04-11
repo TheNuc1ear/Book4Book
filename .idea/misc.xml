@@ -42,8 +42,6 @@
         <entry key="..\:/Users/alvin/AndroidStudioProjects/MyFirstApp/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="app/src/main/res/drawable-anydpi/ic_menu_button.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/close_raw_material.xml" value="0.214" />
-        <entry key="app/src/main/res/drawable/delete.xml" value="0.214" />
         <entry key="app/src/main/res/drawable/discover.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable/exchange.xml" value="0.2475" />
         <entry key="app/src/main/res/drawable/ic_activity_bar.xml" value="0.3195" />
@@ -72,7 +70,7 @@
         <entry key="app/src/main/res/layout/fragment_home_fragment.xml" value="0.3588241577148438" />
         <entry key="app/src/main/res/layout/fragment_my_books.xml" value="0.3255208333333333" />
         <entry key="app/src/main/res/layout/fragment_my_books_fragment.xml" value="0.29849027976011616" />
-        <entry key="app/src/main/res/layout/fragment_mylisting.xml" value="0.3439737955729167" />
+        <entry key="app/src/main/res/layout/fragment_mylisting.xml" value="0.3782051282051282" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.3255208333333333" />
         <entry key="app/src/main/res/layout/fragment_profile_fragment.xml" value="0.3974358974358974" />
         <entry key="app/src/main/res/layout/fragment_upload.xml" value="0.3255208333333333" />
