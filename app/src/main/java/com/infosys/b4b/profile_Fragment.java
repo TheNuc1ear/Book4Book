@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
@@ -64,6 +65,7 @@ public class profile_Fragment extends Fragment {
     private Uri uri;
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
+    private FirebaseAuth mAuth;
     private RecyclerView recyclerView;
     private adapter_Profile adapter;
     private List<bookListing> allBookListing;
@@ -81,21 +83,16 @@ public class profile_Fragment extends Fragment {
     public profile_Fragment() {
         // Required empty public constructor
     }
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment profile_fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static profile_Fragment newInstance(String param1, String param2) {
+    public static profile_Fragment newInstance() {
         profile_Fragment fragment = new profile_Fragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -225,7 +222,11 @@ public class profile_Fragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snap:snapshot.getChildren()){
                     bookListing change = snap.getValue(bookListing.class);
-                    allBookListing.add(change);
+                    Log.i("UID",change.getUseruid());
+                    Log.i("UID current user", mAuth.getInstance().getCurrentUser().getUid());
+                    if(change.getUseruid().equals(mAuth.getInstance().getCurrentUser().getUid())) {
+                        allBookListing.add(change);
+                    }
                 }
                 adapter.notifyDataSetChanged();
             }

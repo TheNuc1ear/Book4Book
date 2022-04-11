@@ -38,8 +38,6 @@ public class home_Fragment extends Fragment {
     private RecyclerView bookList;
     private adapter_Home adapterHome;
     private DatabaseReference realTimeDb;
-    //private StorageReference storageReference;
-    //ArrayAdapter<String> adapterItems;
     private ImageButton filterButton;
     String[] genres = upload_fragment.genres;
     private Integer selectedGenre;
