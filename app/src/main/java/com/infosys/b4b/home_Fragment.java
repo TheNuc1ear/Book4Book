@@ -41,10 +41,7 @@ public class home_Fragment extends Fragment {
     //private StorageReference storageReference;
     //ArrayAdapter<String> adapterItems;
     private ImageButton filterButton;
-    String[] genres = {"All","Action and Adventure", "Classics", "Comic Book /Graphic Novel", "Detective and Mystery"
-            , "Fantasy", "Historical Fiction", "Horror", "Literary Fiction","Romance", "Sci-Fi",
-            "Short Stories","Suspense and Thrillers", "Women's Fiction" , "Biographies/Autobiographies",
-            "History", "Memoir", "Poetry", "Self-Help", "True Crime", "Others"};
+    String[] genres = upload_fragment.genres;
     private Integer selectedGenre;
 
     public home_Fragment() {
