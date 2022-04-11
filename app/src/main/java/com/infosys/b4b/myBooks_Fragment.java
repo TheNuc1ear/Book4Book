@@ -43,7 +43,7 @@ public class myBooks_Fragment extends Fragment{
     private bookListing listing;
     private ArrayList<userData> globalUserList;
     private DatabaseReference databaseReference;
-    private String id_1;
+
 
     public myBooks_Fragment() {
         // Required empty public constructor
@@ -93,16 +93,12 @@ public class myBooks_Fragment extends Fragment{
         Button button = view.findViewById(R.id.tradeBtn);
 
         title.setText(listing.getNameOfBook());
-        databaseReference.child(listing.getUseruid()).addValueEventListener(new ValueEventListener() {
+        //Retrieving the userData with the corresponding useruid of the bookListing
+        databaseReference.child(listing.getUseruid()).get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                userData userObject = snapshot.getValue(userData.class);
+            public void onSuccess(DataSnapshot dataSnapshot) {
+                userData userObject = dataSnapshot.getValue(userData.class);
                 user.setText(userObject.getUsername());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
         desc.setText(listing.getDescriptionOfBook());

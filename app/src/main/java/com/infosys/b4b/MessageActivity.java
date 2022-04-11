@@ -18,6 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -66,6 +69,7 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
+        //Initialise the db reference path
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         databaseReference = db.getReference("userData");
 
@@ -82,22 +86,9 @@ public class MessageActivity extends AppCompatActivity {
 
         intent = getIntent();
         userId = intent.getStringExtra("userid");
-
         usernameTemp = intent.getStringExtra("usernameTemp");
-        if (intent.getStringExtra("usernameTemp")==null){
-            databaseReference.child(userId).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    userData user = snapshot.getValue(userData.class);
-                    username.setText(user.getUsername());
-                }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-        }
+        
         fUser = FirebaseAuth.getInstance().getCurrentUser();
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -118,8 +109,18 @@ public class MessageActivity extends AppCompatActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                userData user = snapshot.getValue(userData.class);
-                username.setText(usernameTemp);
+                //current soln for when accessing MessageActivity from the myBooks_Fragment
+                if (intent.getStringExtra("usernameTemp")==null){
+                    databaseReference.child(userId).get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                        @Override
+                        public void onSuccess(DataSnapshot dataSnapshot) {
+                            userData user = dataSnapshot.getValue(userData.class);
+                            username.setText(user.getUsername());
+                        }
+                });
+                } else{
+                    username.setText(usernameTemp);
+                }
                 profile_img.setImageResource(R.mipmap.ic_launcher);
 //                if (user.getImageURL().equals("default")){
 //                    profile_img.setImageResource(R.mipmap.ic_launcher);
