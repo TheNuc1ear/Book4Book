@@ -90,7 +90,7 @@ public class myBooks_Fragment extends Fragment{
         for (String s: this.listing.getGenre()){
             out+=s+", ";
         }
-        out=out.substring(0, out.length()-2);
+        out=out.substring(0, out.length()-7);
         return out;
     }
 }
