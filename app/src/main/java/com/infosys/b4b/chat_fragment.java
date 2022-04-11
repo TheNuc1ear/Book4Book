@@ -98,8 +98,8 @@ public class chat_fragment extends Fragment {
                         }
                     }
                 }
-//                userAdapter = new UserAdapter(getContext(), users);
-//                recyclerView.setAdapter(userAdapter);
+                userAdapter = new UserAdapter(getContext(), users);
+                recyclerView.setAdapter(userAdapter);
             }
 
             @Override
