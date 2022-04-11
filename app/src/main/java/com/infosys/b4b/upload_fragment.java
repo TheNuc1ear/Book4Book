@@ -46,9 +46,9 @@ public class upload_fragment extends Fragment {
     TextInputEditText booktitle;
     TextInputEditText bookdescribe;
     AutoCompleteTextView bookgenre;
-    ArrayAdapter<String> adapterItems;
     boolean[] selectedgenre;
     ArrayList<Integer> genrelist = new ArrayList<>();
+    Button submitBtn;
 
 
     public upload_fragment() {
@@ -69,7 +69,7 @@ public class upload_fragment extends Fragment {
     }
 
 
-    Button submitBtn;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

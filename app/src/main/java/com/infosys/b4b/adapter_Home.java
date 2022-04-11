@@ -70,7 +70,6 @@ public class adapter_Home extends RecyclerView.Adapter<adapter_Home.ViewHolder> 
                 Glide.with(holder.gridpicture.getContext()).load(uri).into(holder.gridpicture);
             }
         });
-        //holder.gridpicture.setImageResource(R.drawable.giannis);
         holder.title.setText(listings.get(position).getNameOfBook());
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -183,7 +182,4 @@ public class adapter_Home extends RecyclerView.Adapter<adapter_Home.ViewHolder> 
         }
     };
 
-    public static interface ItemClickListener {
-        public void onItemClick(String str);
-    }
 }

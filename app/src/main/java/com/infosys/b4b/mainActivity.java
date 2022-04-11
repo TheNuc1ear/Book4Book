@@ -65,7 +65,6 @@ public class mainActivity extends AppCompatActivity {
         allBookListing = new ArrayList<>();
         //Initialise Bottom Navigation bar
         navbar = findViewById(R.id.bottomNavigationView);
-        navbar = findViewById(R.id.bottomNavigationView);
         //Tells the Navigation bar what to do when each button on it is pressed
         navbar.setOnItemSelectedListener(navListener);
 
@@ -92,7 +91,7 @@ public class mainActivity extends AppCompatActivity {
                     break;
                 case R.id.profile_fragment:
                     selectedFragment = profile_Fragment.newInstance();;
-                    
+
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,selectedFragment).commit();
