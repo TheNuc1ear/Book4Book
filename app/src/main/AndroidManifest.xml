@@ -30,7 +30,7 @@
         </provider>
 
         <activity
-            android:name=".Onboarding"
+            android:name=".onBoarding"
             android:exported="true"
             android:screenOrientation="portrait">
         </activity>
@@ -46,7 +46,7 @@
             android:theme="@style/Theme.MyFirstApp"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".mainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait">

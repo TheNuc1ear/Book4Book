@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class chat_fragment extends Fragment {
+public class chat_Fragment extends Fragment {
     private RecyclerView recyclerView;
 
     private UserAdapter userAdapter;
@@ -38,6 +38,12 @@ public class chat_fragment extends Fragment {
     private List<userData> globalusers = new ArrayList<>();
     private List<userData> tempglobalusers = new ArrayList<>();
 
+    public static chat_Fragment newInstance() {
+        chat_Fragment fragment = new chat_Fragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Nullable
     @Override

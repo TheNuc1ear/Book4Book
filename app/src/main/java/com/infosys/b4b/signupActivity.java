@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SignupActivity extends AppCompatActivity {
+public class signupActivity extends AppCompatActivity {
 
     private TextInputEditText RegEmail;
     private TextInputEditText RegPass;
@@ -48,13 +48,13 @@ public class SignupActivity extends AppCompatActivity {
         btnLoginHere = findViewById(R.id.btnLoginHere);
         FirebaseApp.initializeApp(getApplicationContext());
         mAuth = FirebaseAuth.getInstance();
-        DAOUserData dao = new DAOUserData();
+        daoUserData dao = new daoUserData();
 
         btnRegister.setOnClickListener(view ->{
             createUser();
         });
         btnLoginHere.setOnClickListener(view ->{                                                   // Redirect to login page if user clicks that instead
-            startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+            startActivity(new Intent(signupActivity.this, loginActivity.class));
         });
     }
 
@@ -78,14 +78,14 @@ public class SignupActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
-                        Toast.makeText(SignupActivity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(signupActivity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
                         FirebaseUser user = mAuth.getCurrentUser();
                         String id = user.getUid();
                         writeNewUser(email, username, id);
 
-                        startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                        startActivity(new Intent(signupActivity.this, mainActivity.class));
                     }else{
-                        Toast.makeText(SignupActivity.this, "Registration Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(signupActivity.this, "Registration Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -93,7 +93,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void writeNewUser(String email, String username, String id) {
-        DAOUserData dao = new DAOUserData();
+        daoUserData dao = new daoUserData();
         userData user = new userData(email, username, id);
         dao.add(user);
 
