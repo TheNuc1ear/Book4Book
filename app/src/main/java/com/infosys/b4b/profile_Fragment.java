@@ -72,7 +72,7 @@ public class profile_Fragment extends Fragment {
     private RecyclerView recyclerView;
     private adapter_Profile adapter;
     private List<bookListing> allBookListing;
-    private String currentUser = mAuth.getInstance().getCurrentUser().getUid();
+    private String currentUser;
     private TextView profilename;
 
 
@@ -112,25 +112,25 @@ public class profile_Fragment extends Fragment {
         profilePicture = view.findViewById(R.id.profilePicture);
         editPreferences = view.findViewById(R.id.editPreference);
         logout = view.findViewById(R.id.logout);
-        String userName;
+        currentUser = mAuth.getInstance().getCurrentUser().getUid();
         profilename = view.findViewById(R.id.userName);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String id = user.getUid();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("userData");
 
         mDatabaseRef.child(id).addValueEventListener(new ValueEventListener() {
-                                                                    @Override
-                                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                                        userData user = snapshot.getValue(userData.class);
-                                                                        profilename.setText(user.getUsername());
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userData user = snapshot.getValue(userData.class);
+                profilename.setText(user.getUsername());
 
-                                                                    }
+            }
 
-                                                                    @Override
-                                                                    public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-                                                                    }
-                                                                });
+            }
+        });
 
 
         items = getResources().getStringArray(R.array.DialogCameraGallery); //To get the names of the dialog items in values/arrays
