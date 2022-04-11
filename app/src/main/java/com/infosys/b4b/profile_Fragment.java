@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
@@ -64,6 +65,7 @@ public class profile_Fragment extends Fragment {
     private Uri uri;
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
+    private FirebaseAuth mAuth;
     private RecyclerView recyclerView;
     private adapter_Profile adapter;
     private List<bookListing> allBookListing;
@@ -220,7 +222,11 @@ public class profile_Fragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snap:snapshot.getChildren()){
                     bookListing change = snap.getValue(bookListing.class);
-                    allBookListing.add(change);
+                    Log.i("UID",change.getUseruid());
+                    Log.i("UID current user", mAuth.getInstance().getCurrentUser().getUid());
+                    if(change.getUseruid().equals(mAuth.getInstance().getCurrentUser().getUid())) {
+                        allBookListing.add(change);
+                    }
                 }
                 adapter.notifyDataSetChanged();
             }
