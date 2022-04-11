@@ -91,7 +91,7 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-        ref = FirebaseDatabase.getInstance().getReference("userData").child(userId);
+        ref = FirebaseDatabase.getInstance().getReference("userData");
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -192,23 +192,23 @@ public class MessageActivity extends AppCompatActivity {
         });
     }
 
-    private void status (String status){
-        ref = FirebaseDatabase.getInstance().getReference("userData").child(fUser.getUid());
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("status", status);
-        ref.updateChildren(hashMap);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        status("Online");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        ref.removeEventListener(readListener);
-        status("Offline");
-    }
+//    private void status (String status){
+//        ref = FirebaseDatabase.getInstance().getReference("userData").child(fUser.getUid());
+//        HashMap<String, Object> hashMap = new HashMap<>();
+//        hashMap.put("status", status);
+//        ref.updateChildren(hashMap);
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        status("Online");
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        ref.removeEventListener(readListener);
+//        status("Offline");
+//    }
 }
