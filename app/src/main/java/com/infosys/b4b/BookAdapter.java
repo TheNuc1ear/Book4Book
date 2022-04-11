@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -91,14 +92,14 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
         ImageView bookImage;
         TextView bookName, bookDescription, bookGenre;
-        Button deletebutton;
+        ImageButton deletebutton;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
 
             bookImage = itemView.findViewById(R.id.bookImage);
             bookName = itemView.findViewById(R.id.bookName);
-            bookDescription = itemView.findViewById(R.id.bookDescription);
+//            bookDescription = itemView.findViewById(R.id.bookDescription);
             bookGenre = itemView.findViewById(R.id.bookGenre);
             deletebutton = itemView.findViewById(R.id.deletebook);
         }

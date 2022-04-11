@@ -25,47 +25,51 @@
             android:id="@+id/bookName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_toEndOf="@id/bookImage"
             android:text="@string/bookName"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_toEndOf="@id/bookImage"
-            android:layout_marginStart="10dp">
+            android:textStyle="bold">
 
         </TextView>
 
-        <Button
+        <!--        <TextView-->
+<!--            android:id="@+id/bookDescription"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/bookName"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_toEndOf="@id/bookImage"-->
+<!--            android:text="@string/bookDescription"-->
+<!--            android:textSize="20sp">-->
+
+<!--        </TextView>-->
+
+        <ImageButton
             android:id="@+id/deletebook"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="85dp"
-            android:background="@drawable/ic_baseline_delete_24"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="@drawable/close_raw_material"
             android:text="Delete"
             android:textSize="4sp">
 
-        </Button>
-
-        <TextView
-            android:id="@+id/bookDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/bookName"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@id/bookImage"
-            android:text="@string/bookDescription"
-            android:textSize="20sp">
-
-        </TextView>
+        </ImageButton>
 
         <TextView
             android:id="@+id/bookGenre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/bookGenre"
-            android:textSize="20sp"
-            android:layout_toEndOf="@id/bookImage"
+            android:layout_below="@id/bookName"
             android:layout_marginStart="10dp"
-            android:layout_below="@id/bookDescription">
+            android:layout_toEndOf="@id/bookImage"
+            android:text="@string/bookGenre"
+            android:textSize="20sp">
 
         </TextView>
 

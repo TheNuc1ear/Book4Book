@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             Fragment selectedFragment = null;
             switch (id) {
                 case R.id.home_fragment:
-                    selectedFragment = new home_fragment();
+                    selectedFragment= home_fragment.newInstance();
                     break;
                 case R.id.chat_fragment:
                     selectedFragment = new chat_fragment();
@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.profile_fragment:
                     selectedFragment = new profile_fragment();
+                    profile_fragment.newInstance("a","b");
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,selectedFragment).commit();

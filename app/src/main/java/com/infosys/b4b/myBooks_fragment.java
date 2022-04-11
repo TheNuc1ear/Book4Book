@@ -29,10 +29,6 @@ import java.io.Serializable;
  */
 public class myBooks_fragment extends Fragment{
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "bookListing";
-
     // TODO: Rename and change types of parameters
     private bookListing listing;
 
@@ -44,7 +40,7 @@ public class myBooks_fragment extends Fragment{
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
+     * @param listing listing
      * @return A new instance of fragment myBooks_fragment.
      */
     // TODO: Rename and change types and number of parameters
@@ -52,7 +48,6 @@ public class myBooks_fragment extends Fragment{
         myBooks_fragment fragment = new myBooks_fragment();
         Bundle args = new Bundle();
         args.putSerializable("BookListing",listing);
-//        args.putString( listing);
         fragment.setArguments(args);
         return fragment;
     }
@@ -73,7 +68,7 @@ public class myBooks_fragment extends Fragment{
     }
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        String out="";
+
         TextView title = view.findViewById(R.id.titleOfBook);
         TextView genre = view.findViewById(R.id.genreOfBook);
         TextView user = view.findViewById(R.id.userOfBook);
@@ -81,13 +76,11 @@ public class myBooks_fragment extends Fragment{
         ImageView img = view.findViewById(R.id.picOfBook);
 
         title.setText(listing.getNameOfBook());
-        for (String s:listing.getGenre()){
-                out+=s+", ";
-        }
-        out=out.substring(0, out.length()-2);
-        genre.setText(out);
         user.setText(listing.getUseruid());
         desc.setText(listing.getDescriptionOfBook());
+        // Method to get genres( may be more than 1)
+        String out = getGenres();
+        genre.setText(out);
         Task<Uri> url = FirebaseStorage.getInstance().getReference().child("images/" + listing.getListingId()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             //If Successfully got the url, pass the url into Glide and load into ImageView
             @Override
@@ -95,5 +88,13 @@ public class myBooks_fragment extends Fragment{
                 Glide.with(img.getContext()).load(uri).into(img);
             }
         });
+    }
+    public String getGenres(){
+        String out = "";
+        for (String s: this.listing.getGenre()){
+            out+=s+", ";
+        }
+        out=out.substring(0, out.length()-2);
+        return out;
     }
 }

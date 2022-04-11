@@ -35,21 +35,14 @@ import java.util.List;
  */
 public class home_fragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     private List<bookListing> allBookListing;
     private SearchView searchBar;
     private RecyclerView bookList;
     private Adapter adapter;
     private DatabaseReference realTimeDb;
-    private StorageReference storageReference;
-    ArrayAdapter<String> adapterItems;
+    //private StorageReference storageReference;
+    //ArrayAdapter<String> adapterItems;
     private ImageButton filterButton;
     String[] genres = {"All","Action and Adventure", "Classics", "Comic Book /Graphic Novel", "Detective and Mystery"
             , "Fantasy", "Historical Fiction", "Horror", "Literary Fiction","Romance", "Sci-Fi",
@@ -60,21 +53,16 @@ public class home_fragment extends Fragment {
     public home_fragment() {
         // Required empty public constructor
     }
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+
      * @return A new instance of fragment home_fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static home_fragment newInstance(String param1, String param2) {
+    public static home_fragment newInstance() {
         home_fragment fragment = new home_fragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -89,25 +77,9 @@ public class home_fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home_fragment, container, false);
-
         return view;
     }
 
-//    private void initUpRecyclerView(View view){
-//        bookList = view.findViewById(R.id.bookList);
-////        Intent myIntent = new Intent(MainActivity.this,MainActivity.class);
-////        startActivity(myIntent);
-//        GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(),2,GridLayoutManager.VERTICAL,false);
-//        adapter = new Adapter(view.getContext(),allBookListing,this.);
-//        bookList.setLayoutManager(gridLayoutManager);
-//        bookList.setAdapter(adapter);
-//    }
-////    public void onItemClick(String s){
-////        Fragment mybook_fagement = myBooks_fragment.newInstance("a","b");
-////        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-////        transaction.replace(R.id.fragmentContainerView,mybook_fagement);
-////        transaction.commit();
-////    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -115,9 +87,6 @@ public class home_fragment extends Fragment {
         bookList = view.findViewById(R.id.bookList);
         searchBar = view.findViewById(R.id.searchBar);
         filterButton = view.findViewById(R.id.filterButton);
-
-//        adapterItems = new ArrayAdapter<String>(getActivity(), R.layout.list_genres, genres);
-//        filterButton.setAdapter(adapterItems);
 
         allBookListing = new ArrayList<>();
         //Initialise Firebase reference
@@ -159,7 +128,6 @@ public class home_fragment extends Fragment {
             }
         });
 
-
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -181,10 +149,6 @@ public class home_fragment extends Fragment {
             }
         });
 
-
-
     }
-
-
 
 }
