@@ -33,7 +33,7 @@ import java.util.Collections;
 
 public class upload_fragment extends Fragment {
     // Most popular book genres
-    public static String[] genres = {"Action and Adventure", "Classics", "Comic Book /Graphic Novel", "Detective and Mystery"
+    public static String[] genres = {"All", "Action and Adventure", "Classics", "Comic Book /Graphic Novel", "Detective and Mystery"
             , "Fantasy", "Historical Fiction", "Horror", "Literary Fiction","Romance", "Sci-Fi",
             "Short Stories","Suspense and Thrillers", "Women's Fiction" , "Biographies/Autobiographies",
             "History", "Memoir", "Poetry", "Self-Help", "True Crime", "Others"};
@@ -173,6 +173,7 @@ public class upload_fragment extends Fragment {
                         bookListing listing = new bookListing(title, description, bookarraylist);
 
 
+
                         if (title.isEmpty()) {
                             Toast.makeText(getContext(), "Please enter a title", Toast.LENGTH_SHORT).show();
                         } else if (description.isEmpty()) {
@@ -183,7 +184,9 @@ public class upload_fragment extends Fragment {
                             Toast.makeText(getContext(), "Please pick an image", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(getContext(), "Book added successfully", Toast.LENGTH_SHORT).show();
-                            FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Booklisting").child(listing.getListingId()).setValue(listing);
+                            daobookListing dao = new daobookListing();
+                            dao.add(listing);
+//                            FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Booklisting").child(listing.getListingId()).setValue(listing);
                             DatabaseReference reference = FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
                             DatabaseReference reference2 = reference.child("BookListing");
                             DatabaseReference reference3 = reference2.child(listing.getListingId());
@@ -245,6 +248,13 @@ public class upload_fragment extends Fragment {
                         pd.setMessage("Progress:" +(int) progressPercent + "%");
                     }
                 });
+
+    }
+
+    public void writeNewUser(String email, String username, String id) {
+        daoUserData dao = new daoUserData();
+        userData user = new userData(email, username, id);
+        dao.add(user);
 
     }
 
