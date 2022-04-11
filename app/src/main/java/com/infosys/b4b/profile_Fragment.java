@@ -158,21 +158,10 @@ public class profile_Fragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (items[i].equals("Camera")) {
-
-                            //Checking for permissions to use camera app
-//                            if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED){
-//                                requestPermission.launch(Manifest.permission.CAMERA);
-//                            }
                             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                             camera.launch(cameraIntent);
-                            //Checking if the device has a camera app
-//                            if(cameraIntent.resolveActivity(getActivity().getPackageManager()) == null){
-//                                Toast.makeText(getActivity(), "No camera app found!", Toast.LENGTH_SHORT).show();
-//                            }
-//                            else{
-//
-//                            }
                         }
+
                         else {
                             gallery.launch("image/*");
                         }
@@ -256,12 +245,6 @@ public class profile_Fragment extends Fragment {
         adapter = new adapter_Profile(allBookListing);
         recyclerView.setAdapter(adapter);
     }
-
-//    private String getFileExtension(Uri uri){
-//        ContentResolver cR = getActivity().getContentResolver();
-//        MimeTypeMap mime = MimeTypeMap.getSingleton();
-//        return mime.getExtensionFromMimeType(cR.getType(uri));
-//    }
 
     private void uploadPicture(Uri uri){
 

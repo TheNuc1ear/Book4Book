@@ -11,15 +11,15 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="40dp"
         android:layout_marginLeft="145dp"
+        android:layout_marginTop="40dp"
         android:layout_marginRight="145dp"
         android:layout_weight="1"
         android:background="@drawable/rectangle"
         android:gravity="center">
 
         <ImageView
-            android:id="@+id/iconIv"
+            android:id="@+id/uploadBookImage"
             android:layout_width="68dp"
             android:layout_height="68dp"
             android:gravity="center"
