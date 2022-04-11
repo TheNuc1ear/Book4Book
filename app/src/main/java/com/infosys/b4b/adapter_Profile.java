@@ -37,7 +37,8 @@ public class adapter_Profile extends RecyclerView.Adapter<adapter_Profile.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.bookName.setText(listings.get(position).getNameOfBook());
-
+        String genre = listings.get(position).getGenreOfBook().toString();
+        holder.bookGenre.setText(genre.substring(1, genre.length() - 6));
         StorageReference listingId = FirebaseStorage.getInstance().getReference().child("images/" + listings.get(position).getListingId());
         Task<Uri> url = FirebaseStorage.getInstance().getReference().child("images/" + listings.get(position).getListingId()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             //If successful, load into ImageView

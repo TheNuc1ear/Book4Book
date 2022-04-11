@@ -23,12 +23,15 @@
 
         <TextView
             android:id="@+id/bookName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
             android:layout_alignParentTop="true"
             android:layout_marginStart="10dp"
             android:layout_marginTop="30dp"
             android:layout_toEndOf="@id/bookImage"
+            android:autoSizeMaxTextSize="20sp"
+            android:autoSizeMinTextSize="1sp"
+            android:autoSizeTextType="uniform"
             android:text="@string/bookName"
             android:textSize="20sp"
             android:textStyle="bold">
@@ -53,10 +56,13 @@
         <TextView
             android:id="@+id/bookGenre"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_below="@id/bookName"
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/bookImage"
+            android:autoSizeMaxTextSize="20sp"
+            android:autoSizeMinTextSize="1sp"
+            android:autoSizeTextType="uniform"
             android:text="@string/bookGenre"
             android:textSize="20sp">
 
