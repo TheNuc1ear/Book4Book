@@ -5,14 +5,10 @@ import static android.app.Activity.RESULT_OK;
 import androidx.activity.result.ActivityResult;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -20,8 +16,6 @@ import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
@@ -33,13 +27,9 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -49,7 +39,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -60,10 +49,10 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link profile_fragment#newInstance} factory method to
+ * Use the {@link profile_Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class profile_fragment extends Fragment {
+public class profile_Fragment extends Fragment {
 
     private ImageButton profilePicture, editPreferences;
     private Button logout;
@@ -76,7 +65,7 @@ public class profile_fragment extends Fragment {
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
     private RecyclerView recyclerView;
-    private BookAdapter adapter;
+    private adapter_Profile adapter;
     private List<bookListing> allBookListing;
     private final int requestCode = 1;
 
@@ -89,7 +78,7 @@ public class profile_fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public profile_fragment() {
+    public profile_Fragment() {
         // Required empty public constructor
     }
 
@@ -102,8 +91,8 @@ public class profile_fragment extends Fragment {
      * @return A new instance of fragment profile_fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static profile_fragment newInstance(String param1, String param2) {
-        profile_fragment fragment = new profile_fragment();
+    public static profile_Fragment newInstance(String param1, String param2) {
+        profile_Fragment fragment = new profile_Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -219,7 +208,7 @@ public class profile_fragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(getActivity(), LoginActivity.class));
+                        startActivity(new Intent(getActivity(), loginActivity.class));
                         getActivity().finish();
                     }
                 });
@@ -250,7 +239,7 @@ public class profile_fragment extends Fragment {
         //Using linear layout for the "My Listings" section, pass into recyclerview
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new BookAdapter(allBookListing);
+        adapter = new adapter_Profile(allBookListing);
         recyclerView.setAdapter(adapter);
     }
 

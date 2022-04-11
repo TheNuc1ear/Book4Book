@@ -1,17 +1,14 @@
 package com.infosys.b4b;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import io.github.dreierf.materialintroscreen.MaterialIntroActivity;
 import io.github.dreierf.materialintroscreen.SlideFragmentBuilder;
 
-public class Onboarding extends MaterialIntroActivity {
+public class onBoarding extends MaterialIntroActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,12 +51,12 @@ public class Onboarding extends MaterialIntroActivity {
     @Override
     public void onFinish() {
         super.onFinish();
-        startActivity(new Intent(Onboarding.this, LoginActivity.class));
+        startActivity(new Intent(onBoarding.this, loginActivity.class));
     }
 
     public void moveToSecondary(){
         // use an intent to travel from one activity to another.
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, mainActivity.class);
         startActivity(intent);
     }
 }

@@ -7,14 +7,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 
@@ -23,23 +21,22 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link home_fragment#newInstance} factory method to
+ * Use the {@link home_Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class home_fragment extends Fragment {
+public class home_Fragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private List<bookListing> allBookListing;
     private SearchView searchBar;
     private RecyclerView bookList;
-    private Adapter adapter;
+    private adapter_Home adapterHome;
     private DatabaseReference realTimeDb;
     //private StorageReference storageReference;
     //ArrayAdapter<String> adapterItems;
@@ -50,7 +47,7 @@ public class home_fragment extends Fragment {
             "History", "Memoir", "Poetry", "Self-Help", "True Crime", "Others"};
     private Integer selectedGenre;
 
-    public home_fragment() {
+    public home_Fragment() {
         // Required empty public constructor
     }
     /**
@@ -60,8 +57,8 @@ public class home_fragment extends Fragment {
      * @return A new instance of fragment home_fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static home_fragment newInstance() {
-        home_fragment fragment = new home_fragment();
+    public static home_Fragment newInstance() {
+        home_Fragment fragment = new home_Fragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -98,7 +95,7 @@ public class home_fragment extends Fragment {
                     bookListing change = snap.getValue(bookListing.class);
                     allBookListing.add(change);
                 }
-                adapter.notifyDataSetChanged();
+                adapterHome.notifyDataSetChanged();
             }
 
             @Override
@@ -111,8 +108,8 @@ public class home_fragment extends Fragment {
         //Initialise RecyclerView
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
         bookList.setLayoutManager(gridLayoutManager);
-        adapter = new Adapter(getContext(),allBookListing,this.getActivity());
-        bookList.setAdapter(adapter);
+        adapterHome = new adapter_Home(getContext(),allBookListing,this.getActivity());
+        bookList.setAdapter(adapterHome);
 
         //Set up search bar and Filter feature
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -123,7 +120,7 @@ public class home_fragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String s) {
-                adapter.getFilter().filter(s); //s is whatever the user type into the searchview
+                adapterHome.getFilter().filter(s); //s is whatever the user type into the searchview
                 return true;
             }
         });
@@ -141,7 +138,7 @@ public class home_fragment extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         selectedGenre=i;
                         String genre = genres[i];
-                        adapter.getSecondFilter().filter(genre);
+                        adapterHome.getSecondFilter().filter(genre);
 
                     }
                 });

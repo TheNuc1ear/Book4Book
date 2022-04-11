@@ -29,10 +29,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Objects;
 
 public class upload_fragment extends Fragment {
     // Most popular book genres
@@ -179,7 +176,7 @@ public class upload_fragment extends Fragment {
                             //Store the postId as the listingId, then in our listingId create a getter for image
                             //using the listingId attribute to get the image from storage
                             uploadPicture(postId);
-                            FragmentTransaction fr = getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,new home_fragment());
+                            FragmentTransaction fr = getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,new home_Fragment());
                             fr.commit();
                         }
                     }

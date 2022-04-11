@@ -1,6 +1,5 @@
 package com.infosys.b4b;
 
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -19,20 +18,17 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 
-import java.io.FileInputStream;
-import java.io.Serializable;
-
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link myBooks_fragment#newInstance} factory method to
+ * Use the {@link myBooks_Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class myBooks_fragment extends Fragment{
+public class myBooks_Fragment extends Fragment{
 
     // TODO: Rename and change types of parameters
     private bookListing listing;
 
-    public myBooks_fragment() {
+    public myBooks_Fragment() {
         // Required empty public constructor
     }
 
@@ -44,8 +40,8 @@ public class myBooks_fragment extends Fragment{
      * @return A new instance of fragment myBooks_fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static myBooks_fragment newInstance(bookListing listing) {
-        myBooks_fragment fragment = new myBooks_fragment();
+    public static myBooks_Fragment newInstance(bookListing listing) {
+        myBooks_Fragment fragment = new myBooks_Fragment();
         Bundle args = new Bundle();
         args.putSerializable("BookListing",listing);
         fragment.setArguments(args);

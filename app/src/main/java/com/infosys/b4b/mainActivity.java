@@ -3,27 +3,12 @@ package com.infosys.b4b;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.ImageButton;
-import android.widget.SearchView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -34,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class mainActivity extends AppCompatActivity {
 
 
     FirebaseAuth mAuth;
@@ -60,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // If no saved state, create new instance
         if (savedInstanceState == null) {
-            profile = new profile_fragment();
+            profile = new profile_Fragment();
             upload = new upload_fragment();
-            chat = new chat_fragment();
-            home = new home_fragment();
+            chat = new chat_Fragment();
+            home = new home_Fragment();
         }
         // Create all fragments
 //        final Fragment home = new home_fragment();
@@ -85,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         navbar.setOnItemSelectedListener(navListener);
 
         //For when MainActivity first loads, start with the home_fragment which contains the listings
-        fm.beginTransaction().replace(R.id.fragmentContainerView, new home_fragment()).commit();
+        fm.beginTransaction().replace(R.id.fragmentContainerView, new home_Fragment()).commit();
 
     }
 
@@ -97,17 +82,17 @@ public class MainActivity extends AppCompatActivity {
             Fragment selectedFragment = null;
             switch (id) {
                 case R.id.home_fragment:
-                    selectedFragment= home_fragment.newInstance();
+                    selectedFragment= home_Fragment.newInstance();
                     break;
                 case R.id.chat_fragment:
-                    selectedFragment = new chat_fragment();
+                    selectedFragment = new chat_Fragment();
                     break;
                 case R.id.upload_fragment:
                     selectedFragment = new upload_fragment();
                     break;
                 case R.id.profile_fragment:
-                    selectedFragment = new profile_fragment();
-                    profile_fragment.newInstance("a","b");
+                    selectedFragment = new profile_Fragment();
+                    profile_Fragment.newInstance("a","b");
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,selectedFragment).commit();
@@ -122,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             FirebaseUser user = mAuth.getCurrentUser();
 
             if (user == null) {                                                                  // Redirect to login page
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                startActivity(new Intent(mainActivity.this, loginActivity.class));
             }
         }
 

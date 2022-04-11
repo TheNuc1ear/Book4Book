@@ -3,7 +3,6 @@ package com.infosys.b4b;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,12 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends AppCompatActivity {
+public class loginActivity extends AppCompatActivity {
 
     private TextInputEditText LoginEmail;
     private TextInputEditText LoginPass;
@@ -47,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         btnRegisterHere.setOnClickListener(view ->{
-            startActivity(new Intent(LoginActivity.this, SignupActivity.class));
+            startActivity(new Intent(loginActivity.this, signupActivity.class));
         });
     }
 
@@ -66,10 +64,10 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
-                        Toast.makeText(LoginActivity.this, "User logged in successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        Toast.makeText(loginActivity.this, "User logged in successfully", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(loginActivity.this, mainActivity.class));
                     }else{
-                        Toast.makeText(LoginActivity.this, "Log in Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(loginActivity.this, "Log in Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });

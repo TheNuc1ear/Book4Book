@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link chat_fragment#newInstance} factory method to
+ * Use the {@link chat_Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class chat_fragment extends Fragment {
+public class chat_Fragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +24,7 @@ public class chat_fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public chat_fragment() {
+    public chat_Fragment() {
         // Required empty public constructor
     }
 
@@ -37,8 +37,8 @@ public class chat_fragment extends Fragment {
      * @return A new instance of fragment chat_fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static chat_fragment newInstance(String param1, String param2) {
-        chat_fragment fragment = new chat_fragment();
+    public static chat_Fragment newInstance(String param1, String param2) {
+        chat_Fragment fragment = new chat_Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

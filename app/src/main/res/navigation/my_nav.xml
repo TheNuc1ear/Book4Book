@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/home_fragment"
-        android:name="com.infosys.b4b.home_fragment"
+        android:name="com.infosys.b4b.home_Fragment"
         android:label="fragment_home_fragment"
         tools:layout="@layout/fragment_home_fragment" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/myBooks_fragment"
-        android:name="com.infosys.b4b.myBooks_fragment"
+        android:name="com.infosys.b4b.myBooks_Fragment"
         android:label="fragment_my_books_fragment"
         tools:layout="@layout/fragment_my_books_fragment" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/profile_fragment"
-        android:name="com.infosys.b4b.profile_fragment"
+        android:name="com.infosys.b4b.profile_Fragment"
         android:label="fragment_profile_fragment"
         tools:layout="@layout/fragment_profile_fragment" />
     <fragment
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/chat_fragment"
-        android:name="com.infosys.b4b.chat_fragment"
+        android:name="com.infosys.b4b.chat_Fragment"
         android:label="fragment_chat_fragment"
         tools:layout="@layout/fragment_chat_fragment" >
         <action

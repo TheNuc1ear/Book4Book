@@ -26,7 +26,7 @@
         </provider>
 
         <activity
-            android:name=".Onboarding"
+            android:name=".onBoarding"
             android:exported="true" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -35,15 +35,15 @@
         </intent-filter>
         </activity>
         <activity
-            android:name=".SignupActivity"
+            android:name=".signupActivity"
             android:exported="false"
             android:theme="@style/Theme.MyFirstApp" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".loginActivity"
             android:exported="true"
             android:theme="@style/Theme.MyFirstApp"></activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".mainActivity"
             android:windowSoftInputMode="adjustPan"
             android:exported="true">
         </activity>

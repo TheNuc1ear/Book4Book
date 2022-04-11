@@ -2,12 +2,10 @@ package com.infosys.b4b;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -29,11 +26,11 @@ import com.google.firebase.storage.StorageReference;
 import java.util.List;
 
 //This is for the Adapter for "My Listings" which is used to inflate the activity_mybooks
-public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
+public class adapter_Profile extends RecyclerView.Adapter<adapter_Profile.ViewHolder> {
 
     List<bookListing> listings;
 
-    public BookAdapter(List<bookListing> bookListings) {
+    public adapter_Profile(List<bookListing> bookListings) {
         this.listings = bookListings;
     }
 

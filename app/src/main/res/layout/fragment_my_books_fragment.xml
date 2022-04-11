@@ -7,7 +7,7 @@
     android:layout_height="500dp"
     android:background="@color/white"
     android:layout_marginTop="40dp"
-    tools:context=".myBooks_fragment">
+    tools:context=".myBooks_Fragment">
 
     <LinearLayout
         android:layout_width="120dp"
