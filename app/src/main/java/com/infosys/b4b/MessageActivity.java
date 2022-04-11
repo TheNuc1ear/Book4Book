@@ -32,6 +32,7 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+
 public class MessageActivity extends AppCompatActivity {
 
     CircleImageView profile_img;
@@ -47,6 +48,7 @@ public class MessageActivity extends AppCompatActivity {
     String userId;
     String usernameTemp;
     ValueEventListener readListener;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,9 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        databaseReference = db.getReference("userData");
+
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -77,7 +82,22 @@ public class MessageActivity extends AppCompatActivity {
 
         intent = getIntent();
         userId = intent.getStringExtra("userid");
+
         usernameTemp = intent.getStringExtra("usernameTemp");
+        if (intent.getStringExtra("usernameTemp")==null){
+            databaseReference.child(userId).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    userData user = snapshot.getValue(userData.class);
+                    username.setText(user.getUsername());
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
         fUser = FirebaseAuth.getInstance().getCurrentUser();
 
         button.setOnClickListener(new View.OnClickListener() {

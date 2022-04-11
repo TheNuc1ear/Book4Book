@@ -1,5 +1,6 @@
 package com.infosys.b4b;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -7,16 +8,29 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +41,9 @@ public class myBooks_Fragment extends Fragment{
 
     // TODO: Rename and change types of parameters
     private bookListing listing;
+    private ArrayList<userData> globalUserList;
+    private DatabaseReference databaseReference;
+    private String id_1;
 
     public myBooks_Fragment() {
         // Required empty public constructor
@@ -53,6 +70,9 @@ public class myBooks_Fragment extends Fragment{
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             listing = (bookListing) getArguments().getSerializable("BookListing");
+            FirebaseDatabase db = FirebaseDatabase.getInstance();
+            databaseReference = db.getReference("userData");
+
         }
     }
 
@@ -70,9 +90,21 @@ public class myBooks_Fragment extends Fragment{
         TextView user = view.findViewById(R.id.userOfBook);
         TextView desc = view.findViewById(R.id.descOfBook);
         ImageView img = view.findViewById(R.id.picOfBook);
+        Button button = view.findViewById(R.id.tradeBtn);
 
         title.setText(listing.getNameOfBook());
-        user.setText(listing.getUseruid());
+        databaseReference.child(listing.getUseruid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userData userObject = snapshot.getValue(userData.class);
+                user.setText(userObject.getUsername());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         desc.setText(listing.getDescriptionOfBook());
         // Method to get genres( may be more than 1)
         String out = getGenres();
@@ -84,7 +116,21 @@ public class myBooks_Fragment extends Fragment{
                 Glide.with(img.getContext()).load(uri).into(img);
             }
         });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(FirebaseAuth.getInstance().getCurrentUser().getUid()!=listing.getUseruid()){
+                    Intent intent = new Intent(getContext(), MessageActivity.class);
+                    intent.putExtra("userid", listing.getUseruid());
+                    getContext().startActivity(intent);
+                }
+
+            }
+        });
     }
+
+
     public String getGenres(){
         String out = "";
         for (String s: this.listing.getGenre()){
