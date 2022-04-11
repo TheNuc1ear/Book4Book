@@ -48,7 +48,7 @@
                 android:layout_marginLeft="180dp"
                 android:background="@android:color/transparent"
                 android:text="@string/logout"
-                android:textSize="16sp">
+                android:textSize="13sp">
 
             </Button>
 
