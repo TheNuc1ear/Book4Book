@@ -16,4 +16,5 @@
     <string name="bookGenre">Genre</string>
     <string name="mylisting">My Listings</string>
     <string name="alertDelete">Are you sure you want to delete this listing?</string>
+    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
 </resources>

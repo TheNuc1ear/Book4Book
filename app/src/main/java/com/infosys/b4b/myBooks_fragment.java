@@ -11,12 +11,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.badge.BadgeUtils;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.io.FileInputStream;
@@ -28,6 +30,8 @@ import java.io.Serializable;
  * create an instance of this fragment.
  */
 public class myBooks_fragment extends Fragment{
+
+    private Button starttrade;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -63,12 +67,15 @@ public class myBooks_fragment extends Fragment{
         if (getArguments() != null) {
             listing = (bookListing) getArguments().getSerializable("BookListing");
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this my books fragment
+
+
         return inflater.inflate(R.layout.fragment_my_books_fragment, container, false);
     }
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

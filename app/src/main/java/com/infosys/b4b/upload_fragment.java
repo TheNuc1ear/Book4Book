@@ -21,8 +21,13 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -32,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class upload_fragment extends Fragment {
@@ -235,6 +241,36 @@ public class upload_fragment extends Fragment {
                 });
 
     }
+
+//    private void sendMessage(){
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+//
+//        HashMap<String, Object> hashMap = new HashMap<>();
+//        hashMap.put("sender", "TE4JGUCBqFN5KhEmHkpsj8pMlRW2");
+//        hashMap.put("receiver", "yvE7R2NIEHRGfBssM64zAhPTDKU2");
+//        hashMap.put("message", "message");
+//        hashMap.put("read", false);
+//
+//        ref.child("Chats").push().setValue(hashMap);
+//        FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
+//        // ADD USER TO CHAT FRAGMENT IF ALREADY HAVE CHAT HISTORY
+////        final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ListOfChats")
+////                .child(fUser.getUid()).child(userId);
+////
+////        chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
+////            @Override
+////            public void onDataChange(@NonNull DataSnapshot snapshot) {
+////                if (!snapshot.exists()){
+////                    chatRef.child("id").setValue(userId);
+////                }
+////            }
+////
+////            @Override
+////            public void onCancelled(@NonNull DatabaseError error) {
+////            }
+////        });
+//
+//    }
 
 
 

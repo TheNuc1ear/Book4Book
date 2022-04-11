@@ -28,14 +28,26 @@
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/drawable-anydpi/ic_book.xml" value="0.1195" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/drawable-anydpi/ic_menu_button.xml" value="0.1195" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/drawable-v24/rounded_rectangle.xml" value="0.1265" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/drawable/background_left.xml" value="0.1895" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/drawable/background_right.xml" value="0.1895" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/activity_message.xml" value="0.25" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/activity_signup.xml" value="0.25" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/chat_item_left.xml" value="0.25" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/chat_item_right.xml" value="0.25" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/fragment_chat_fragment.xml" value="0.264" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/fragment_discover.xml" value="0.25" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/fragment_home_fragment.xml" value="0.15081521739130435" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/fragment_my_books.xml" value="0.25" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/fragment_my_books_fragment.xml" value="0.15081521739130435" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/fragment_profile_fragment.xml" value="0.25" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/fragment_start.xml" value="0.25" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/fragment_upload.xml" value="0.25" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/fragment_upload_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/fragment_users.xml" value="0.25" />
+        <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/layout/user_item.xml" value="0.25" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/menu/bottom_menu.xml" value="0.264" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.26875" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/MyFirstApp/app/src/main/res/layout/activity_login.xml" value="0.1" />
