@@ -52,8 +52,12 @@
         <entry key="..\:/Users/alvin/AndroidStudioProjects/Book4Book/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.26875" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/MyFirstApp/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/alvin/AndroidStudioProjects/MyFirstApp/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
-        <entry key="app/src/main/res/drawable-anydpi/ic_menu_button.xml" value="0.3195" />
+        <entry key="app/src/main/res/drawable-anydpi/ic_menu_button.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-anydpi/ic_menu_chat.xml" value="0.153" />
+        <entry key="app/src/main/res/drawable-anydpi/ic_upload_book.xml" value="0.153" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/close_raw_material.xml" value="0.214" />
+        <entry key="app/src/main/res/drawable/delete.xml" value="0.214" />
         <entry key="app/src/main/res/drawable/discover.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable/exchange.xml" value="0.2475" />
         <entry key="app/src/main/res/drawable/ic_activity_bar.xml" value="0.3195" />
@@ -71,23 +75,24 @@
         <entry key="app/src/main/res/drawable/upload_image_background.xml" value="0.2475" />
         <entry key="app/src/main/res/drawable/upload_image_foreground.xml" value="0.2475" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.35020904541015635" />
-        <entry key="app/src/main/res/layout/activity_main_saved.xml" value="0.3974358974358974" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.19961700439453134" />
+        <entry key="app/src/main/res/layout/activity_main_saved.xml" value="0.3060317993164063" />
         <entry key="app/src/main/res/layout/activity_onboarding.xml" value="0.30833333333333335" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.27136993408203125" />
-        <entry key="app/src/main/res/layout/activity_userprofile.xml" value="0.30833333333333335" />
+        <entry key="app/src/main/res/layout/activity_userprofile.xml" value="0.2819310506184896" />
         <entry key="app/src/main/res/layout/custom_grid_layout.xml" value="0.31203703703703706" />
         <entry key="app/src/main/res/layout/fragment_chat_fragment.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.3255208333333333" />
-        <entry key="app/src/main/res/layout/fragment_home_fragment.xml" value="0.3588241577148438" />
+        <entry key="app/src/main/res/layout/fragment_home_fragment.xml" value="0.22993469238281256" />
         <entry key="app/src/main/res/layout/fragment_my_books.xml" value="0.3255208333333333" />
         <entry key="app/src/main/res/layout/fragment_my_books_fragment.xml" value="0.29849027976011616" />
-        <entry key="app/src/main/res/layout/fragment_mylisting.xml" value="0.3782051282051282" />
+        <entry key="app/src/main/res/layout/fragment_mylisting.xml" value="0.3439737955729167" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.3255208333333333" />
-        <entry key="app/src/main/res/layout/fragment_profile_fragment.xml" value="0.3974358974358974" />
+        <entry key="app/src/main/res/layout/fragment_profile_fragment.xml" value="0.3590661464593349" />
         <entry key="app/src/main/res/layout/fragment_upload.xml" value="0.3255208333333333" />
         <entry key="app/src/main/res/layout/fragment_upload_fragment.xml" value="0.3974358974358974" />
         <entry key="app/src/main/res/layout/list_genres.xml" value="0.259375" />
+        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.16041666666666668" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2475" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2475" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/upload_image.xml" value="0.2475" />
