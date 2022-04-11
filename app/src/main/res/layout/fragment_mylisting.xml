@@ -35,17 +35,6 @@
 
         </TextView>
 
-        <!--        <TextView-->
-<!--            android:id="@+id/bookDescription"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/bookName"-->
-<!--            android:layout_marginStart="10dp"-->
-<!--            android:layout_toEndOf="@id/bookImage"-->
-<!--            android:text="@string/bookDescription"-->
-<!--            android:textSize="20sp">-->
-
-<!--        </TextView>-->
 
         <ImageButton
             android:id="@+id/deletebook"

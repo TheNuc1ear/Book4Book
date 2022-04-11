@@ -40,10 +40,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.bookName.setText(listings.get(position).getNameOfBook());
-        holder.bookDescription.setText(listings.get(position).getDescriptionOfBook());
 
         StorageReference listingId = FirebaseStorage.getInstance().getReference().child("images/" + listings.get(position).getListingId());
-        //holder.bookGenre.setText(model.getGenreOfBook());
         Task<Uri> url = FirebaseStorage.getInstance().getReference().child("images/" + listings.get(position).getListingId()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             //If successful, load into ImageView
             @Override
@@ -99,7 +97,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
             bookImage = itemView.findViewById(R.id.bookImage);
             bookName = itemView.findViewById(R.id.bookName);
-//            bookDescription = itemView.findViewById(R.id.bookDescription);
             bookGenre = itemView.findViewById(R.id.bookGenre);
             deletebutton = itemView.findViewById(R.id.deletebook);
         }
