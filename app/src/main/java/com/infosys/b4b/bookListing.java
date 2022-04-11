@@ -96,6 +96,4 @@ public class bookListing implements Serializable {
     public String getUseruid() {
         return useruid;
     }
-
-    public ArrayList<String> getGenre(){return this.genre;}
 }

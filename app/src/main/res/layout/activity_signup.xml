@@ -14,7 +14,7 @@
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
-        android:src="@drawable/common_google_signin_btn_icon_dark_focused"
+        android:src="@drawable/b4b"
         tools:srcCompat="@drawable/b4b" />
     <!--Change Pic lol-->
 

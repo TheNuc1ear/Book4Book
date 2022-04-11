@@ -62,9 +62,9 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-database:8.0.1'
 
     // For Chat
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'
-    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
 }
 

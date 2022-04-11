@@ -164,7 +164,7 @@ public class adapter_Home extends RecyclerView.Adapter<adapter_Home.ViewHolder> 
             } else{
                 String filterPattern = constraint.toString();
                 for (bookListing item:fullListings){
-                    if(item.getGenre().contains(filterPattern)){
+                    if(item.getGenreOfBook().contains(filterPattern)){
                         filteredList.add(item);
                     }
                 }

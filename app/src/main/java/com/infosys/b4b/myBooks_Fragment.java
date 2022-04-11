@@ -129,7 +129,7 @@ public class myBooks_Fragment extends Fragment{
 
     public String getGenres(){
         String out = "";
-        for (String s: this.listing.getGenre()){
+        for (String s: this.listing.getGenreOfBook()){
             out+=s+", ";
         }
         out=out.substring(0, out.length()-7);
