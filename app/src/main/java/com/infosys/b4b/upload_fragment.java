@@ -174,7 +174,7 @@ public class upload_fragment extends Fragment {
                             genrelist.add(i);
                             Collections.sort(genrelist);
                         } else {
-                            genrelist.remove(i);
+                            genrelist.remove((Object) i);
                         }
                     }
                 });
