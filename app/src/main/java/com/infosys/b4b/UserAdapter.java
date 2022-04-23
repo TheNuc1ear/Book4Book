@@ -39,11 +39,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         final userData user = mUsers.get(position);
         holder.username.setText(user.getUsername());
         holder.profile_img.setImageResource(R.mipmap.ic_launcher);
-//        if (user.getImageURL().equals("default")){
-//            holder.profile_img.setImageResource(R.mipmap.ic_launcher);
-//        } else {
-//            Glide.with(mContext).load(user.getImageURL()).into(holder.profile_img);
-//        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

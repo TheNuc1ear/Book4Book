@@ -59,6 +59,7 @@ public class chat_Fragment extends Fragment {
         userList = new ArrayList<>();
         users = new ArrayList<>();
 
+        // Gets a list of all users in FirebaseDatabase and stores them in array
         userDataRef = FirebaseDatabase.getInstance().getReference("userData");
         userDataRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -77,6 +78,8 @@ public class chat_Fragment extends Fragment {
             }
         });
 
+        // Checks through all chats within Firebase database to see which users the
+        // current user have messages with.
         dRef = FirebaseDatabase.getInstance().getReference("Chats");
         dRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -86,6 +89,7 @@ public class chat_Fragment extends Fragment {
                 tempglobalusers = globalusers;
                 for (DataSnapshot s : snapshot.getChildren()) {
                     Chat chat = s.getValue(Chat.class);
+                    // Checks if current logged in user sent a message
                     if (chat.getSender().equals(fUser.getUid())) {
                         for (userData gUser : tempglobalusers) {
                             if (users.contains(gUser)) {
@@ -96,6 +100,7 @@ public class chat_Fragment extends Fragment {
                             }
                         }
                     }
+                    // Checks if current logged in user received message
                     if (chat.getReceiver().equals(fUser.getUid())) {
                         for (userData gUser : tempglobalusers) {
                             if (users.contains(gUser)) {
@@ -110,6 +115,7 @@ public class chat_Fragment extends Fragment {
                     }
 
                 }
+                // Uses userAdapter to show list of users whom current logged-in user have chatted with
                 userAdapter = new UserAdapter(getContext(), users);
                 recyclerView.setAdapter(userAdapter);
             }
@@ -121,47 +127,8 @@ public class chat_Fragment extends Fragment {
             }
         });
 
-
-
         return view;
     }
-
-//    private void readChats(){
-//        global users = new ArrayList<>();
-//        dRef = FirebaseDatabase.getInstance().getReference("userData");
-//        dRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                users.clear();
-//
-//                for (DataSnapshot s: snapshot.getChildren()){
-//                    userData user = s.getValue(userData.class);
-//                    for (String id: userList){
-//                        if (user.getId().equals(id)){
-//                            if (users.size() != 0){
-//                                for (userData user1: users){
-//                                    if (!user.getId().equals(user1.getId())){
-//                                        users.add(user);
-//                                        break;
-//                                    }
-//                                }
-//                            } else {
-//                                users.add(user);
-//                                break;
-//                            }
-//                        }
-//                    }
-//                }
-//                userAdapter = new UserAdapter(getContext(), users);
-//                recyclerView.setAdapter(userAdapter);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
 
 }
 

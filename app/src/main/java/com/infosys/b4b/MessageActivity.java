@@ -85,12 +85,15 @@ public class MessageActivity extends AppCompatActivity {
         text = findViewById(R.id.text_content);
 
         intent = getIntent();
+        // gets id and username from the clicked user (sent from userAdapter)
         userId = intent.getStringExtra("userid");
         usernameTemp = intent.getStringExtra("usernameTemp");
 
         
         fUser = FirebaseAuth.getInstance().getCurrentUser();
 
+
+        // Button to send message
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,12 +125,6 @@ public class MessageActivity extends AppCompatActivity {
                     username.setText(usernameTemp);
                 }
                 profile_img.setImageResource(R.mipmap.ic_launcher);
-//                if (user.getImageURL().equals("default")){
-//                    profile_img.setImageResource(R.mipmap.ic_launcher);
-//                } else {
-//                    Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_img);
-//                }
-//                readMsg(fUser.getUid(), userId, user.getImageURL());
                 readMsg(fUser.getUid(), userId);
             }
 
@@ -140,6 +137,7 @@ public class MessageActivity extends AppCompatActivity {
 
     private void seenMessage(String userid){
         ref = FirebaseDatabase.getInstance().getReference("Chats");
+        // Checks if other user have read the message
         readListener = ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -171,7 +169,8 @@ public class MessageActivity extends AppCompatActivity {
 
         ref.child("Chats").push().setValue(hashMap);
 
-        // ADD USER TO CHAT FRAGMENT IF ALREADY HAVE CHAT HISTORY
+        // NEW IMPLEMENTATION FOR FUTURE USES (LINE 174-188), CURRENTLY USING THE OLD METHOD OF GOING THROUGH
+        // ALL THE CHATS AND CHECKING THE USERID OF THE CURRENT LOGGED-IN USER IN SENDER AND RECEIVER
         final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ListOfChats")
                 .child(fUser.getUid()).child(userId);
 
@@ -182,12 +181,10 @@ public class MessageActivity extends AppCompatActivity {
                     chatRef.child("id").setValue(userId);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-
     }
 
     private void readMsg(String ownid, String userid){
@@ -197,6 +194,9 @@ public class MessageActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mChat.clear();
+                // When a user is clicked, the array list containing the messages will be cleared first
+                // Then, it will go through list of chats and put in the messages that have both userId's
+                // (Current logged-in user AND user being clicked)
                 for (DataSnapshot s: snapshot.getChildren()){
                     Chat chat = s.getValue(Chat.class);
                     if (chat.getReceiver().equals(ownid) && chat.getSender().equals(userid)
@@ -214,24 +214,4 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
     }
-
-//    private void status (String status){
-//        ref = FirebaseDatabase.getInstance().getReference("userData").child(fUser.getUid());
-//        HashMap<String, Object> hashMap = new HashMap<>();
-//        hashMap.put("status", status);
-//        ref.updateChildren(hashMap);
-//    }
-//
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        status("Online");
-//    }
-//
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        ref.removeEventListener(readListener);
-//        status("Offline");
-//    }
 }

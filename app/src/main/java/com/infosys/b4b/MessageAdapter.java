@@ -24,14 +24,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
     private Context mContext;
     private List<Chat> mChat;
-    private String imageUrl;
 
     FirebaseUser fUser;
 
     public MessageAdapter(Context mContext, List<Chat> mChat) {
         this.mContext = mContext;
         this.mChat = mChat;
-//        this.imageUrl = imageUrl;
     }
 
     @NonNull
@@ -51,12 +49,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         Chat chat = mChat.get(position);
         holder.show_message.setText(chat.getMessage());
         holder.profile_img.setImageResource(R.mipmap.ic_launcher);
-//        if (imageUrl.equals("default")){
-//            holder.profile_img.setImageResource(R.mipmap.ic_launcher);
-//        } else {
-//            Glide.with(mContext).load(imageUrl).into(holder.profile_img);
-//        }
-
+        // Puts Delivered / Read info ONLY for most recent text
         if (position == mChat.size()-1){
             if (chat.isRead()){
                 holder.text_seen.setText("Read");
@@ -90,6 +83,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public int getItemViewType(int position) {
         fUser = FirebaseAuth.getInstance().getCurrentUser();
+        // Checks the list of messages in mChat is from the sender and showing it
+        // either on the right if its from logged-in user
         if (mChat.get(position).getSender().equals(fUser.getUid())){
             return MSG_TYPE_RIGHT;
         } else {
