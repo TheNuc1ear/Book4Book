@@ -12,7 +12,11 @@ For many book-lovers, book reading can become a very expensive hobby at times, w
 * Chat with other users and trade books
 
 ## Snapshots
-
+![Picture1](https://user-images.githubusercontent.com/86493432/164960375-e501aeaa-8052-4b1f-b2cc-43b833210e5c.png)&emsp;
+![Picture3](https://user-images.githubusercontent.com/86493432/164960547-1859458d-e9f9-4ef3-a22d-3623a1613630.png)&emsp;
+![Picture4](https://user-images.githubusercontent.com/86493432/164960609-0b448189-cb2a-43a5-8e76-865ad04468e8.png)&emsp;
+![Picture2](https://user-images.githubusercontent.com/86493432/164960478-640614ce-7117-4633-b1c6-a4e401d42ea3.png)&emsp;
+![Picture5](https://user-images.githubusercontent.com/86493432/164960633-167fefca-b8b2-4ab6-9945-25e92f0bcdcc.png)&emsp;
 
 ## Team
 * Alvin Joseph 
