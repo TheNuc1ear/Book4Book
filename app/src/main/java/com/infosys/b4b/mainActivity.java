@@ -23,7 +23,6 @@ public class mainActivity extends AppCompatActivity {
 
 
     FirebaseAuth mAuth;
-    ImageButton chatBox;
     List<String> bookTitles;
     List<Integer> bookImages;
     List<bookListing> allBookListing;
@@ -32,10 +31,6 @@ public class mainActivity extends AppCompatActivity {
     private Fragment upload;
     private Fragment chat;
     private Fragment home;
-
-
-    // Display BookListing
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +45,8 @@ public class mainActivity extends AppCompatActivity {
             chat = new chat_Fragment();
             home = new home_Fragment();
         }
-        // Create all fragments
-//        final Fragment home = new home_fragment();
 
         final FragmentManager fm = getSupportFragmentManager();
-        final Fragment[] active = {home};
-        //btnLogOut = findViewById(R.id.btnLogout);
-        chatBox = findViewById(R.id.chatBox);
-        //searchBar = findViewById(R.id.searchBar);
         FirebaseApp.initializeApp(getApplicationContext());
         mAuth = FirebaseAuth.getInstance();
         bookTitles = new ArrayList<>();
@@ -91,7 +80,6 @@ public class mainActivity extends AppCompatActivity {
                     break;
                 case R.id.profile_fragment:
                     selectedFragment = profile_Fragment.newInstance();;
-
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,selectedFragment).commit();

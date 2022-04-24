@@ -32,10 +32,8 @@ import java.util.ArrayList;
  */
 public class myBooks_Fragment extends Fragment{
 
-    // TODO: Rename and change types of parameters
     private bookListing listing;
     private DatabaseReference databaseReference;
-
 
     public myBooks_Fragment() {
         // Required empty public constructor
@@ -76,6 +74,7 @@ public class myBooks_Fragment extends Fragment{
         // Inflate the layout for this my books fragment
         return inflater.inflate(R.layout.fragment_my_books_fragment, container, false);
     }
+
     //Unpack and display the bookListing object's attribute to the respective fields of the Layout
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
