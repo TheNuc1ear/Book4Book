@@ -29,8 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="16dp"
             android:gravity="center_horizontal"
-            android:text="Register"
-            android:textColor="#023047"
+            android:text="@string/register"
+            android:textColor="@color/dark_blue"
             android:textSize="30sp"
             android:textStyle="bold" />
 
@@ -44,7 +44,7 @@
                 android:id="@+id/RegEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,7 +59,7 @@
                 android:id="@+id/RegPass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,7 +73,7 @@
                 android:id="@+id/Username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Username"
+                android:hint="@string/username"
                 android:inputType="textEmailAddress"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,7 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Register"
+            android:text="@string/register"
             app:backgroundTint="@color/orange" />
 
         <LinearLayout
@@ -95,7 +95,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Already registered?"
+                android:text="@string/registered"
                 android:textSize="16sp" />
 
             <TextView
@@ -103,8 +103,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:text="Login here"
-                android:textColor="#023047"
+                android:text="@string/login_here"
+                android:textColor="@color/dark_blue"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
