@@ -48,7 +48,7 @@
         android:background="@drawable/rounded_rectangle"
         android:iconifiedByDefault="false"
         android:queryBackground="@android:color/transparent"
-        android:queryHint="Enter Book Title, Authors, ......"
+        android:queryHint="Enter Book Title..."
         app:layout_constraintEnd_toStartOf="@+id/filterButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
