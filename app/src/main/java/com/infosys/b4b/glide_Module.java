@@ -11,7 +11,7 @@ import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.InputStream;
-
+//Module to display picture from firebase Storage straight into a ImageView
 @GlideModule
 public class glide_Module extends AppGlideModule {
 

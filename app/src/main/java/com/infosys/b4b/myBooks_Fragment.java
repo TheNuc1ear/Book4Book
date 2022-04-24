@@ -34,7 +34,6 @@ public class myBooks_Fragment extends Fragment{
 
     // TODO: Rename and change types of parameters
     private bookListing listing;
-    private ArrayList<userData> globalUserList;
     private DatabaseReference databaseReference;
 
 
@@ -53,6 +52,7 @@ public class myBooks_Fragment extends Fragment{
     public static myBooks_Fragment newInstance(bookListing listing) {
         myBooks_Fragment fragment = new myBooks_Fragment();
         Bundle args = new Bundle();
+        //Custom Constructor takes in a bookListing Object when navigating from home_Fragment to myBooks_Fragment
         args.putSerializable("BookListing",listing);
         fragment.setArguments(args);
         return fragment;
@@ -62,6 +62,7 @@ public class myBooks_Fragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+            //Unserialize the bookListing object that was passed into myBooks_Fragment
             listing = (bookListing) getArguments().getSerializable("BookListing");
             FirebaseDatabase db = FirebaseDatabase.getInstance();
             databaseReference = db.getReference("userData");
@@ -75,6 +76,7 @@ public class myBooks_Fragment extends Fragment{
         // Inflate the layout for this my books fragment
         return inflater.inflate(R.layout.fragment_my_books_fragment, container, false);
     }
+    //Unpack and display the bookListing object's attribute to the respective fields of the Layout
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -119,7 +121,7 @@ public class myBooks_Fragment extends Fragment{
         });
     }
 
-
+    //Just a quick method to display the genre of the book in a presentable format.
     public String getGenres(){
         String out = "";
         for (String s: this.listing.getGenreOfBook()){

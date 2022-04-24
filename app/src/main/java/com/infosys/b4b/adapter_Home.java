@@ -71,6 +71,7 @@ public class adapter_Home extends RecyclerView.Adapter<adapter_Home.ViewHolder> 
             }
         });
         holder.title.setText(listings.get(position).getNameOfBook());
+        //Set a onClickListener to Navigate to the display all details of the particular bookListing object clicked
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -108,13 +109,12 @@ public class adapter_Home extends RecyclerView.Adapter<adapter_Home.ViewHolder> 
         }
 
 
-
+    //get first filter(title)
     @Override
     public Filter getFilter() {
         return firstFilter;
     }
-    //Filter Class
-
+    //Private Constructor(title) that can only be accessed by getFilter()
     private Filter firstFilter = new Filter() {
         //performFiltering auto executed on background thread, so no lag even if complicated filter conditions
         @Override
@@ -122,11 +122,16 @@ public class adapter_Home extends RecyclerView.Adapter<adapter_Home.ViewHolder> 
             if (fullListings.size()==0){
                 fullListings = new ArrayList<>(listings);
             }
+            //Create a new List to contain the filtered result
             List<bookListing> filteredList = new ArrayList<>();
+            //Check for what the user has typed
             if (constraint==null||constraint.length()==0){
+                //If nth is inputted in the searchBar, filteredList shows all listings
                 filteredList.addAll(fullListings);
             } else{
+                //Convert the input in searchBar to String and store it in filterPattern
                 String filterPattern = constraint.toString().toLowerCase().trim();
+                //Iterate through all bookListing and check if the title, contains filterPattern
                 for (bookListing item: fullListings){
                     if(item.getNameOfBook().toLowerCase().contains(filterPattern)){
                         filteredList.add(item);
@@ -146,23 +151,27 @@ public class adapter_Home extends RecyclerView.Adapter<adapter_Home.ViewHolder> 
         }
     };
 
-    //get second filter
+    //get second filter(genre)
     public Filter getSecondFilter() {
         return secondFilter;
     }
 
-
+    //Private Constructor(genre) that can only be accessed by getSecondFilter()
     private Filter secondFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             if (fullListings.size()==0){
                 fullListings = new ArrayList<>(listings);
             }
+            //Create a new List to contain the filtered result
             List<bookListing> filteredList = new ArrayList<>();
             if (constraint==null||constraint.length()==0){
+                //If no genre is selected, filteredList shows all listings
                 filteredList.addAll(fullListings);
             } else{
+                //Convert the genre selected to a String and store in filterPattern
                 String filterPattern = constraint.toString();
+                //Iterate through all bookListing and check if the genre list of the bookListing, contains filterPattern
                 for (bookListing item:fullListings){
                     if(item.getGenreOfBook().contains(filterPattern)){
                         filteredList.add(item);

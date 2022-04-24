@@ -83,6 +83,7 @@ public class home_Fragment extends Fragment {
         allBookListing = new ArrayList<>();
         //Initialise Firebase reference
         realTimeDb = FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Booklisting");
+        //Listen out for changes in Database for bookListings
         realTimeDb.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -120,6 +121,7 @@ public class home_Fragment extends Fragment {
             }
         });
 
+        //Set up filterButton to bring up an AlertDialog for selection of genre to filter
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
