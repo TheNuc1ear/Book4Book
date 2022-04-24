@@ -37,25 +37,6 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold" />
-    <!--        <ImageView-->
-    <!--            android:id="@+id/icon"-->
-    <!--            android:layout_width="110dp"-->
-    <!--            android:layout_height="110dp"-->
-    <!--            android:layout_centerHorizontal="true"-->
-    <!--            android:layout_marginTop="40dp"-->
-    <!--            android:src="@drawable/splash_image" />-->
-
-    <!--        <TextView-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_below="@id/iconIv"-->
-    <!--            android:layout_centerHorizontal="true"-->
-    <!--            android:layout_marginTop="10dp"-->
-    <!--            android:fontFamily="sans-serif-condensed"-->
-    <!--            android:text="Upload a book"-->
-    <!--            android:textColor="@color/black"-->
-    <!--            android:textSize="28sp" />-->
-
 
     <ImageView
         android:layout_width="40dp"

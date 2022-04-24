@@ -16,7 +16,6 @@
         android:layout_marginTop="25dp"
         android:src="@drawable/b4b"
         tools:srcCompat="@drawable/b4b" />
-    <!--Change Pic lol-->
 
     <LinearLayout
         android:layout_width="match_parent"

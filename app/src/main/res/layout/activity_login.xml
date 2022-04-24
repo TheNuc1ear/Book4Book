@@ -8,7 +8,6 @@
     android:padding="24dp"
     tools:context=".loginActivity">
 
-    <!--Change Pic lol-->
 
     <ImageView
         android:id="@+id/imageView"

@@ -9,7 +9,6 @@
     tools:context=".home_Fragment"
     android:background="@color/white">
 
-    <!-- TODO: Update blank fragment layout -->
 
 
     <TextView
@@ -21,7 +20,7 @@
         android:layout_marginBottom="4dp"
         android:gravity="center|left"
         android:text="Recommended For You"
-        android:textColor="#04062D"
+        android:textColor="@color/blue_black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/bookList"
