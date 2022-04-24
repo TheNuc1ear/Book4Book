@@ -41,8 +41,8 @@ Connect an Android device to your development machine.
 * Select ``` Run -> Run 'app' ``` (or ``` Debug 'app' ```) from the menu bar
 * Select the device you wish to run the app on and click 'OK'
 
-### <ins>Using the App</ins>
-#### Registration/Login
+### Using the App
+#### <ins>Registration/Login</ins>
 The first page you will encounter is the login page. On your first launch, you can register a new account, and subsequently use that account everytime you log in.
 
 #### <ins>Home</ins>
