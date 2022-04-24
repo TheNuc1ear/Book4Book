@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="180dp"
         android:paddingLeft="32dp"
-        android:text="About the Book"
+        android:text="@string/about_book"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -52,7 +52,7 @@
         android:layout_marginLeft="70dp"
         android:layout_marginTop="220dp"
         android:src="@drawable/title"
-        android:text="Title of book"
+        android:text="@string/title"
         android:textColor="@color/black" />
 
     <ImageView
@@ -69,7 +69,7 @@
         android:layout_marginLeft="70dp"
         android:layout_marginTop="260dp"
         android:src="@drawable/title"
-        android:text="Genre"
+        android:text="@string/bookGenre"
         android:textColor="@color/black" />
 
     <ImageView
@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
         android:layout_marginTop="300dp"
-        android:text="User"
+        android:text="@string/username"
         android:textColor="@color/black" />
 
     <ImageView
@@ -102,7 +102,7 @@
         android:layout_marginLeft="70dp"
         android:layout_marginTop="340dp"
         android:src="@drawable/title"
-        android:text="Description"
+        android:text="@string/bookDescription"
         android:textColor="@color/black" />
 
     <Button
@@ -115,7 +115,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="20dp"
         android:background="@color/white"
-        android:text="Start trading!"
+        android:text="@string/trade"
         android:textColor="@color/white"
         app:backgroundTint="@color/orange" />
 
