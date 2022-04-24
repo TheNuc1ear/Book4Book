@@ -53,6 +53,7 @@ public class adapter_Profile extends RecyclerView.Adapter<adapter_Profile.ViewHo
             @Override
             public void onClick(View view) {
 
+                //Set a alert dialog to prompt user to confirm their deletion
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                 builder.setMessage(R.string.alertDelete);
                 builder.setPositiveButton(R.string.confirmYes, new DialogInterface.OnClickListener() {
@@ -87,7 +88,7 @@ public class adapter_Profile extends RecyclerView.Adapter<adapter_Profile.ViewHo
     class ViewHolder extends RecyclerView.ViewHolder{
 
         ImageView bookImage;
-        TextView bookName, bookDescription, bookGenre;
+        TextView bookName, bookGenre;
         ImageButton deletebutton;
 
         public ViewHolder(@NonNull View itemView){

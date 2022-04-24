@@ -55,12 +55,11 @@ import java.util.List;
  */
 public class profile_Fragment extends Fragment {
 
-    private ImageButton profilePicture, editPreferences;
+    private ImageButton profilePicture;
     private Button logout;
     private String[] items;
-    private ActivityResultLauncher<String> gallery;
+    private ActivityResultLauncher<String> gallery; //Launchers for registerActivityForResult
     private ActivityResultLauncher<Intent> camera;
-    private ActivityResultLauncher<String> requestPermission;
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
     private FirebaseAuth mAuth;
@@ -105,7 +104,6 @@ public class profile_Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         profilePicture = view.findViewById(R.id.profilePicture);
-        editPreferences = view.findViewById(R.id.editPreference);
         logout = view.findViewById(R.id.logout);
         currentUser = mAuth.getInstance().getCurrentUser().getUid();
         profilename = view.findViewById(R.id.userName);
@@ -153,6 +151,7 @@ public class profile_Fragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (items[i].equals("Camera")) {
+                            //Call intent to take picture with camera
                             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                             camera.launch(cameraIntent);
                         }
@@ -212,7 +211,7 @@ public class profile_Fragment extends Fragment {
         });
 
         allBookListing = new ArrayList<>();
-        //Initialise Firebase reference
+        //Initialise Firebase reference for all book listings
         mDatabaseRef = FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Booklisting");
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -221,6 +220,7 @@ public class profile_Fragment extends Fragment {
                     bookListing change = snap.getValue(bookListing.class);
                     Log.i("UID",change.getUseruid());
                     Log.i("UID current user", currentUser);
+                    //Only add to allBookListing if the listing belongs to the current user
                     if(change.getUseruid().equals(currentUser)) {
                         allBookListing.add(change);
                     }
@@ -241,6 +241,7 @@ public class profile_Fragment extends Fragment {
         recyclerView.setAdapter(adapter);
     }
 
+    //Upload image to firebase storage
     private void uploadPicture(Uri uri){
 
         StorageReference fileReference = mStorageRef.child(currentUser);
