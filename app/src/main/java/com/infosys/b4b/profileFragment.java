@@ -50,10 +50,10 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link profile_Fragment#newInstance} factory method to
+ * Use the {@link profileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class profile_Fragment extends Fragment {
+public class profileFragment extends Fragment {
 
     private ImageButton profilePicture;
     private Button logout;
@@ -64,13 +64,13 @@ public class profile_Fragment extends Fragment {
     private DatabaseReference mDatabaseRef;
     private FirebaseAuth mAuth;
     private RecyclerView recyclerView;
-    private adapter_Profile adapter;
+    private adapterProfile adapter;
     private List<bookListing> allBookListing;
     private String currentUser;
     private TextView profilename;
 
 
-    public profile_Fragment() {
+    public profileFragment() {
         // Required empty public constructor
     }
     /**
@@ -80,8 +80,8 @@ public class profile_Fragment extends Fragment {
      * @return A new instance of fragment profile_fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static profile_Fragment newInstance() {
-        profile_Fragment fragment = new profile_Fragment();
+    public static profileFragment newInstance() {
+        profileFragment fragment = new profileFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -237,7 +237,7 @@ public class profile_Fragment extends Fragment {
         //Using linear layout for the "My Listings" section, pass into recyclerview
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new adapter_Profile(allBookListing);
+        adapter = new adapterProfile(allBookListing);
         recyclerView.setAdapter(adapter);
     }
 

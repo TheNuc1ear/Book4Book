@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -35,10 +34,10 @@ public class mainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // If no saved state, create new instance
         if (savedInstanceState == null) {
-            profile_Fragment.newInstance();
-            upload_fragment.newInstance();
-            chat_Fragment.newInstance();
-            home_Fragment.newInstance();
+            profileFragment.newInstance();
+            uploadFragment.newInstance();
+            chatFragment.newInstance();
+            homeFragment.newInstance();
 
         }
 
@@ -54,7 +53,7 @@ public class mainActivity extends AppCompatActivity {
         navbar.setOnItemSelectedListener(navListener);
 
         //For when MainActivity first loads, start with the home_fragment which contains the listings
-        fm.beginTransaction().replace(R.id.fragmentContainerView, new home_Fragment()).commit();
+        fm.beginTransaction().replace(R.id.fragmentContainerView, new homeFragment()).commit();
 
     }
 
@@ -66,16 +65,16 @@ public class mainActivity extends AppCompatActivity {
             Fragment selectedFragment = null;
             switch (id) {
                 case R.id.home_fragment:
-                    selectedFragment= home_Fragment.newInstance();
+                    selectedFragment= homeFragment.newInstance();
                     break;
                 case R.id.chat_fragment:
-                    selectedFragment = chat_Fragment.newInstance();
+                    selectedFragment = chatFragment.newInstance();
                     break;
                 case R.id.upload_fragment:
-                    selectedFragment = upload_fragment.newInstance();
+                    selectedFragment = uploadFragment.newInstance();
                     break;
                 case R.id.profile_fragment:
-                    selectedFragment = profile_Fragment.newInstance();;
+                    selectedFragment = profileFragment.newInstance();;
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,selectedFragment).commit();

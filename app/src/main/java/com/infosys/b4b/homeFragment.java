@@ -27,22 +27,22 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link home_Fragment#newInstance} factory method to
+ * Use the {@link homeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class home_Fragment extends Fragment {
+public class homeFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private List<bookListing> allBookListing;
     private SearchView searchBar;
     private RecyclerView bookList;
-    private adapter_Home adapterHome;
+    private com.infosys.b4b.adapterHome adapterHome;
     private DatabaseReference realTimeDb;
     private ImageButton filterButton;
-    String[] genres = upload_fragment.genres;
+    String[] genres = uploadFragment.genres;
     private Integer selectedGenre;
 
-    public home_Fragment() {
+    public homeFragment() {
         // Required empty public constructor
     }
     /**
@@ -52,8 +52,8 @@ public class home_Fragment extends Fragment {
      * @return A new instance of fragment home_fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static home_Fragment newInstance() {
-        home_Fragment fragment = new home_Fragment();
+    public static homeFragment newInstance() {
+        homeFragment fragment = new homeFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -104,7 +104,7 @@ public class home_Fragment extends Fragment {
         //Initialise RecyclerView
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
         bookList.setLayoutManager(gridLayoutManager);
-        adapterHome = new adapter_Home(getContext(),allBookListing,this.getActivity());
+        adapterHome = new adapterHome(getContext(),allBookListing,this.getActivity());
         bookList.setAdapter(adapterHome);
 
         //Set up search bar and Filter feature

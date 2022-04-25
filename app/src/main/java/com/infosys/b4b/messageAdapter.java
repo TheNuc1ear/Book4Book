@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
-public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
+public class messageAdapter extends RecyclerView.Adapter<messageAdapter.ViewHolder> {
     public static final int MSG_TYPE_LEFT = 0;
     public static final int MSG_TYPE_RIGHT = 1;
 
@@ -24,21 +24,21 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
     FirebaseUser fUser;
 
-    public MessageAdapter(Context mContext, List<Chat> mChat) {
+    public messageAdapter(Context mContext, List<Chat> mChat) {
         this.mContext = mContext;
         this.mChat = mChat;
     }
 
     @NonNull
     @Override
-    public MessageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public messageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         if (viewType == MSG_TYPE_RIGHT){
             view = LayoutInflater.from(mContext).inflate(R.layout.chat_item_right, parent, false);
         } else {
             view = LayoutInflater.from(mContext).inflate(R.layout.chat_item_left, parent, false);
         }
-        return new MessageAdapter.ViewHolder(view);
+        return new messageAdapter.ViewHolder(view);
     }
 
     @Override

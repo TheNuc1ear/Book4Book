@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/splashScreenTheme">
         <activity
-            android:name=".MessageActivity"
+            android:name=".messageActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             />

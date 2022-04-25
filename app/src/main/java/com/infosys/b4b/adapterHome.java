@@ -28,7 +28,7 @@ import java.util.List;
 //Adapter works with the data of the book upload process,
 // 1. Picture of book
 // 2. Title of book
-public class adapter_Home extends RecyclerView.Adapter<adapter_Home.ViewHolder> implements Filterable {
+public class adapterHome extends RecyclerView.Adapter<adapterHome.ViewHolder> implements Filterable {
     //These lists will take the input from mainActivity
     List<bookListing> listings;
     List<bookListing> fullListings; //Just another list to store all the original listings to be used to get filter list
@@ -37,13 +37,13 @@ public class adapter_Home extends RecyclerView.Adapter<adapter_Home.ViewHolder> 
 
 
 
-    public adapter_Home(Context ctx, List<bookListing> listings){
+    public adapterHome(Context ctx, List<bookListing> listings){
         this.listings = listings;
         fullListings = new ArrayList<>(listings);
         this.inflater = LayoutInflater.from(ctx);
     }
 
-    public adapter_Home(Context ctx, List<bookListing> listings, FragmentActivity c){
+    public adapterHome(Context ctx, List<bookListing> listings, FragmentActivity c){
         this.listings = listings;
         fullListings = new ArrayList<>(listings);
         this.inflater = LayoutInflater.from(ctx);
@@ -76,7 +76,7 @@ public class adapter_Home extends RecyclerView.Adapter<adapter_Home.ViewHolder> 
             @Override
             public void onClick(View view) {
                 bookListing listingClicked = listings.get(holder.getBindingAdapterPosition());
-                Fragment mybook_fragment = myBooks_Fragment.newInstance(listingClicked);
+                Fragment mybook_fragment = myBooksFragment.newInstance(listingClicked);
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.fragmentContainerView,mybook_fragment);
                 transaction.commit();
