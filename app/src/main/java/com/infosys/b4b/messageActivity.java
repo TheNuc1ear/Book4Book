@@ -41,7 +41,7 @@ public class messageActivity extends AppCompatActivity {
     EditText text;
     Intent intent;
     com.infosys.b4b.messageAdapter messageAdapter;
-    List<Chat> mChat;
+    List<chat> mChat;
     RecyclerView recyclerView;
     String userId;
     String usernameTemp;
@@ -137,7 +137,7 @@ public class messageActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot s: snapshot.getChildren()){
-                    Chat chat = s.getValue(Chat.class);
+                    chat chat = s.getValue(com.infosys.b4b.chat.class);
                     if (chat.getReceiver().equals(fUser.getUid()) && chat.getSender().equals(userid)){
                         HashMap<String, Object> hashMap = new HashMap<>();
                         hashMap.put("read", true);
@@ -193,7 +193,7 @@ public class messageActivity extends AppCompatActivity {
                 // Then, it will go through list of chats and put in the messages that have both userId's
                 // (Current logged-in user AND user being clicked)
                 for (DataSnapshot s: snapshot.getChildren()){
-                    Chat chat = s.getValue(Chat.class);
+                    chat chat = s.getValue(com.infosys.b4b.chat.class);
                     if (chat.getReceiver().equals(ownid) && chat.getSender().equals(userid)
                             || chat.getReceiver().equals(userid) && chat.getSender().equals(ownid)){
                         mChat.add(chat);

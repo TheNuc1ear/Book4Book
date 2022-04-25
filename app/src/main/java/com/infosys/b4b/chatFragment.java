@@ -87,7 +87,7 @@ public class chatFragment extends Fragment {
                 users.clear();
                 tempglobalusers = globalusers;
                 for (DataSnapshot s : snapshot.getChildren()) {
-                    Chat chat = s.getValue(Chat.class);
+                    chat chat = s.getValue(com.infosys.b4b.chat.class);
                     // Checks if current logged in user sent a message
                     if (chat.getSender().equals(fUser.getUid())) {
                         for (userData gUser : tempglobalusers) {

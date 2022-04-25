@@ -290,13 +290,6 @@ public class uploadFragment  extends Fragment {
 
     }
 
-    public void writeNewUser(String email, String username, String id) {
-        daoUserData dao = new daoUserData();
-        userData user = new userData(email, username, id);
-        dao.add(user);
-
-    }
-
     //Changing from bitmap to URI (For uploading image to firebase)
     public Uri getImageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
