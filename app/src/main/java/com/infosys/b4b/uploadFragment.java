@@ -40,7 +40,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class uploadFragment extends Fragment {
+public class uploadFragment  extends Fragment {
     // Most popular book genres
     public static String[] genres = {"All", "Action and Adventure", "Classics", "Comic Book /Graphic Novel", "Detective and Mystery"
             , "Fantasy", "Historical Fiction", "Horror", "Literary Fiction","Romance", "Sci-Fi",
@@ -244,7 +244,6 @@ public class uploadFragment extends Fragment {
                     Toast.makeText(getContext(), "Book added successfully", Toast.LENGTH_SHORT).show();
                     daoBookListing dao = new daoBookListing();
                     dao.add(listing);
-//                            FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Booklisting").child(listing.getListingId()).setValue(listing);
                     DatabaseReference reference = FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
                     DatabaseReference reference2 = reference.child("BookListing");
                     DatabaseReference reference3 = reference2.child(listing.getListingId());
