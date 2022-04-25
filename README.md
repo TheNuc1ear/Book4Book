@@ -58,10 +58,11 @@ This page allows you to key in details of a book you wish to upload such as its 
 This page displays details of yourself, such as your username, profile picture and the book listings you have uploaded. You can choose to edit your username, and profile picture, delete your listings and also logout of your account.
 
 ## Team
-* Alvin Joseph 
-* Dylan Raharja 
-* Han Wei Guang 
-* Harikrishnan Chalapathy Anirudh 
-* Hayden Ang Wei En 
-* Swastik Majumdar 
-* Lee Chang Zheng 
+* Alvin Joseph 1005601
+* Dylan Raharja 1005406
+* Han Wei Guang 1005233
+* Harikrishnan Chalapathy Anirudh 1005501
+* Hayden Ang Wei En 1005147
+* Swastik Majumdar 1005802
+* Lee Chang Zheng 1005289
+ 
