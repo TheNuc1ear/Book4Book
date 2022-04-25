@@ -1,19 +1,19 @@
 package com.infosys.b4b;
 
-public class chat {
+public class Chat {
     private String sender;
     private String receiver;
     private String message;
     private boolean read;
 
-    public chat(String sender, String receiver, String msg, boolean read) {
+    public Chat(String sender, String receiver, String msg, boolean read) {
         this.sender = sender;
         this.receiver = receiver;
         this.message = msg;
         this.read = read;
     }
 
-    public chat(){}
+    public Chat(){}
 
     public String getSender() {
         return sender;

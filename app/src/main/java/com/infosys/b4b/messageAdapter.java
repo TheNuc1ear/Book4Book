@@ -20,11 +20,11 @@ public class messageAdapter extends RecyclerView.Adapter<messageAdapter.ViewHold
     public static final int MSG_TYPE_RIGHT = 1;
 
     private Context mContext;
-    private List<chat> mChat;
+    private List<Chat> mChat;
 
     FirebaseUser fUser;
 
-    public messageAdapter(Context mContext, List<chat> mChat) {
+    public messageAdapter(Context mContext, List<Chat> mChat) {
         this.mContext = mContext;
         this.mChat = mChat;
     }
@@ -43,7 +43,7 @@ public class messageAdapter extends RecyclerView.Adapter<messageAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        chat chat = mChat.get(position);
+        Chat chat = mChat.get(position);
         holder.show_message.setText(chat.getMessage());
         holder.profile_img.setImageResource(R.mipmap.ic_launcher);
         // Puts Delivered / Read info ONLY for most recent text
