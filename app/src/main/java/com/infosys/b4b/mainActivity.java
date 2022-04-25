@@ -21,16 +21,11 @@ import java.util.List;
 
 public class mainActivity extends AppCompatActivity {
 
-
     FirebaseAuth mAuth;
     List<String> bookTitles;
     List<Integer> bookImages;
     List<bookListing> allBookListing;
     BottomNavigationView navbar;
-    private Fragment profile;
-    private Fragment upload;
-    private Fragment chat;
-    private Fragment home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +35,11 @@ public class mainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // If no saved state, create new instance
         if (savedInstanceState == null) {
-            profile = new profile_Fragment();
-            upload = new upload_fragment();
-            chat = new chat_Fragment();
-            home = new home_Fragment();
+            profile_Fragment.newInstance();
+            upload_fragment.newInstance();
+            chat_Fragment.newInstance();
+            home_Fragment.newInstance();
+
         }
 
         final FragmentManager fm = getSupportFragmentManager();
