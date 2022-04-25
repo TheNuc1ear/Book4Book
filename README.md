@@ -57,7 +57,7 @@ This page allows you to key in details of a book you wish to upload such as its 
 #### <ins>Profile</ins> 
 This page displays details of yourself, such as your username, profile picture and the book listings you have uploaded. You can choose to edit your username, and profile picture, delete your listings and also logout of your account.
 
-## Team
+## Team 5D
 * Alvin Joseph 1005601
 * Dylan Raharja 1005406
 * Han Wei Guang 1005233
