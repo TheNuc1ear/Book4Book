@@ -13,7 +13,7 @@ import com.google.firebase.storage.StorageReference;
 import java.io.InputStream;
 //Module to display picture from firebase Storage straight into a ImageView
 @GlideModule
-public class glide_Module extends AppGlideModule {
+public class glideModule extends AppGlideModule {
 
     @Override
     public void registerComponents(Context context, Glide glide, Registry registry) {

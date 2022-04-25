@@ -22,10 +22,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersFragment extends Fragment {
+public class usersFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private UserAdapter userAdapter;
+    private com.infosys.b4b.userAdapter userAdapter;
     private List<userData> mUsers;
 
 
@@ -61,7 +61,7 @@ public class UsersFragment extends Fragment {
                         mUsers.add(user);
                     }
                 }
-                userAdapter = new UserAdapter(getContext(), mUsers);
+                userAdapter = new userAdapter(getContext(), mUsers);
                 recyclerView.setAdapter(userAdapter);
             }
 

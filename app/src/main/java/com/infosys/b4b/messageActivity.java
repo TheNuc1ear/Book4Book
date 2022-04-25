@@ -31,7 +31,7 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class MessageActivity extends AppCompatActivity {
+public class messageActivity extends AppCompatActivity {
 
     CircleImageView profile_img;
     TextView username;
@@ -40,7 +40,7 @@ public class MessageActivity extends AppCompatActivity {
     ImageButton button;
     EditText text;
     Intent intent;
-    MessageAdapter messageAdapter;
+    com.infosys.b4b.messageAdapter messageAdapter;
     List<Chat> mChat;
     RecyclerView recyclerView;
     String userId;
@@ -96,7 +96,7 @@ public class MessageActivity extends AppCompatActivity {
                 if (!mesg.equals("")){
                     sendMessage(fUser.getUid(), userId, mesg);
                 } else {
-                    Toast.makeText(MessageActivity.this, "Nothing to send!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(messageActivity.this, "Nothing to send!", Toast.LENGTH_SHORT).show();
                 }
                 text.setText("");
             }
@@ -198,7 +198,7 @@ public class MessageActivity extends AppCompatActivity {
                             || chat.getReceiver().equals(userid) && chat.getSender().equals(ownid)){
                         mChat.add(chat);
                     }
-                    messageAdapter = new MessageAdapter(MessageActivity.this, mChat);
+                    messageAdapter = new messageAdapter(messageActivity.this, mChat);
                     recyclerView.setAdapter(messageAdapter);
                 }
             }

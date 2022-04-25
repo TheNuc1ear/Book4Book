@@ -23,19 +23,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 
-import java.util.ArrayList;
-
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link myBooks_Fragment#newInstance} factory method to
+ * Use the {@link myBooksFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class myBooks_Fragment extends Fragment{
+public class myBooksFragment extends Fragment{
 
     private bookListing listing;
     private DatabaseReference databaseReference;
 
-    public myBooks_Fragment() {
+    public myBooksFragment() {
         // Required empty public constructor
     }
 
@@ -47,8 +45,8 @@ public class myBooks_Fragment extends Fragment{
      * @return A new instance of fragment myBooks_fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static myBooks_Fragment newInstance(bookListing listing) {
-        myBooks_Fragment fragment = new myBooks_Fragment();
+    public static myBooksFragment newInstance(bookListing listing) {
+        myBooksFragment fragment = new myBooksFragment();
         Bundle args = new Bundle();
         //Custom Constructor takes in a bookListing Object when navigating from home_Fragment to myBooks_Fragment
         args.putSerializable("BookListing",listing);
@@ -111,7 +109,7 @@ public class myBooks_Fragment extends Fragment{
             @Override
             public void onClick(View view) {
                 if(FirebaseAuth.getInstance().getCurrentUser().getUid()!=listing.getUseruid()){
-                    Intent intent = new Intent(getContext(), MessageActivity.class);
+                    Intent intent = new Intent(getContext(), messageActivity.class);
                     intent.putExtra("userid", listing.getUseruid());
                     getContext().startActivity(intent);
                 }

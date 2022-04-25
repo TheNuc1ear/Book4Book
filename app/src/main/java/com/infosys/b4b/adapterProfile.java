@@ -26,11 +26,11 @@ import com.google.firebase.storage.StorageReference;
 import java.util.List;
 
 //This is for the Adapter for "My Listings" which is used to inflate the activity_mybooks
-public class adapter_Profile extends RecyclerView.Adapter<adapter_Profile.ViewHolder> {
+public class adapterProfile extends RecyclerView.Adapter<adapterProfile.ViewHolder> {
 
     List<bookListing> listings;
 
-    public adapter_Profile(List<bookListing> bookListings) {
+    public adapterProfile(List<bookListing> bookListings) {
         this.listings = bookListings;
     }
 

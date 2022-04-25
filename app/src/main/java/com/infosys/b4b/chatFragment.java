@@ -24,10 +24,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class chat_Fragment extends Fragment {
+public class chatFragment extends Fragment {
     private RecyclerView recyclerView;
 
-    private UserAdapter userAdapter;
+    private com.infosys.b4b.userAdapter userAdapter;
     private List<userData> users;
 
     FirebaseUser fUser;
@@ -37,8 +37,8 @@ public class chat_Fragment extends Fragment {
     private List<userData> globalusers = new ArrayList<>();
     private List<userData> tempglobalusers = new ArrayList<>();
 
-    public static chat_Fragment newInstance() {
-        chat_Fragment fragment = new chat_Fragment();
+    public static chatFragment newInstance() {
+        chatFragment fragment = new chatFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -115,7 +115,7 @@ public class chat_Fragment extends Fragment {
 
                 }
                 // Uses userAdapter to show list of users whom current logged-in user have chatted with
-                userAdapter = new UserAdapter(getContext(), users);
+                userAdapter = new userAdapter(getContext(), users);
                 recyclerView.setAdapter(userAdapter);
             }
 

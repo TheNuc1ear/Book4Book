@@ -40,7 +40,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class upload_fragment extends Fragment {
+public class uploadFragment extends Fragment {
     // Most popular book genres
     public static String[] genres = {"All", "Action and Adventure", "Classics", "Comic Book /Graphic Novel", "Detective and Mystery"
             , "Fantasy", "Historical Fiction", "Horror", "Literary Fiction","Romance", "Sci-Fi",
@@ -63,7 +63,7 @@ public class upload_fragment extends Fragment {
     private String[] items;
 
 
-    public upload_fragment() {
+    public uploadFragment() {
         // Required empty public constructor
     }
     /**
@@ -73,8 +73,8 @@ public class upload_fragment extends Fragment {
      * @return A new instance of fragment chat_fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static upload_fragment newInstance() {
-        upload_fragment fragment = new upload_fragment();
+    public static uploadFragment newInstance() {
+        uploadFragment fragment = new uploadFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -242,7 +242,7 @@ public class upload_fragment extends Fragment {
                     Toast.makeText(getContext(), "Please pick an image", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), "Book added successfully", Toast.LENGTH_SHORT).show();
-                    daobookListing dao = new daobookListing();
+                    daoBookListing dao = new daoBookListing();
                     dao.add(listing);
 //                            FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Booklisting").child(listing.getListingId()).setValue(listing);
                     DatabaseReference reference = FirebaseDatabase.getInstance("https://book4book-862cd-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
@@ -252,7 +252,7 @@ public class upload_fragment extends Fragment {
                     //Store the postId as the listingId, then in our listingId create a getter for image
                     //using the listingId attribute to get the image from storage
                     uploadPicture(postId);
-                    FragmentTransaction fr = getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new home_Fragment());
+                    FragmentTransaction fr = getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new homeFragment());
                     fr.commit();
                 }
             }
