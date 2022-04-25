@@ -33,6 +33,7 @@ public class loginActivity extends AppCompatActivity {
         setTheme(R.style.Theme_MyFirstApp);
         setContentView(R.layout.activity_login);
 
+        // Identify username and password textboxes
         LoginEmail = findViewById(R.id.LoginEmail);
         LoginPass = findViewById(R.id.LoginPass);
         btnLogin = findViewById(R.id.btnLogin);
@@ -40,8 +41,9 @@ public class loginActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(getApplicationContext());
         mAuth = FirebaseAuth.getInstance();
 
+        // Run login function on button click
         btnLogin.setOnClickListener(view -> {
-            loginUser();// Run login function on button click
+            loginUser();
 
         });
 
@@ -54,6 +56,7 @@ public class loginActivity extends AppCompatActivity {
         String email = LoginEmail.getText().toString();
         String password = LoginPass.getText().toString();
 
+        // If either email or password textbox is empty
         if (TextUtils.isEmpty(email)){
             LoginEmail.setError("Email cannot be empty");
             LoginEmail.requestFocus();
@@ -61,6 +64,7 @@ public class loginActivity extends AppCompatActivity {
             LoginPass.setError("Password cannot be empty");
             LoginPass.requestFocus();
         }else{
+            // Attempt login with provided credentials
             mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -68,6 +72,7 @@ public class loginActivity extends AppCompatActivity {
                         Toast.makeText(loginActivity.this, "User logged in successfully", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(loginActivity.this, mainActivity.class));
                     }else{
+                        // Display whatever error produced by Firebase as a toast
                         Toast.makeText(loginActivity.this, "Log in Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }

@@ -38,6 +38,7 @@ public class signupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        // Identify email, username and password textboxes
         RegEmail = findViewById(R.id.RegEmail);
         RegPass = findViewById(R.id.RegPass);
         Username = findViewById(R.id.Username);
@@ -45,8 +46,11 @@ public class signupActivity extends AppCompatActivity {
         btnLoginHere = findViewById(R.id.btnLoginHere);
         FirebaseApp.initializeApp(getApplicationContext());
         mAuth = FirebaseAuth.getInstance();
+
+        // Create DAO object which will be used to upload userdata
         daoUserData dao = new daoUserData();
 
+        // Run register function on button click
         btnRegister.setOnClickListener(view ->{
             createUser();
         });
@@ -60,6 +64,7 @@ public class signupActivity extends AppCompatActivity {
         String password = RegPass.getText().toString();
         String username = Username.getText().toString();
 
+        //if either email, password or username textboxes is empty
         if (TextUtils.isEmpty(email)){
             RegEmail.setError("Email cannot be empty");
             RegEmail.requestFocus();
@@ -71,6 +76,7 @@ public class signupActivity extends AppCompatActivity {
             RegPass.requestFocus();
         }
         else{
+            // Attempt to create new user with provided credentials
             mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -82,6 +88,7 @@ public class signupActivity extends AppCompatActivity {
 
                         startActivity(new Intent(signupActivity.this, mainActivity.class));
                     }else{
+                        // Display whatever error produced by Firebase as a toast
                         Toast.makeText(signupActivity.this, "Registration Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -89,6 +96,7 @@ public class signupActivity extends AppCompatActivity {
         }
     }
 
+    //Use the dao object to write new userdata into realtime database
     public void writeNewUser(String email, String username, String id) {
         daoUserData dao = new daoUserData();
         userData user = new userData(email, username, id);

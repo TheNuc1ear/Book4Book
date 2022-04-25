@@ -8,10 +8,19 @@ public class userData  {
     private String id;
     private ArrayList<String> userListing = new ArrayList<String>();
 
+    // Default constructor required for calls to DataSnapshot.getValue(User.class)
     public userData(){
-        // Default constructor required for calls to DataSnapshot.getValue(User.class)
+
     }
 
+    // This constructor is called when registering a new user
+    public userData(String email, String username, String id) {
+        this.email = email;
+        this.username = username;
+        this.id = id;
+    }
+
+    // Getters and Setters as required
     public String getUsername() {
         return username;
     }
@@ -28,11 +37,6 @@ public class userData  {
         this.id = id;
     }
 
-    public userData(String email, String username, String id) {
-        this.email = email;
-        this.username = username;
-        this.id = id;
-    }
 
     public String getEmail() {
         return email;
