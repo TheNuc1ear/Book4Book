@@ -1,6 +1,12 @@
 # Book4Book
 
-B4B is a P2P book trading platform which allows users to trade their used books and search for books that they are interested in. 
+B4B is a P2P book trading platform which allows users to trade their used books and search for books that they are interested in.
+
+
+
+https://user-images.githubusercontent.com/75733271/166658524-e70beca6-c233-4c1a-a5bf-bc964521d519.mp4
+
+
 
 
 ## Problem Statement
